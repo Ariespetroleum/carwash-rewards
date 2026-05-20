@@ -2,986 +2,825 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Sinopec Car Wash Rewards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
-:root{
-  --red:#e60012;
-  --red-dark:#b8000e;
-  --bg:#f3f4f6;
-  --card:#ffffff;
-  --text:#1f2937;
-  --muted:#6b7280;
-  --border:#e5e7eb;
-  --success:#15803d;
-  --danger:#dc2626;
-  --warning:#d97706;
+:root {
+  --red:#c8102e; --red-dark:#9e0c24; --red-bg:#fff1f3; --red-border:#fecdd3;
+  --success:#15803d; --success-bg:#f0fdf4; --success-border:#bbf7d0;
+  --warn:#b45309; --warn-bg:#fffbeb; --warn-border:#fde68a;
+  --info:#1d4ed8; --info-bg:#eff6ff; --info-border:#bfdbfe;
+  --bg:#f5f5f0; --card:#ffffff; --text:#111111; --muted:#6b7280;
+  --border:#e5e4df; --radius:14px; --radius-sm:9px;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  min-height:100vh;
-}
-.header{
-  background:var(--red);
-  padding:18px 16px 16px;
-  text-align:center;
-  position:sticky;
-  top:0;
-  z-index:100;
-  box-shadow:0 2px 10px rgba(0,0,0,.12);
-}
-.logo{
-  width:58px;
-  height:58px;
-  margin:0 auto 8px;
-  border-radius:50%;
-  background:#fff;
-  color:var(--red);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:26px;
-  font-weight:900;
-}
-.header h1{
-  color:#fff;
-  font-size:21px;
-  font-weight:800;
-}
-.header p{
-  color:#ffe8e8;
-  font-size:12px;
-  margin-top:4px;
-  letter-spacing:.04em;
-}
-.container{
-  max-width:680px;
-  margin:18px auto;
-  padding:0 14px 40px;
-}
-.card{
-  background:var(--card);
-  border-radius:18px;
-  padding:22px 18px;
-  box-shadow:0 4px 18px rgba(0,0,0,.08);
-}
-h2{
-  font-size:21px;
-  font-weight:800;
-  color:var(--red);
-  text-align:center;
-  margin-bottom:6px;
-}
-.page-sub{
-  text-align:center;
-  color:var(--muted);
-  font-size:13px;
-  margin-bottom:18px;
-  line-height:1.45;
-}
-.type-btn{
-  width:100%;
-  padding:16px 14px;
-  margin-bottom:12px;
-  border:2px solid var(--border);
-  border-radius:16px;
-  background:#fff;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  gap:14px;
-  text-align:left;
-}
-.type-btn:active{transform:scale(.99)}
-.type-icon{
-  width:48px;
-  height:48px;
-  border-radius:14px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:25px;
-  flex-shrink:0;
-  background:#fee2e2;
-}
-.t-label{
-  font-size:16px;
-  font-weight:800;
-  color:#111827;
-}
-.t-desc{
-  font-size:12px;
-  color:var(--muted);
-  margin-top:3px;
-  line-height:1.4;
-}
-.plan-card{
-  border:2px solid var(--border);
-  border-radius:18px;
-  padding:17px 15px;
-  margin-bottom:14px;
-  background:#fff;
-}
-.plan-card.featured{
-  border-color:var(--red);
-  background:#fff7f7;
-}
-.plan-title{
-  font-size:18px;
-  font-weight:900;
-  color:#111827;
-  margin-bottom:6px;
-}
-.plan-main{
-  font-size:14px;
-  font-weight:700;
-  color:var(--red);
-  margin-bottom:10px;
-}
-.plan-list{
-  font-size:13px;
-  color:#4b5563;
-  line-height:1.65;
-  margin-bottom:12px;
-}
-.plan-price{
-  font-size:22px;
-  font-weight:900;
-  color:#111827;
-  margin-bottom:10px;
-}
-.form-group{margin-bottom:15px}
-label{
-  display:block;
-  font-size:14px;
-  font-weight:700;
-  color:#374151;
-  margin-bottom:6px;
-}
-input,select,textarea{
-  width:100%;
-  padding:12px 14px;
-  border:1.5px solid var(--border);
-  border-radius:11px;
-  font-size:16px;
-  background:#fff;
-  color:var(--text);
-  outline:none;
-  font-family:inherit;
-}
-input:focus,select:focus,textarea:focus{
-  border-color:var(--red);
-  box-shadow:0 0 0 3px rgba(230,0,18,.08);
-}
-textarea{min-height:80px;resize:vertical}
-.file-box{
-  border:1.5px dashed #fca5a5;
-  background:#fff7f7;
-  border-radius:14px;
-  padding:14px;
-}
-.file-box input{border:none;padding:0;background:transparent}
-.hint{
-  font-size:12px;
-  color:var(--muted);
-  margin-top:6px;
-  line-height:1.45;
-}
-.btn{
-  width:100%;
-  padding:14px;
-  border:none;
-  border-radius:12px;
-  font-size:16px;
-  font-weight:800;
-  cursor:pointer;
-  margin-top:10px;
-  font-family:inherit;
-}
-.btn:disabled{opacity:.55;cursor:not-allowed}
-.btn-primary{background:var(--red);color:#fff}
-.btn-primary:active{background:var(--red-dark)}
-.btn-secondary{background:#e5e7eb;color:#374151}
-.btn-dark{background:#111827;color:#fff}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:15px}
+
+.header{background:var(--red);padding:0 16px;height:56px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:100}
+.hlogo{width:32px;height:32px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--red);font-weight:700;font-size:14px;flex-shrink:0;font-family:'DM Mono',monospace}
+.htext{flex:1}
+.htitle{color:#fff;font-size:15px;font-weight:700;line-height:1.2}
+.hsub{color:rgba(255,255,255,.6);font-size:11px;margin-top:1px}
+.hback{background:rgba(255,255,255,.18);border:none;color:#fff;border-radius:6px;padding:5px 11px;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;display:none}
+.hback.show{display:block}
+
+.wrap{max-width:480px;margin:0 auto;padding:20px 14px 60px}
+.page{display:none}.page.active{display:block}
+
+.pg-title{font-size:22px;font-weight:700;margin-bottom:4px}
+.pg-sub{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.55}
+.section-title{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:20px 0 8px}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:12px}
+
+.tap{width:100%;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:15px 14px;margin-bottom:10px;display:flex;align-items:center;gap:13px;cursor:pointer;text-align:left}
+.tap:active{background:#f9f8f5}
+.tap-icon{width:42px;height:42px;background:var(--red-bg);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.tap-label{font-size:15px;font-weight:700}
+.tap-desc{font-size:12px;color:var(--muted);margin-top:2px}
+.tap-arr{margin-left:auto;color:var(--muted);font-size:20px;line-height:1}
+
+.plan{background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:12px}
+.plan.featured{border-color:var(--red);background:var(--red-bg)}
+.plan-badge{display:inline-block;background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;margin-bottom:8px;text-transform:uppercase;letter-spacing:.04em}
+.plan-name{font-size:17px;font-weight:700;margin-bottom:5px}
+.plan-desc{font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:12px}
+.plan-price{font-size:26px;font-weight:700;color:var(--red);font-family:'DM Mono',monospace;margin-bottom:12px}
+
+.btn{display:block;width:100%;padding:13px 16px;border:none;border-radius:var(--radius-sm);font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:8px;text-align:center;transition:opacity .12s}
+.btn:active{opacity:.82}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn-red{background:var(--red);color:#fff}
+.btn-dark{background:#111;color:#fff}
+.btn-ghost{background:#f0efea;color:#444}
+.btn-outline{background:transparent;border:1.5px solid var(--border);color:var(--text);display:block;width:100%;padding:12px 16px;border-radius:var(--radius-sm);font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:8px;text-align:center}
 .btn-success{background:var(--success);color:#fff}
-.btn-warning{background:var(--warning);color:#fff}
-.error-msg{
-  color:var(--danger);
-  font-size:13px;
-  font-weight:700;
-  background:#fef2f2;
-  border:1px solid #fecaca;
-  border-radius:9px;
-  padding:10px 12px;
-  margin-top:10px;
-  display:none;
-}
-.error-msg.show{display:block}
-.notice{
-  background:#f9fafb;
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:13px 14px;
-  font-size:13px;
-  color:#374151;
-  line-height:1.55;
-  margin-bottom:14px;
-}
-.notice b{color:#111827}
-.success-wrap{text-align:center;padding:22px 0 14px}
-.success-icon{font-size:62px;margin-bottom:12px}
-.success-title{font-size:22px;font-weight:900;color:var(--success);margin-bottom:6px}
-.success-sub{font-size:14px;color:var(--muted);line-height:1.5}
-.hidden{display:none!important}
-.login-title{text-align:center;font-size:42px;margin-bottom:8px}
-.admin-box{
-  background:#f9fafb;
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:14px;
-  margin-bottom:12px;
-  font-size:14px;
-  line-height:1.65;
-}
-.admin-section-title{
-  font-size:15px;
-  font-weight:900;
-  color:var(--red);
-  margin:18px 0 8px;
-}
-.kpi-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-bottom:12px;
-}
-.kpi{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:13px 10px;
-  text-align:center;
-}
-.kpi .num{
-  font-size:23px;
-  font-weight:900;
-  color:var(--red);
-}
-.kpi .lbl{
-  font-size:11px;
-  color:var(--muted);
-  margin-top:4px;
-}
-.result-card{
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:14px;
-  background:#fff;
-  margin-top:12px;
-}
-.status-good{color:var(--success);font-weight:900}
-.status-bad{color:var(--danger);font-weight:900}
-.status-warn{color:var(--warning);font-weight:900}
-.progress-wrap{
-  background:#f3f4f6;
-  border-radius:999px;
-  height:13px;
-  overflow:hidden;
-  margin:9px 0 5px;
-}
-.progress-bar{
-  height:100%;
-  background:var(--red);
-  width:0%;
-}
-.small-row{
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  padding:7px 0;
-  border-bottom:1px solid #f0f0f0;
-  font-size:13px;
-}
-.small-row:last-child{border-bottom:none}
-.small-row span:first-child{color:var(--muted);font-weight:600}
-.small-row span:last-child{text-align:right;font-weight:800}
-@media(max-width:480px){
-  .container{padding:0 10px 30px;margin-top:14px}
-  .card{padding:20px 15px;border-radius:16px}
-}
+.btn-sm{padding:7px 13px;font-size:13px;width:auto;display:inline-block;margin-top:0;border-radius:7px}
+
+.fg{margin-bottom:14px}
+.flabel{display:block;font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.flabel .req{color:var(--red);margin-left:2px}
+input,select,textarea{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:16px;background:#fff;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;-webkit-appearance:none;appearance:none}
+input:focus,select:focus,textarea:focus{border-color:var(--red)}
+textarea{min-height:70px;resize:vertical}
+.plate-input{text-transform:uppercase;font-family:'DM Mono',monospace;font-size:18px;letter-spacing:.06em}
+
+.file-zone{border:1.5px dashed var(--red-border);background:var(--red-bg);border-radius:var(--radius-sm);padding:16px;text-align:center;cursor:pointer;position:relative;overflow:hidden}
+.file-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.fz-icon{font-size:26px;margin-bottom:5px}
+.fz-label{font-size:13px;color:var(--muted)}
+.fz-name{font-size:12px;color:var(--red);font-weight:600;margin-top:4px;display:none}
+.img-preview{margin-top:10px;border-radius:var(--radius-sm);overflow:hidden;max-height:200px;display:none}
+.img-preview img{width:100%;display:block;object-fit:cover;max-height:200px}
+.img-size{font-size:11px;color:var(--muted);margin-top:4px;display:none}
+/* required ring when untouched */
+.file-zone.required-missing{border-color:var(--red);background:#fff5f6}
+
+.notice{border-radius:var(--radius-sm);padding:11px 13px;font-size:13px;line-height:1.55;margin-bottom:14px}
+.n-warn{background:var(--warn-bg);border:1px solid var(--warn-border);color:var(--warn)}
+.n-info{background:var(--info-bg);border:1px solid var(--info-border);color:var(--info)}
+.n-success{background:var(--success-bg);border:1px solid var(--success-border);color:var(--success)}
+
+.err{background:var(--red-bg);border:1px solid var(--red-border);border-radius:var(--radius-sm);padding:10px 12px;font-size:13px;color:var(--red);font-weight:600;margin-top:10px;display:none}
+.err.show{display:block}
+
+.success-wrap{text-align:center;padding:28px 0 20px}
+.s-emoji{font-size:58px;margin-bottom:12px}
+.s-title{font-size:22px;font-weight:700;margin-bottom:6px;color:var(--success)}
+.s-sub{font-size:14px;color:var(--muted);line-height:1.6;max-width:300px;margin:0 auto}
+
+/* pending progress card — shown only after staff confirms */
+.prog-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:12px}
+.stars{display:flex;gap:8px;margin:10px 0 6px}
+.star{width:38px;height:38px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:15px;background:#fff;color:var(--muted);font-weight:700;font-family:'DM Mono',monospace;transition:all .25s}
+.star.lit{background:var(--red);border-color:var(--red);color:#fff}
+.prog-bar{height:5px;background:var(--border);border-radius:3px;overflow:hidden;margin-top:8px}
+.prog-fill{height:100%;background:var(--red);border-radius:3px;transition:width .5s cubic-bezier(.4,0,.2,1);width:0%}
+.prog-lbl{font-size:12px;color:var(--muted);margin-top:6px}
+
+.kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.kpi{background:var(--bg);border-radius:var(--radius-sm);padding:13px;text-align:center}
+.kpi-num{font-size:28px;font-weight:700;color:var(--red);font-family:'DM Mono',monospace;line-height:1}
+.kpi-lbl{font-size:11px;color:var(--muted);margin-top:4px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+
+.rec{border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 13px;margin-bottom:8px;background:var(--card)}
+.rec-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:4px;gap:8px}
+.rec-plate{font-size:16px;font-weight:700;font-family:'DM Mono',monospace;letter-spacing:.02em}
+.rec-meta{font-size:12px;color:var(--muted);line-height:1.6}
+.rec-actions{display:flex;gap:6px;margin-top:8px}
+.receipt-thumb{width:44px;height:44px;border-radius:6px;object-fit:cover;border:1px solid var(--border);cursor:pointer;flex-shrink:0}
+
+.badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;text-transform:uppercase;letter-spacing:.03em;vertical-align:middle;margin-left:4px}
+.b-pending{background:var(--warn-bg);color:var(--warn)}
+.b-done{background:var(--success-bg);color:var(--success)}
+.b-monthly{background:var(--info-bg);color:var(--info)}
+.b-reward{background:var(--red-bg);color:var(--red)}
+.b-free{background:#fdf4ff;color:#7c3aed}
+
+.sbox{border-radius:var(--radius-sm);padding:13px;margin-top:10px}
+.sbox-ok{background:var(--success-bg);border:1px solid var(--success-border)}
+.sbox-no{background:var(--red-bg);border:1px solid var(--red-border)}
+
+.div{height:1px;background:var(--border);margin:12px 0}
+.empty{text-align:center;padding:20px 0;color:var(--muted);font-size:13px}
+.loading{text-align:center;padding:18px 0;color:var(--muted);font-size:13px}
+.spinner{display:inline-block;width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--red);border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:6px}
+@keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
-
 <body>
 
-<div class="header">
-  <div class="logo">S</div>
-  <h1>Sinopec Car Wash Rewards</h1>
-  <p>Wash More. Earn More.</p>
+<div class="header" id="hdr">
+  <div class="hlogo">S</div>
+  <div class="htext">
+    <div class="htitle">Sinopec Car Wash</div>
+    <div class="hsub">Rewards &amp; Membership</div>
+  </div>
+  <button class="hback" id="back-btn" onclick="goBack()">← Back</button>
 </div>
 
-<div class="container">
-<div class="card">
+<div class="wrap">
 
-<div id="homePage">
-  <h2>Welcome</h2>
-  <p class="page-sub">Please choose an option below.</p>
-
-  <button class="type-btn" onclick="showPage('customerPlanPage')">
-    <div class="type-icon">🚗</div>
-    <div>
-      <div class="t-label">Customer Check-in</div>
-      <div class="t-desc">Register your wash or join a membership.</div>
-    </div>
+<!-- HOME -->
+<div id="pg-home" class="page active">
+  <div class="pg-title">Welcome</div>
+  <p class="pg-sub">Select your role to continue.</p>
+  <button class="tap" onclick="go('pg-plans')">
+    <div class="tap-icon">🚗</div>
+    <div><div class="tap-label">Customer Check-in</div><div class="tap-desc">Submit a wash or join a membership</div></div>
+    <div class="tap-arr">›</div>
   </button>
-
-  <button class="type-btn" onclick="showStaffLogin()">
-    <div class="type-icon">👨‍🔧</div>
-    <div>
-      <div class="t-label">Staff Portal</div>
-      <div class="t-desc">Search plates, confirm washes and check members.</div>
-    </div>
+  <button class="tap" onclick="go('pg-staff-login')">
+    <div class="tap-icon">🔧</div>
+    <div><div class="tap-label">Staff Portal</div><div class="tap-desc">Search plates &amp; confirm washes</div></div>
+    <div class="tap-arr">›</div>
   </button>
-
-  <button class="type-btn" onclick="showAdminLogin()">
-    <div class="type-icon">🔐</div>
-    <div>
-      <div class="t-label">Admin Dashboard</div>
-      <div class="t-desc">Reports, members, rewards and system overview.</div>
-    </div>
+  <button class="tap" onclick="go('pg-admin-login')">
+    <div class="tap-icon">📊</div>
+    <div><div class="tap-label">Admin Dashboard</div><div class="tap-desc">Reports, rewards &amp; member overview</div></div>
+    <div class="tap-arr">›</div>
   </button>
 </div>
 
-<div id="customerPlanPage" class="hidden">
-  <h2>Choose Your Car Wash Plan</h2>
-  <p class="page-sub">Membership is linked to your plate number. No physical card required.</p>
+<!-- PLANS -->
+<div id="pg-plans" class="page">
+  <div class="pg-title">Choose a Plan</div>
+  <p class="pg-sub">Your plate number is your membership ID — no card needed.</p>
 
-  <div class="plan-card featured">
-    <div class="plan-title">🚗 Wash 3 Times Get 1 FREE</div>
-    <div class="plan-main">Buy 3 Automatic Washes, Get 1 FREE Automatic Wash</div>
-    <div class="plan-list">
-      • Valid across all participating Sinopec locations<br>
-      • One wash per plate per calendar day<br>
-      • Rewards are tracked automatically after staff confirmation
-    </div>
-    <button class="btn btn-primary" onclick="selectCustomerPlan('reward')">Select This Plan</button>
+  <div class="plan featured">
+    <div class="plan-name">🎁 Wash 3, Get 1 Free</div>
+    <div class="plan-desc">Buy 3 automatic washes and your 4th is completely free. Progress tracked automatically after staff confirms each wash.</div>
+    <button class="btn btn-red" onclick="startForm('reward')">Select this plan →</button>
   </div>
 
-  <div class="plan-card">
-    <div class="plan-title">⭐ Unlimited Monthly Membership</div>
-    <div class="plan-main">Unlimited Automatic Washes, One Wash Per Day</div>
-    <div class="plan-list">
-      • Valid across all participating Sinopec locations<br>
-      • Use your plate number as membership ID<br>
-      • No physical card required
+  <div class="plan featured">
+    <div class="plan-badge">Best Value</div>
+    <div class="plan-name">⭐ Car Wash Membership</div>
+    <div class="plan-desc">Monthly membership with one automatic wash per calendar day. Choose the tier that suits your needs.</div>
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px">
+      <div class="plan-price" style="margin-bottom:0">From $49/mo</div>
+      <div style="font-size:13px;color:var(--muted)">1 wash per calendar day</div>
     </div>
-    <div class="plan-price">$49 / month</div>
-    <button class="btn btn-dark" onclick="selectCustomerPlan('monthly')">Select Monthly Membership</button>
+    <button class="btn btn-red" onclick="startForm('monthly')">Select membership →</button>
   </div>
-
-  <button class="btn btn-secondary" onclick="showPage('homePage')">← Back</button>
 </div>
 
-<div id="customerFormPage" class="hidden">
-  <h2 id="customerFormTitle">Customer Check-in</h2>
-  <p class="page-sub" id="customerFormSub">Please fill in your details below.</p>
+<!-- CUSTOMER FORM -->
+<div id="pg-form" class="page">
+  <div class="pg-title" id="form-title"></div>
+  <p class="pg-sub" id="form-sub"></p>
 
-  <div class="notice">
-    <b>Important:</b> Your wash will not be counted immediately. It will be recorded as Pending until confirmed by our staff.
+  <div class="notice n-warn">
+    <strong>Note:</strong> Your wash will show as <em>Pending</em> until a staff member confirms it at the station.
   </div>
 
-  <div class="form-group">
-    <label>Mobile Number</label>
-    <input type="text" id="customerPhone" placeholder="e.g. 04xx xxx xxx">
-  </div>
+  <div id="tier-wrap" style="display:none" class="fg">
+    <label class="flabel">Membership Tier <span class="req">*</span></label>
 
-  <div class="form-group">
-    <label>Email Address</label>
-    <input type="text" id="customerEmail" placeholder="e.g. customer@email.com">
-  </div>
+    <div id="tier-standard" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:13px;margin-bottom:10px;cursor:pointer" onclick="selectTier('standard')">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px">
+        <span style="font-size:15px;font-weight:700">$49 Standard</span>
+        <span style="font-family:'DM Mono',monospace;font-size:15px;font-weight:700;color:var(--red)">$49/mo</span>
+      </div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.6">
+        Basic automatic wash<br>
+        <span style="color:var(--success);font-weight:600">(valued at $12–$14 per wash)</span><br>
+        1 wash per calendar day
+      </div>
+    </div>
 
-  <div class="form-group">
-    <label>Plate Number</label>
-    <input type="text" id="customerPlate" placeholder="e.g. ABC123" oninput="this.value=this.value.toUpperCase()">
-  </div>
+    <div id="tier-premium" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:13px;background:#fff;margin-bottom:10px;cursor:pointer" onclick="selectTier('premium')">
+      <div class="plan-badge" style="margin-bottom:6px">Best Value</div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px">
+        <span style="font-size:15px;font-weight:700">$69 Premium</span>
+        <span style="font-family:'DM Mono',monospace;font-size:15px;font-weight:700;color:var(--red)">$69/mo</span>
+      </div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.6">
+        Premium automatic wash<br>
+        <span style="color:var(--success);font-weight:600">(valued at $20 per wash)</span><br>
+        1 wash per calendar day
+      </div>
+    </div>
 
-  <div class="form-group">
-    <label>Wash Type</label>
-    <select id="washType">
-      <option value="">— Please select —</option>
-      <option value="Basic Automatic Wash">Basic Automatic Wash</option>
-      <option value="Premium Automatic Wash">Premium Automatic Wash</option>
-      <option value="Ultimate Automatic Wash">Ultimate Automatic Wash</option>
+    <select id="f-tier" style="display:none">
+      <option value="">— Select tier —</option>
+      <option value="$49 Standard">$49 Standard</option>
+      <option value="$69 Premium">$69 Premium</option>
     </select>
   </div>
 
-  <div class="form-group">
-    <label>Payment Screenshot / Receipt Photo</label>
-    <div class="file-box">
-      <input type="file" id="paymentPhoto" accept="image/*">
-      <div class="hint">Please upload a payment screenshot or receipt photo if available.</div>
+  <div class="fg">
+    <label class="flabel">Mobile Number <span class="req">*</span></label>
+    <input type="tel" id="f-phone" placeholder="04xx xxx xxx" inputmode="tel">
+  </div>
+  <div class="fg">
+    <label class="flabel">Email Address <span class="req">*</span></label>
+    <input type="email" id="f-email" placeholder="you@email.com" inputmode="email">
+  </div>
+  <div class="fg">
+    <label class="flabel">Plate Number <span class="req">*</span></label>
+    <input type="text" id="f-plate" class="plate-input" placeholder="e.g. ABC123" autocomplete="off" autocorrect="off" spellcheck="false">
+  </div>
+
+  <!-- FIX 3: receipt is now required -->
+  <div class="fg">
+    <label class="flabel">Payment Receipt <span class="req">*</span></label>
+    <div class="file-zone" id="fzone">
+      <input type="file" id="f-photo" accept="image/*" capture="environment" onchange="handlePhoto(this)">
+      <div class="fz-icon">📷</div>
+      <div class="fz-label" id="fz-label">Tap to photograph or upload your receipt</div>
+      <div class="fz-name" id="fz-name"></div>
     </div>
+    <div class="img-preview" id="img-preview"><img id="preview-img" src="" alt="Receipt"></div>
+    <div class="img-size" id="img-size"></div>
   </div>
 
-  <div class="form-group">
-    <label>Notes (optional)</label>
-    <textarea id="customerNotes" placeholder="Any additional information"></textarea>
+  <div class="fg">
+    <label class="flabel">Notes <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted)">(optional)</span></label>
+    <textarea id="f-notes" placeholder="Any extra details..."></textarea>
   </div>
 
-  <div id="customerError" class="error-msg"></div>
-
-  <button class="btn btn-primary" onclick="submitCustomerCheckin()">Submit Wash</button>
-  <button class="btn btn-secondary" onclick="showPage('customerPlanPage')">← Back</button>
+  <div id="form-err" class="err"></div>
+  <button class="btn btn-red" id="submit-btn" onclick="submitWash()">Submit Wash</button>
 </div>
 
-<div id="customerSuccessPage" class="hidden">
+<!-- SUCCESS -->
+<div id="pg-success" class="page">
   <div class="success-wrap">
-    <div class="success-icon">✅</div>
-    <div class="success-title">Submitted Successfully</div>
-    <div class="success-sub">
-      Your wash has been submitted for staff verification.<br>
-      Once confirmed, your reward progress will be updated.
-    </div>
+    <div class="s-emoji">✅</div>
+    <div class="s-title">Submitted!</div>
+    <!-- FIX 4: accurate pending messaging — no false "progress updated" -->
+    <div class="s-sub" id="s-msg"></div>
   </div>
-  <button class="btn btn-primary" onclick="returnHome()">Return Home</button>
+
+  <!-- Progress card: shows last confirmed count, clearly labelled as confirmed not current pending -->
+  <div id="prog-box" class="prog-card" style="display:none">
+    <div style="font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Confirmed Wash Progress</div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:10px">Based on your previously confirmed washes</div>
+    <div class="stars" id="stars"></div>
+    <div class="prog-bar"><div class="prog-fill" id="prog-fill"></div></div>
+    <div class="prog-lbl" id="prog-lbl"></div>
+  </div>
+
+  <button class="btn btn-ghost" onclick="home()">← Back to Home</button>
 </div>
 
-<div id="staffLoginPage" class="hidden">
-  <div class="login-title">👨‍🔧</div>
-  <h2>Staff Login</h2>
-  <p class="page-sub">Enter staff PIN to continue.</p>
-
-  <div class="form-group">
-    <label>Staff PIN</label>
-    <input type="password" id="staffPin" placeholder="••••" style="text-align:center;letter-spacing:.3em;font-size:24px">
+<!-- STAFF LOGIN -->
+<div id="pg-staff-login" class="page">
+  <div class="pg-title">Staff Login</div>
+  <p class="pg-sub">Enter your PIN to continue.</p>
+  <div class="fg">
+    <label class="flabel">Staff PIN</label>
+    <input type="password" id="s-pin" placeholder="••••" maxlength="12" onkeydown="if(event.key==='Enter')staffLogin()">
   </div>
-
-  <div id="staffLoginError" class="error-msg"></div>
-
-  <button class="btn btn-primary" onclick="staffLogin()">Login</button>
-  <button class="btn btn-secondary" onclick="showPage('homePage')">← Back</button>
+  <div id="s-login-err" class="err"></div>
+  <button class="btn btn-red" id="s-login-btn" onclick="staffLogin()">Login</button>
 </div>
 
-<div id="staffPage" class="hidden">
-  <h2>Staff Portal</h2>
-  <p class="page-sub">Search plate, confirm washes and check membership status.</p>
-
-  <div class="form-group">
-    <label>Search Plate Number</label>
-    <input type="text" id="staffSearchPlate" placeholder="e.g. ABC123" oninput="this.value=this.value.toUpperCase()">
+<!-- STAFF -->
+<div id="pg-staff" class="page">
+  <div class="pg-title">Staff Portal</div>
+  <p class="pg-sub">Search a plate or confirm pending washes below.</p>
+  <div style="display:flex;gap:8px;margin-bottom:4px">
+    <input type="text" id="s-search" class="plate-input" placeholder="Plate number..." style="flex:1;font-size:16px" onkeydown="if(event.key==='Enter')staffSearch()">
+    <button class="btn btn-red" style="width:auto;padding:11px 18px;margin-top:0" onclick="staffSearch()">Search</button>
   </div>
-
-  <button class="btn btn-primary" onclick="searchPlate()">Search Plate</button>
-
-  <div id="plateResult" class="result-card hidden"></div>
-
-  <div class="admin-section-title">Pending Approval</div>
-  <div id="pendingList">
-    <div class="admin-box">No pending records loaded yet.</div>
-  </div>
-
-  <button class="btn btn-dark" onclick="loadPending()">Refresh Pending</button>
-  <button class="btn btn-secondary" onclick="returnHome()">Logout</button>
+  <div id="s-result"></div>
+  <div class="section-title">Pending Washes</div>
+  <div id="pending-list"></div>
+  <button class="btn btn-ghost" style="margin-top:16px" onclick="home()">Logout</button>
 </div>
 
-<div id="adminLoginPage" class="hidden">
-  <div class="login-title">🔐</div>
-  <h2>Admin Login</h2>
-  <p class="page-sub">Enter admin PIN to continue.</p>
-
-  <div class="form-group">
-    <label>Admin PIN</label>
-    <input type="password" id="adminPin" placeholder="••••" style="text-align:center;letter-spacing:.3em;font-size:24px">
+<!-- ADMIN LOGIN -->
+<div id="pg-admin-login" class="page">
+  <div class="pg-title">Admin Login</div>
+  <p class="pg-sub">Enter admin PIN to continue.</p>
+  <div class="fg">
+    <label class="flabel">Admin PIN</label>
+    <input type="password" id="a-pin" placeholder="••••" maxlength="12" onkeydown="if(event.key==='Enter')adminLogin()">
   </div>
-
-  <div id="adminLoginError" class="error-msg"></div>
-
-  <button class="btn btn-primary" onclick="adminLogin()">Login</button>
-  <button class="btn btn-secondary" onclick="showPage('homePage')">← Back</button>
+  <div id="a-login-err" class="err"></div>
+  <button class="btn btn-red" id="a-login-btn" onclick="adminLogin()">Login</button>
 </div>
 
-<div id="adminPage" class="hidden">
-  <h2>Admin Dashboard</h2>
-  <p class="page-sub">Car wash rewards overview.</p>
-
-  <div class="kpi-grid">
-    <div class="kpi">
-      <div class="num" id="kpiToday">--</div>
-      <div class="lbl">Today Washes</div>
-    </div>
-    <div class="kpi">
-      <div class="num" id="kpiPending">--</div>
-      <div class="lbl">Pending</div>
-    </div>
-    <div class="kpi">
-      <div class="num" id="kpiFree">--</div>
-      <div class="lbl">Free Earned</div>
-    </div>
-    <div class="kpi">
-      <div class="num" id="kpiMembers">--</div>
-      <div class="lbl">Monthly Members</div>
-    </div>
+<!-- ADMIN -->
+<div id="pg-admin" class="page">
+  <div class="pg-title">Admin Dashboard</div>
+  <p class="pg-sub">Live data from Google Sheets.</p>
+  <div class="kpi-grid" id="kpi-grid">
+    <div class="kpi" style="grid-column:1/-1"><div class="loading"><span class="spinner"></span>Loading...</div></div>
   </div>
-
-  <button class="btn btn-primary" onclick="loadAdminData()">Refresh Dashboard</button>
-
-  <div class="admin-section-title">Rewards Progress</div>
-  <div id="rewardsProgress">
-    <div class="admin-box">No reward data loaded yet.</div>
-  </div>
-
-  <div class="admin-section-title">Monthly Members</div>
-  <div id="monthlyMembers">
-    <div class="admin-box">No member data loaded yet.</div>
-  </div>
-
-  <div class="admin-section-title">Recent Confirmed Washes</div>
-  <div id="recentWashes">
-    <div class="admin-box">No wash data loaded yet.</div>
-  </div>
-
-  <button class="btn btn-secondary" onclick="returnHome()">Logout</button>
+  <div class="section-title">Reward Members</div>
+  <div id="admin-rewards"></div>
+  <div class="section-title">Monthly Members</div>
+  <div id="admin-monthly"></div>
+  <div class="section-title">Recent Confirmed Washes</div>
+  <div id="admin-washes"></div>
+  <button class="btn btn-ghost" style="margin-top:16px" onclick="home()">Logout</button>
 </div>
 
-</div>
-</div>
+</div><!-- /wrap -->
 
 <script>
-const WEBAPP_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+// ─────────────────────────────────────────────────────────
+//  CONFIG
+//  API_TOKEN must match the value in Apps Script
+// ─────────────────────────────────────────────────────────
+const API_URL   = "https://script.google.com/macros/s/AKfycbzuLXbt_HUFdo_9pGqonU-4HR-1mPKuW2SpHLVknqFIbyXpDmW_1U02jtiPNSI0lanN/exec";
+const API_TOKEN = "scw_prod_2025";
 
-const STAFF_PIN = "1234";
-const ADMIN_PIN = "8888";
+// ─────────────────────────────────────────────────────────
+//  STATE
+// ─────────────────────────────────────────────────────────
+let plan = "";
+let hist = ["pg-home"];
 
-let selectedPlan = "";
-
-const PAGES = [
-  "homePage",
-  "customerPlanPage",
-  "customerFormPage",
-  "customerSuccessPage",
-  "staffLoginPage",
-  "staffPage",
-  "adminLoginPage",
-  "adminPage"
-];
-
-function showPage(id){
-  PAGES.forEach(p=>document.getElementById(p).classList.add("hidden"));
-  document.getElementById(id).classList.remove("hidden");
-  window.scrollTo({top:0,behavior:"smooth"});
+// ─────────────────────────────────────────────────────────
+//  NAVIGATION
+// ─────────────────────────────────────────────────────────
+function go(id) {
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  hist.push(id);
+  document.getElementById("back-btn").classList.toggle("show", id !== "pg-home");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+function goBack() {
+  hist.pop();
+  const prev = hist[hist.length - 1] || "pg-home";
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.getElementById(prev).classList.add("active");
+  document.getElementById("back-btn").classList.toggle("show", prev !== "pg-home");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+function home() {
+  plan = ""; hist = ["pg-home"];
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.getElementById("pg-home").classList.add("active");
+  document.getElementById("back-btn").classList.remove("show");
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function returnHome(){
-  selectedPlan = "";
-  clearCustomerForm();
-  showPage("homePage");
+// ─────────────────────────────────────────────────────────
+//  API HELPERS
+// ─────────────────────────────────────────────────────────
+async function apiGet(params) {
+  const p = new URLSearchParams({ ...params, token: API_TOKEN });
+  const r = await fetch(API_URL + "?" + p);
+  return r.json();
 }
-
-function selectCustomerPlan(plan){
-  selectedPlan = plan;
-
-  if(plan === "reward"){
-    document.getElementById("customerFormTitle").textContent = "Wash 3 Times Get 1 FREE";
-    document.getElementById("customerFormSub").textContent = "Submit your automatic wash for reward tracking.";
-  }else{
-    document.getElementById("customerFormTitle").textContent = "Unlimited Monthly Membership";
-    document.getElementById("customerFormSub").textContent = "Register or renew your monthly car wash membership.";
-  }
-
-  showPage("customerFormPage");
-}
-
-function showError(id,msg){
-  const el = document.getElementById(id);
-  el.textContent = msg;
-  el.classList.add("show");
-  el.scrollIntoView({behavior:"smooth",block:"nearest"});
-  return false;
-}
-
-function hideError(id){
-  document.getElementById(id).classList.remove("show");
-}
-
-function cleanPlate(v){
-  return String(v||"").replace(/\s+/g,"").toUpperCase();
-}
-
-function validateCustomer(){
-  const phone = document.getElementById("customerPhone").value.trim();
-  const email = document.getElementById("customerEmail").value.trim();
-  const plate = cleanPlate(document.getElementById("customerPlate").value);
-  const washType = document.getElementById("washType").value;
-
-  if(!phone) return showError("customerError","Please enter your mobile number.");
-  if(!email) return showError("customerError","Please enter your email address.");
-  if(!email.includes("@")) return showError("customerError","Please enter a valid email address.");
-  if(!plate) return showError("customerError","Please enter your plate number.");
-  if(!washType) return showError("customerError","Please select wash type.");
-
-  hideError("customerError");
-  return true;
-}
-
-function fileToBase64(file){
-  return new Promise((resolve,reject)=>{
-    if(!file){
-      resolve("");
-      return;
-    }
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
+async function apiPost(body) {
+  const r = await fetch(API_URL, {
+    method: "POST",
+    body: JSON.stringify({ ...body, token: API_TOKEN })
   });
+  return r.json();
 }
 
-async function submitCustomerCheckin(){
-  if(!validateCustomer()) return;
+// ─────────────────────────────────────────────────────────
+//  PHOTO — compress to ≤1 MB via canvas before upload
+// ─────────────────────────────────────────────────────────
+function handlePhoto(input) {
+  const file = input.files[0];
+  if (!file) return;
 
-  const btn = event.target;
-  btn.disabled = true;
-  btn.textContent = "Submitting...";
+  const MAX_BYTES = 1 * 1024 * 1024;
+  const MAX_DIM   = 1600;
 
-  try{
-    const file = document.getElementById("paymentPhoto").files[0];
-    const photoBase64 = await fileToBase64(file);
+  const reader = new FileReader();
+  reader.onload = e => {
+    const img = new Image();
+    img.onload = () => {
+      let w = img.width, h = img.height;
+      if (w > MAX_DIM || h > MAX_DIM) {
+        const ratio = Math.min(MAX_DIM / w, MAX_DIM / h);
+        w = Math.round(w * ratio);
+        h = Math.round(h * ratio);
+      }
+      const canvas = document.createElement("canvas");
+      canvas.width = w; canvas.height = h;
+      canvas.getContext("2d").drawImage(img, 0, 0, w, h);
 
-    const payload = {
-      action:"customer_checkin",
-      plan:selectedPlan,
-      phone:document.getElementById("customerPhone").value.trim(),
-      email:document.getElementById("customerEmail").value.trim(),
-      plate:cleanPlate(document.getElementById("customerPlate").value),
-      washType:document.getElementById("washType").value,
-      notes:document.getElementById("customerNotes").value.trim(),
-      photoBase64:photoBase64,
-      photoName:file ? file.name : "",
-      status:"Pending"
+      let quality = 0.82, dataUrl, base64;
+      do {
+        dataUrl = canvas.toDataURL("image/jpeg", quality);
+        base64  = dataUrl.split(",")[1];
+        quality -= 0.1;
+      } while (base64.length * 0.75 > MAX_BYTES && quality > 0.2);
+
+      input._base64 = base64;
+      input._mime   = "image/jpeg";
+
+      // Update UI
+      document.getElementById("preview-img").src = dataUrl;
+      document.getElementById("img-preview").style.display = "block";
+      document.getElementById("fz-name").textContent = file.name;
+      document.getElementById("fz-name").style.display = "block";
+      document.getElementById("fz-label").textContent = "Receipt attached ✓";
+      const kb = Math.round(base64.length * 0.75 / 1024);
+      document.getElementById("img-size").textContent = `Compressed to ${kb} KB`;
+      document.getElementById("img-size").style.display = "block";
+      document.getElementById("fzone").classList.remove("required-missing");
     };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
 
-    if(WEBAPP_URL.includes("PASTE_YOUR")){
-      console.log("Demo payload:",payload);
-      showPage("customerSuccessPage");
-      return;
-    }
-
-    const res = await fetch(WEBAPP_URL,{
-      method:"POST",
-      body:JSON.stringify(payload)
-    });
-
-    const json = await res.json();
-
-    if(!json.success){
-      alert(json.message || "Submission failed. Please try again.");
-      btn.disabled = false;
-      btn.textContent = "Submit Wash";
-      return;
-    }
-
-    clearCustomerForm();
-    showPage("customerSuccessPage");
-
-  }catch(err){
-    alert("Submission failed. Please try again.");
+// ─────────────────────────────────────────────────────────
+//  CUSTOMER FORM
+// ─────────────────────────────────────────────────────────
+function selectTier(which) {
+  const std = document.getElementById("tier-standard");
+  const prm = document.getElementById("tier-premium");
+  const sel = document.getElementById("f-tier");
+  if (which === "standard") {
+    sel.value = "$49 Standard";
+    std.style.border = "1.5px solid var(--red)";
+    std.style.background = "var(--red-bg)";
+    prm.style.border = "1px solid var(--border)";
+    prm.style.background = "#fff";
+  } else {
+    sel.value = "$69 Premium";
+    prm.style.border = "1.5px solid var(--red)";
+    prm.style.background = "var(--red-bg)";
+    std.style.border = "1px solid var(--border)";
+    std.style.background = "#fff";
   }
-
-  btn.disabled = false;
-  btn.textContent = "Submit Wash";
+  document.getElementById("form-err").classList.remove("show");
 }
 
-function clearCustomerForm(){
-  ["customerPhone","customerEmail","customerPlate","customerNotes"].forEach(id=>{
-    document.getElementById(id).value = "";
-  });
-  document.getElementById("washType").value = "";
-  document.getElementById("paymentPhoto").value = "";
-  hideError("customerError");
+function startForm(p) {
+  plan = p;
+  document.getElementById("form-title").textContent =
+    p === "reward" ? "Wash 3, Get 1 Free" : "Car Wash Membership";
+  document.getElementById("form-sub").textContent =
+    p === "reward"
+      ? "Submit your wash to track progress toward your free wash."
+      : "Register or renew your car wash membership.";
+  document.getElementById("tier-wrap").style.display = p === "monthly" ? "block" : "none";
+
+  // Reset all fields
+  ["f-phone","f-email","f-plate","f-notes"].forEach(id => document.getElementById(id).value = "");
+  document.getElementById("f-tier").selectedIndex = 0;
+  const ts = document.getElementById("tier-standard");
+  const tp = document.getElementById("tier-premium");
+  if (ts) { ts.style.border = "1px solid var(--border)"; ts.style.background = "#fff"; }
+  if (tp) { tp.style.border = "1px solid var(--border)"; tp.style.background = "#fff"; }
+  const fi = document.getElementById("f-photo");
+  fi.value = ""; fi._base64 = null; fi._mime = null;
+  document.getElementById("img-preview").style.display = "none";
+  document.getElementById("img-size").style.display = "none";
+  document.getElementById("fz-name").style.display = "none";
+  document.getElementById("fz-label").textContent = "Tap to photograph or upload your receipt";
+  document.getElementById("fzone").classList.remove("required-missing");
+  document.getElementById("form-err").classList.remove("show");
+  resetBtn("submit-btn", "Submit Wash");
+  go("pg-form");
 }
 
-function showStaffLogin(){
-  document.getElementById("staffPin").value = "";
-  hideError("staffLoginError");
-  showPage("staffLoginPage");
+function resetBtn(id, label) {
+  const b = document.getElementById(id);
+  b.disabled = false; b.innerHTML = label;
+}
+function loadingBtn(id, label) {
+  const b = document.getElementById(id);
+  b.disabled = true;
+  b.innerHTML = `<span class="spinner"></span>${label}`;
 }
 
-function staffLogin(){
-  const pin = document.getElementById("staffPin").value;
-  if(pin !== STAFF_PIN){
-    return showError("staffLoginError","Incorrect staff PIN.");
+async function submitWash() {
+  const phone = document.getElementById("f-phone").value.trim();
+  const email = document.getElementById("f-email").value.trim();
+  const plate = document.getElementById("f-plate").value.trim().toUpperCase();
+  const notes = document.getElementById("f-notes").value.trim();
+  const tier  = document.getElementById("f-tier").value;
+  const fi    = document.getElementById("f-photo");
+  const err   = document.getElementById("form-err");
+
+  // Validation
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!phone || !email || !plate) {
+    err.textContent = "Please fill in all required fields (mobile, email and plate number).";
+    err.classList.add("show"); return;
   }
-  showPage("staffPage");
-  loadPending();
-}
-
-function showAdminLogin(){
-  document.getElementById("adminPin").value = "";
-  hideError("adminLoginError");
-  showPage("adminLoginPage");
-}
-
-function adminLogin(){
-  const pin = document.getElementById("adminPin").value;
-  if(pin !== ADMIN_PIN){
-    return showError("adminLoginError","Incorrect admin PIN.");
+  if (!emailRe.test(email)) {
+    err.textContent = "Please enter a valid email address (e.g. you@email.com).";
+    err.classList.add("show"); return;
   }
-  showPage("adminPage");
-  loadAdminData();
-}
-
-document.getElementById("staffPin").addEventListener("keydown",e=>{
-  if(e.key==="Enter") staffLogin();
-});
-
-document.getElementById("adminPin").addEventListener("keydown",e=>{
-  if(e.key==="Enter") adminLogin();
-});
-
-async function searchPlate(){
-  const plate = cleanPlate(document.getElementById("staffSearchPlate").value);
-  if(!plate){
-    alert("Please enter plate number.");
+  if (plan === "monthly" && !tier) {
+    err.textContent = "Please select a membership tier.";
+    err.classList.add("show"); return;
+  }
+  // FIX 3: receipt is required
+  if (!fi._base64) {
+    err.textContent = "Please attach a photo of your payment receipt.";
+    err.classList.add("show");
+    document.getElementById("fzone").classList.add("required-missing");
     return;
   }
 
-  const box = document.getElementById("plateResult");
-  box.classList.remove("hidden");
-  box.innerHTML = "Searching...";
+  err.classList.remove("show");
+  loadingBtn("submit-btn", "Submitting…");
 
-  try{
-    if(WEBAPP_URL.includes("PASTE_YOUR")){
-      renderPlateResult({
-        plate,
-        eligibleToday:true,
-        alreadyUsedToday:false,
-        plan:"Wash 3 Get 1 FREE",
-        progress:2,
-        target:3,
-        monthlyActive:false,
-        freeAvailable:0,
-        lastWash:"Frankston - 20 May 2026"
-      });
-      return;
-    }
-
-    const res = await fetch(WEBAPP_URL + "?action=search_plate&plate=" + encodeURIComponent(plate));
-    const json = await res.json();
-
-    if(!json.success){
-      box.innerHTML = `<div class="status-bad">${json.message || "Plate not found."}</div>`;
-      return;
-    }
-
-    renderPlateResult(json.data);
-
-  }catch(err){
-    box.innerHTML = `<div class="status-bad">Search failed.</div>`;
-  }
-}
-
-function renderPlateResult(data){
-  const box = document.getElementById("plateResult");
-  const pct = Math.min(100,Math.round((Number(data.progress||0)/Number(data.target||3))*100));
-
-  let status = "";
-  if(data.alreadyUsedToday){
-    status = `<div class="status-bad">⚠ Already Used Today</div>`;
-  }else if(data.eligibleToday){
-    status = `<div class="status-good">✅ Eligible Today</div>`;
-  }else{
-    status = `<div class="status-warn">⚠ Not Eligible</div>`;
-  }
-
-  box.innerHTML = `
-    <div style="font-size:18px;font-weight:900;margin-bottom:8px">${data.plate}</div>
-    ${status}
-    <div class="small-row"><span>Plan</span><span>${data.plan || "-"}</span></div>
-    <div class="small-row"><span>Monthly Member</span><span>${data.monthlyActive ? "Active" : "No"}</span></div>
-    <div class="small-row"><span>Free Wash Available</span><span>${data.freeAvailable || 0}</span></div>
-    <div class="small-row"><span>Last Wash</span><span>${data.lastWash || "-"}</span></div>
-    <div style="margin-top:12px;font-size:13px;font-weight:800">Reward Progress: ${data.progress || 0} / ${data.target || 3}</div>
-    <div class="progress-wrap"><div class="progress-bar" style="width:${pct}%"></div></div>
-    <button class="btn btn-success" onclick="confirmWash('${data.plate}')">✓ Confirm Wash</button>
-  `;
-}
-
-async function loadPending(){
-  const box = document.getElementById("pendingList");
-  box.innerHTML = `<div class="admin-box">Loading pending records...</div>`;
-
-  try{
-    if(WEBAPP_URL.includes("PASTE_YOUR")){
-      box.innerHTML = `
-        <div class="admin-box">
-          <b>ABC123</b><br>
-          Wash 3 Get 1 FREE<br>
-          Premium Automatic Wash<br>
-          Status: Pending<br>
-          <button class="btn btn-success" onclick="confirmWash('ABC123')">✓ Confirm Wash</button>
-        </div>
-        <div class="admin-box">
-          <b>XYZ888</b><br>
-          Unlimited Monthly Membership<br>
-          Ultimate Automatic Wash<br>
-          Status: Pending<br>
-          <button class="btn btn-success" onclick="confirmWash('XYZ888')">✓ Confirm Wash</button>
-        </div>
-      `;
-      return;
-    }
-
-    const res = await fetch(WEBAPP_URL + "?action=pending");
-    const json = await res.json();
-
-    if(!json.success || !json.data || json.data.length === 0){
-      box.innerHTML = `<div class="admin-box">No pending records.</div>`;
-      return;
-    }
-
-    box.innerHTML = json.data.map(r=>`
-      <div class="admin-box">
-        <b>${r.plate}</b><br>
-        ${r.plan}<br>
-        ${r.washType}<br>
-        Phone: ${r.phone || "-"}<br>
-        Email: ${r.email || "-"}<br>
-        ${r.photoUrl ? `<a href="${r.photoUrl}" target="_blank">View Screenshot</a><br>` : ""}
-        Status: Pending
-        <button class="btn btn-success" onclick="confirmWash('${r.plate}','${r.id || ""}')">✓ Confirm Wash</button>
-      </div>
-    `).join("");
-
-  }catch(err){
-    box.innerHTML = `<div class="admin-box">Failed to load pending records.</div>`;
-  }
-}
-
-async function confirmWash(plate,id=""){
-  if(!confirm("Confirm wash for " + plate + "?")) return;
-
-  try{
-    if(WEBAPP_URL.includes("PASTE_YOUR")){
-      alert("Demo: Wash confirmed for " + plate);
-      loadPending();
-      return;
-    }
-
-    const res = await fetch(WEBAPP_URL,{
-      method:"POST",
-      body:JSON.stringify({
-        action:"confirm_wash",
-        plate,
-        id,
-        confirmedBy:"Staff"
-      })
+  try {
+    const result = await apiPost({
+      action:      "submitWash",
+      phone, email, plate, notes,
+      plan,
+      monthlyTier:  tier,
+      photoBase64:  fi._base64,
+      photoMime:    fi._mime
     });
 
-    const json = await res.json();
-
-    if(!json.success){
-      alert(json.message || "Failed to confirm wash.");
+    if (result.error === "duplicate") {
+      err.textContent = result.message || "This plate already has a pending wash for today. Please wait for staff to confirm it first.";
+      err.classList.add("show");
+      resetBtn("submit-btn", "Submit Wash");
+      return;
+    }
+    if (result.error) {
+      err.textContent = "Server error: " + result.error;
+      err.classList.add("show");
+      resetBtn("submit-btn", "Submit Wash");
       return;
     }
 
-    alert("Wash confirmed.");
+    // FIX 4: clear, honest success messaging — no "progress updated" while still pending
+    document.getElementById("s-msg").textContent =
+      plan === "monthly"
+        ? "Your membership has been submitted. Staff will verify your receipt and activate your plan shortly."
+        : "Your wash has been submitted. Progress will update once staff confirms your receipt — usually within a few minutes.";
+
+    // Show confirmed-wash progress from PREVIOUS confirmed washes (not the current pending one)
+    const pb = document.getElementById("prog-box");
+    if (plan === "reward" && result.confirmedWashes !== undefined) {
+      pb.style.display = "block";
+      const mod = result.progressMod || 0;
+      const sr  = document.getElementById("stars");
+      sr.innerHTML = "";
+      for (let i = 0; i < 3; i++) {
+        const s = document.createElement("div");
+        s.className = "star" + (i < mod ? " lit" : "");
+        s.textContent = i < mod ? "✓" : (i + 1);
+        sr.appendChild(s);
+      }
+      setTimeout(() => {
+        document.getElementById("prog-fill").style.width = Math.round((mod / 3) * 100) + "%";
+      }, 120);
+      // FIX 4: label makes clear this reflects confirmed washes, not the pending one just submitted
+      document.getElementById("prog-lbl").textContent =
+        mod === 0 && result.confirmedWashes === 0
+          ? "No confirmed washes yet — your first is on its way!"
+          : mod < 3
+            ? `${mod} confirmed wash${mod !== 1 ? "es" : ""} toward your next free wash`
+            : "🎉 Free wash ready — show this screen to staff!";
+    } else {
+      pb.style.display = "none";
+    }
+
+    go("pg-success");
+  } catch(e) {
+    err.textContent = "Connection error. Please check your network and try again.";
+    err.classList.add("show");
+    resetBtn("submit-btn", "Submit Wash");
+  }
+}
+
+// ─────────────────────────────────────────────────────────
+//  STAFF LOGIN — server-side PIN
+// ─────────────────────────────────────────────────────────
+async function staffLogin() {
+  const pin = document.getElementById("s-pin").value;
+  const err = document.getElementById("s-login-err");
+  if (!pin) { err.textContent = "Please enter your PIN."; err.classList.add("show"); return; }
+  loadingBtn("s-login-btn", "Checking…");
+  try {
+    const r = await apiPost({ action: "staffLogin", pin });
+    if (!r.success) {
+      err.textContent = r.error || "Incorrect PIN.";
+      err.classList.add("show");
+      resetBtn("s-login-btn", "Login");
+      return;
+    }
+    err.classList.remove("show");
+    document.getElementById("s-pin").value = "";
+    document.getElementById("s-search").value = "";
+    document.getElementById("s-result").innerHTML = "";
+    go("pg-staff");
     loadPending();
-    searchPlate();
-
-  }catch(err){
-    alert("Failed to confirm wash.");
+  } catch(e) {
+    err.textContent = "Connection error. Please try again.";
+    err.classList.add("show");
+    resetBtn("s-login-btn", "Login");
   }
 }
 
-async function loadAdminData(){
-  document.getElementById("rewardsProgress").innerHTML = `<div class="admin-box">Loading...</div>`;
-  document.getElementById("monthlyMembers").innerHTML = `<div class="admin-box">Loading...</div>`;
-  document.getElementById("recentWashes").innerHTML = `<div class="admin-box">Loading...</div>`;
-
-  try{
-    if(WEBAPP_URL.includes("PASTE_YOUR")){
-      renderAdminData({
-        todayWashes:18,
-        pending:6,
-        freeEarned:4,
-        monthlyMembers:12,
-        rewards:[
-          {plate:"ABC123",progress:2,target:3,status:"1 more wash to FREE"},
-          {plate:"MEL888",progress:1,target:3,status:"2 more washes to FREE"},
-          {plate:"CAR520",progress:3,target:3,status:"FREE wash earned"}
-        ],
-        members:[
-          {plate:"XYZ888",plan:"Monthly Unlimited",expiry:"20 Jun 2026",usedToday:"No"},
-          {plate:"SIN001",plan:"Monthly Unlimited",expiry:"28 Jun 2026",usedToday:"Yes"}
-        ],
-        recent:[
-          {plate:"ABC123",time:"Today 10:15 AM",wash:"Premium Wash"},
-          {plate:"XYZ888",time:"Today 9:20 AM",wash:"Ultimate Wash"}
-        ]
-      });
+// ─────────────────────────────────────────────────────────
+//  STAFF — plate search
+// ─────────────────────────────────────────────────────────
+async function staffSearch() {
+  const q   = document.getElementById("s-search").value.trim().toUpperCase();
+  const box = document.getElementById("s-result");
+  if (!q) { box.innerHTML = ""; return; }
+  box.innerHTML = '<div class="loading"><span class="spinner"></span>Searching…</div>';
+  try {
+    const d = await apiGet({ action: "searchPlate", plate: q });
+    if (!d.found) {
+      box.innerHTML = `<div class="sbox sbox-no"><strong>${q}</strong> — not found in system.</div>`;
       return;
     }
-
-    const res = await fetch(WEBAPP_URL + "?action=admin");
-    const json = await res.json();
-
-    if(!json.success){
-      alert(json.message || "Failed to load admin data.");
-      return;
-    }
-
-    renderAdminData(json.data);
-
-  }catch(err){
-    alert("Failed to load admin data.");
+    const mod = d.confirmedWashes % 3;
+    box.innerHTML = `
+      <div class="sbox sbox-ok">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+          <span class="rec-plate">${d.plate}</span>
+          <span class="badge ${d.plan === 'monthly' ? 'b-monthly' : 'b-reward'}">${d.plan === 'monthly' ? (d.monthlyTier || 'Monthly') : 'Reward'}</span>
+        </div>
+        <div class="rec-meta">${d.phone} · ${d.email}</div>
+        <div class="div"></div>
+        <div style="font-size:13px;line-height:2">
+          Confirmed washes: <strong>${d.confirmedWashes}</strong><br>
+          Progress to next free: <strong>${mod}/3</strong><br>
+          Free washes earned: <strong>${d.freeUsed}</strong>
+        </div>
+      </div>`;
+  } catch(e) {
+    box.innerHTML = '<div class="loading" style="color:var(--red)">Connection error.</div>';
   }
 }
 
-function renderAdminData(data){
-  document.getElementById("kpiToday").textContent = data.todayWashes || 0;
-  document.getElementById("kpiPending").textContent = data.pending || 0;
-  document.getElementById("kpiFree").textContent = data.freeEarned || 0;
-  document.getElementById("kpiMembers").textContent = data.monthlyMembers || 0;
+// ─────────────────────────────────────────────────────────
+//  STAFF — pending list (re-syncs from server after each action)
+// ─────────────────────────────────────────────────────────
+async function loadPending() {
+  const list = document.getElementById("pending-list");
+  list.innerHTML = '<div class="loading"><span class="spinner"></span>Loading…</div>';
+  try {
+    const d = await apiGet({ action: "getPending" });
+    renderPending(d.pending || []);
+  } catch(e) {
+    list.innerHTML = '<div class="empty">Could not load pending washes.</div>';
+  }
+}
 
-  document.getElementById("rewardsProgress").innerHTML = (data.rewards || []).length
-    ? data.rewards.map(r=>{
-        const pct = Math.min(100,Math.round((Number(r.progress||0)/Number(r.target||3))*100));
-        return `
-          <div class="admin-box">
-            <b>${r.plate}</b><br>
-            Progress: ${r.progress} / ${r.target}<br>
-            ${r.status}
-            <div class="progress-wrap"><div class="progress-bar" style="width:${pct}%"></div></div>
-          </div>
-        `;
-      }).join("")
-    : `<div class="admin-box">No reward progress.</div>`;
-
-  document.getElementById("monthlyMembers").innerHTML = (data.members || []).length
-    ? data.members.map(m=>`
-      <div class="admin-box">
-        <b>${m.plate}</b><br>
-        ${m.plan}<br>
-        Expiry: ${m.expiry}<br>
-        Used Today: ${m.usedToday}
+function renderPending(rows) {
+  const list = document.getElementById("pending-list");
+  if (!rows.length) {
+    list.innerHTML = '<div class="empty">No pending washes — all clear ✓</div>';
+    return;
+  }
+  list.innerHTML = rows.map(w => `
+    <div class="rec" id="rec-${w.id}">
+      <div class="rec-head">
+        <div>
+          <span class="rec-plate">${w.plate}</span>
+          <span class="badge b-pending">Pending</span>
+          ${w.plan === 'monthly' ? `<span class="badge b-monthly">${w.monthlyTier || 'Monthly'}</span>` : ''}
+        </div>
+        ${w.receiptUrl && !w.receiptUrl.startsWith('upload_error')
+          ? `<a href="${w.receiptUrl}" target="_blank"><img src="${w.receiptUrl}" class="receipt-thumb" alt="Receipt" onerror="this.style.display='none'"></a>`
+          : '<span style="font-size:11px;color:var(--muted);flex-shrink:0">No receipt</span>'}
       </div>
-    `).join("")
-    : `<div class="admin-box">No monthly members.</div>`;
-
-  document.getElementById("recentWashes").innerHTML = (data.recent || []).length
-    ? data.recent.map(w=>`
-      <div class="admin-box">
-        <b>${w.plate}</b><br>
-        ${w.time}<br>
-        ${w.wash}
+      <div class="rec-meta">${w.washDate} · ${w.phone}${w.notes ? ' · ' + w.notes : ''}</div>
+      <div class="rec-actions">
+        <button class="btn btn-success btn-sm" onclick="confirmWash('${w.id}')">✓ Confirm</button>
+        <button class="btn btn-ghost btn-sm" onclick="rejectWash('${w.id}')">✕ Reject</button>
       </div>
-    `).join("")
-    : `<div class="admin-box">No recent washes.</div>`;
+    </div>`).join("");
+}
+
+async function confirmWash(id) {
+  const rec = document.getElementById("rec-" + id);
+  if (rec) { rec.style.opacity = ".4"; rec.style.pointerEvents = "none"; }
+  try {
+    await apiPost({ action: "confirmWash", id });
+    await loadPending();
+  } catch(e) {
+    if (rec) { rec.style.opacity = "1"; rec.style.pointerEvents = ""; }
+    alert("Error confirming wash. Please try again.");
+  }
+}
+
+async function rejectWash(id) {
+  const rec = document.getElementById("rec-" + id);
+  if (rec) { rec.style.opacity = ".4"; rec.style.pointerEvents = "none"; }
+  try {
+    await apiPost({ action: "rejectWash", id });
+    await loadPending();
+  } catch(e) {
+    if (rec) { rec.style.opacity = "1"; rec.style.pointerEvents = ""; }
+    alert("Error rejecting wash. Please try again.");
+  }
+}
+
+// ─────────────────────────────────────────────────────────
+//  ADMIN LOGIN — server-side PIN
+// ─────────────────────────────────────────────────────────
+async function adminLogin() {
+  const pin = document.getElementById("a-pin").value;
+  const err = document.getElementById("a-login-err");
+  if (!pin) { err.textContent = "Please enter your PIN."; err.classList.add("show"); return; }
+  loadingBtn("a-login-btn", "Checking…");
+  try {
+    const r = await apiPost({ action: "adminLogin", pin });
+    if (!r.success) {
+      err.textContent = r.error || "Incorrect PIN.";
+      err.classList.add("show");
+      resetBtn("a-login-btn", "Login");
+      return;
+    }
+    err.classList.remove("show");
+    document.getElementById("a-pin").value = "";
+    go("pg-admin");
+    loadAdmin();
+  } catch(e) {
+    err.textContent = "Connection error. Please try again.";
+    err.classList.add("show");
+    resetBtn("a-login-btn", "Login");
+  }
+}
+
+// ─────────────────────────────────────────────────────────
+//  ADMIN DASHBOARD
+// ─────────────────────────────────────────────────────────
+async function loadAdmin() {
+  try {
+    const d = await apiGet({ action: "getAdminData" });
+
+    document.getElementById("kpi-grid").innerHTML = `
+      <div class="kpi"><div class="kpi-num">${d.todayCount}</div><div class="kpi-lbl">Today Washes</div></div>
+      <div class="kpi"><div class="kpi-num">${d.pendingCount}</div><div class="kpi-lbl">Pending</div></div>
+      <div class="kpi"><div class="kpi-num">${d.freeEarned}</div><div class="kpi-lbl">Free Earned</div></div>
+      <div class="kpi"><div class="kpi-num">${d.monthlyCount}</div><div class="kpi-lbl">Monthly Members</div></div>`;
+
+    const rewards = (d.members || []).filter(m => m.plan === "reward");
+    document.getElementById("admin-rewards").innerHTML = rewards.length
+      ? rewards.map(m => {
+          const mod = m.confirmedWashes % 3;
+          return `<div class="rec">
+            <div class="rec-head">
+              <span class="rec-plate">${m.plate}</span>
+              <span style="font-size:13px;color:var(--muted)">${mod}/3
+                <span class="badge b-free">${m.freeUsed} free</span>
+              </span>
+            </div>
+            <div class="rec-meta">${m.phone} · ${m.confirmedWashes} confirmed wash${m.confirmedWashes !== 1 ? "es" : ""}</div>
+          </div>`;
+        }).join("")
+      : '<div class="empty">No reward members yet.</div>';
+
+    const monthly = (d.members || []).filter(m => m.plan === "monthly");
+    document.getElementById("admin-monthly").innerHTML = monthly.length
+      ? monthly.map(m => `
+          <div class="rec">
+            <div class="rec-head">
+              <span class="rec-plate">${m.plate}</span>
+              <span class="badge b-monthly">${m.monthlyTier || "Monthly"}</span>
+            </div>
+            <div class="rec-meta">${m.phone} · Joined ${m.joinedAt}</div>
+          </div>`).join("")
+      : '<div class="empty">No monthly members yet.</div>';
+
+    const recent = d.recent || [];
+    document.getElementById("admin-washes").innerHTML = recent.length
+      ? recent.map(w => `
+          <div class="rec">
+            <div class="rec-head">
+              <span class="rec-plate">${w.plate}</span>
+              <span class="badge b-done">Confirmed</span>
+            </div>
+            <div class="rec-meta">${w.washDate} · ${w.phone}${w.plan === "monthly" ? " · " + (w.monthlyTier || "Monthly") : ""}</div>
+          </div>`).join("")
+      : '<div class="empty">No confirmed washes yet.</div>';
+
+  } catch(e) {
+    document.getElementById("kpi-grid").innerHTML =
+      '<div style="grid-column:1/-1;text-align:center;color:var(--red);font-size:13px;padding:12px 0">Could not load data — check connection.</div>';
+  }
 }
 </script>
-
 </body>
 </html>
