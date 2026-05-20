@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sinopec Car Wash Rewards</title>
+<style>
+:root{
+  --red:#e60012;
+  --red-dark:#b8000e;
+  --bg:#f3f4f6;
+  --card:#ffffff;
+  --text:#1f2937;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+  --success:#15803d;
+  --danger:#dc2626;
+  --warning:#d97706;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+}
+.header{
+  background:var(--red);
+  padding:18px 16px 16px;
+  text-align:center;
+  position:sticky;
+  top:0;
+  z-index:100;
+  box-shadow:0 2px 10px rgba(0,0,0,.12);
+}
+.logo{
+  width:58px;
+  height:58px;
+  margin:0 auto 8px;
+  border-radius:50%;
+  background:#fff;
+  color:var(--red);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:26px;
+  font-weight:900;
+}
+.header h1{
+  color:#fff;
+  font-size:21px;
+  font-weight:800;
+}
+.header p{
+  color:#ffe8e8;
+  font-size:12px;
+  margin-top:4px;
+  letter-spacing:.04em;
+}
+.container{
+  max-width:680px;
+  margin:18px auto;
+  padding:0 14px 40px;
+}
+.card{
+  background:var(--card);
+  border-radius:18px;
+  padding:22px 18px;
+  box-shadow:0 4px 18px rgba(0,0,0,.08);
+}
+h2{
+  font-size:21px;
+  font-weight:800;
+  color:var(--red);
+  text-align:center;
+  margin-bottom:6px;
+}
+.page-sub{
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+  margin-bottom:18px;
+  line-height:1.45;
+}
+.type-btn{
+  width:100%;
+  padding:16px 14px;
+  margin-bottom:12px;
+  border:2px solid var(--border);
+  border-radius:16px;
+  background:#fff;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  text-align:left;
+}
+.type-btn:active{transform:scale(.99)}
+.type-icon{
+  width:48px;
+  height:48px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
+  flex-shrink:0;
+  background:#fee2e2;
+}
+.t-label{
+  font-size:16px;
+  font-weight:800;
+  color:#111827;
+}
+.t-desc{
+  font-size:12px;
+  color:var(--muted);
+  margin-top:3px;
+  line-height:1.4;
+}
+.plan-card{
+  border:2px solid var(--border);
+  border-radius:18px;
+  padding:17px 15px;
+  margin-bottom:14px;
+  background:#fff;
+}
+.plan-card.featured{
+  border-color:var(--red);
+  background:#fff7f7;
+}
+.plan-title{
+  font-size:18px;
+  font-weight:900;
+  color:#111827;
+  margin-bottom:6px;
+}
+.plan-main{
+  font-size:14px;
+  font-weight:700;
+  color:var(--red);
+  margin-bottom:10px;
+}
+.plan-list{
+  font-size:13px;
+  color:#4b5563;
+  line-height:1.65;
+  margin-bottom:12px;
+}
+.plan-price{
+  font-size:22px;
+  font-weight:900;
+  color:#111827;
+  margin-bottom:10px;
+}
+.form-group{margin-bottom:15px}
+label{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  color:#374151;
+  margin-bottom:6px;
+}
+input,select,textarea{
+  width:100%;
+  padding:12px 14px;
+  border:1.5px solid var(--border);
+  border-radius:11px;
+  font-size:16px;
+  background:#fff;
+  color:var(--text);
+  outline:none;
+  font-family:inherit;
+}
+input:focus,select:focus,textarea:focus{
+  border-color:var(--red);
+  box-shadow:0 0 0 3px rgba(230,0,18,.08);
+}
+textarea{min-height:80px;resize:vertical}
+.file-box{
+  border:1.5px dashed #fca5a5;
+  background:#fff7f7;
+  border-radius:14px;
+  padding:14px;
+}
+.file-box input{border:none;padding:0;background:transparent}
+.hint{
+  font-size:12px;
+  color:var(--muted);
+  margin-top:6px;
+  line-height:1.45;
+}
+.btn{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  font-size:16px;
+  font-weight:800;
+  cursor:pointer;
+  margin-top:10px;
+  font-family:inherit;
+}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.btn-primary{background:var(--red);color:#fff}
+.btn-primary:active{background:var(--red-dark)}
+.btn-secondary{background:#e5e7eb;color:#374151}
+.btn-dark{background:#111827;color:#fff}
+.btn-success{background:var(--success);color:#fff}
+.btn-warning{background:var(--warning);color:#fff}
+.error-msg{
+  color:var(--danger);
+  font-size:13px;
+  font-weight:700;
+  background:#fef2f2;
+  border:1px solid #fecaca;
+  border-radius:9px;
+  padding:10px 12px;
+  margin-top:10px;
+  display:none;
+}
+.error-msg.show{display:block}
+.notice{
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:13px 14px;
+  font-size:13px;
+  color:#374151;
+  line-height:1.55;
+  margin-bottom:14px;
+}
+.notice b{color:#111827}
+.success-wrap{text-align:center;padding:22px 0 14px}
+.success-icon{font-size:62px;margin-bottom:12px}
+.success-title{font-size:22px;font-weight:900;color:var(--success);margin-bottom:6px}
+.success-sub{font-size:14px;color:var(--muted);line-height:1.5}
+.hidden{display:none!important}
+.login-title{text-align:center;font-size:42px;margin-bottom:8px}
+.admin-box{
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:14px;
+  margin-bottom:12px;
+  font-size:14px;
+  line-height:1.65;
+}
+.admin-section-title{
+  font-size:15px;
+  font-weight:900;
+  color:var(--red);
+  margin:18px 0 8px;
+}
+.kpi-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:12px;
+}
+.kpi{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:13px 10px;
+  text-align:center;
+}
+.kpi .num{
+  font-size:23px;
+  font-weight:900;
+  color:var(--red);
+}
+.kpi .lbl{
+  font-size:11px;
+  color:var(--muted);
+  margin-top:4px;
+}
+.result-card{
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:14px;
+  background:#fff;
+  margin-top:12px;
+}
+.status-good{color:var(--success);font-weight:900}
+.status-bad{color:var(--danger);font-weight:900}
+.status-warn{color:var(--warning);font-weight:900}
+.progress-wrap{
+  background:#f3f4f6;
+  border-radius:999px;
+  height:13px;
+  overflow:hidden;
+  margin:9px 0 5px;
+}
+.progress-bar{
+  height:100%;
+  background:var(--red);
+  width:0%;
+}
+.small-row{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:7px 0;
+  border-bottom:1px solid #f0f0f0;
+  font-size:13px;
+}
+.small-row:last-child{border-bottom:none}
+.small-row span:first-child{color:var(--muted);font-weight:600}
+.small-row span:last-child{text-align:right;font-weight:800}
+@media(max-width:480px){
+  .container{padding:0 10px 30px;margin-top:14px}
+  .card{padding:20px 15px;border-radius:16px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="logo">S</div>
+  <h1>Sinopec Car Wash Rewards</h1>
+  <p>Wash More. Earn More.</p>
+</div>
+
+<div class="container">
+<div class="card">
+
+<div id="homePage">
+  <h2>Welcome</h2>
+  <p class="page-sub">Please choose an option below.</p>
+
+  <button class="type-btn" onclick="showPage('customerPlanPage')">
+    <div class="type-icon">🚗</div>
+    <div>
+      <div class="t-label">Customer Check-in</div>
+      <div class="t-desc">Register your wash or join a membership.</div>
+    </div>
+  </button>
+
+  <button class="type-btn" onclick="showStaffLogin()">
+    <div class="type-icon">👨‍🔧</div>
+    <div>
+      <div class="t-label">Staff Portal</div>
+      <div class="t-desc">Search plates, confirm washes and check members.</div>
+    </div>
+  </button>
+
+  <button class="type-btn" onclick="showAdminLogin()">
+    <div class="type-icon">🔐</div>
+    <div>
+      <div class="t-label">Admin Dashboard</div>
+      <div class="t-desc">Reports, members, rewards and system overview.</div>
+    </div>
+  </button>
+</div>
+
+<div id="customerPlanPage" class="hidden">
+  <h2>Choose Your Car Wash Plan</h2>
+  <p class="page-sub">Membership is linked to your plate number. No physical card required.</p>
+
+  <div class="plan-card featured">
+    <div class="plan-title">🚗 Wash 3 Times Get 1 FREE</div>
+    <div class="plan-main">Buy 3 Automatic Washes, Get 1 FREE Automatic Wash</div>
+    <div class="plan-list">
+      • Valid across all participating Sinopec locations<br>
+      • One wash per plate per calendar day<br>
+      • Rewards are tracked automatically after staff confirmation
+    </div>
+    <button class="btn btn-primary" onclick="selectCustomerPlan('reward')">Select This Plan</button>
+  </div>
+
+  <div class="plan-card">
+    <div class="plan-title">⭐ Unlimited Monthly Membership</div>
+    <div class="plan-main">Unlimited Automatic Washes, One Wash Per Day</div>
+    <div class="plan-list">
+      • Valid across all participating Sinopec locations<br>
+      • Use your plate number as membership ID<br>
+      • No physical card required
+    </div>
+    <div class="plan-price">$49 / month</div>
+    <button class="btn btn-dark" onclick="selectCustomerPlan('monthly')">Select Monthly Membership</button>
+  </div>
+
+  <button class="btn btn-secondary" onclick="showPage('homePage')">← Back</button>
+</div>
+
+<div id="customerFormPage" class="hidden">
+  <h2 id="customerFormTitle">Customer Check-in</h2>
+  <p class="page-sub" id="customerFormSub">Please fill in your details below.</p>
+
+  <div class="notice">
+    <b>Important:</b> Your wash will not be counted immediately. It will be recorded as Pending until confirmed by our staff.
+  </div>
+
+  <div class="form-group">
+    <label>Mobile Number</label>
+    <input type="text" id="customerPhone" placeholder="e.g. 04xx xxx xxx">
+  </div>
+
+  <div class="form-group">
+    <label>Email Address</label>
+    <input type="text" id="customerEmail" placeholder="e.g. customer@email.com">
+  </div>
+
+  <div class="form-group">
+    <label>Plate Number</label>
+    <input type="text" id="customerPlate" placeholder="e.g. ABC123" oninput="this.value=this.value.toUpperCase()">
+  </div>
+
+  <div class="form-group">
+    <label>Wash Type</label>
+    <select id="washType">
+      <option value="">— Please select —</option>
+      <option value="Basic Automatic Wash">Basic Automatic Wash</option>
+      <option value="Premium Automatic Wash">Premium Automatic Wash</option>
+      <option value="Ultimate Automatic Wash">Ultimate Automatic Wash</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Payment Screenshot / Receipt Photo</label>
+    <div class="file-box">
+      <input type="file" id="paymentPhoto" accept="image/*">
+      <div class="hint">Please upload a payment screenshot or receipt photo if available.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Notes (optional)</label>
+    <textarea id="customerNotes" placeholder="Any additional information"></textarea>
+  </div>
+
+  <div id="customerError" class="error-msg"></div>
+
+  <button class="btn btn-primary" onclick="submitCustomerCheckin()">Submit Wash</button>
+  <button class="btn btn-secondary" onclick="showPage('customerPlanPage')">← Back</button>
+</div>
+
+<div id="customerSuccessPage" class="hidden">
+  <div class="success-wrap">
+    <div class="success-icon">✅</div>
+    <div class="success-title">Submitted Successfully</div>
+    <div class="success-sub">
+      Your wash has been submitted for staff verification.<br>
+      Once confirmed, your reward progress will be updated.
+    </div>
+  </div>
+  <button class="btn btn-primary" onclick="returnHome()">Return Home</button>
+</div>
+
+<div id="staffLoginPage" class="hidden">
+  <div class="login-title">👨‍🔧</div>
+  <h2>Staff Login</h2>
+  <p class="page-sub">Enter staff PIN to continue.</p>
+
+  <div class="form-group">
+    <label>Staff PIN</label>
+    <input type="password" id="staffPin" placeholder="••••" style="text-align:center;letter-spacing:.3em;font-size:24px">
+  </div>
+
+  <div id="staffLoginError" class="error-msg"></div>
+
+  <button class="btn btn-primary" onclick="staffLogin()">Login</button>
+  <button class="btn btn-secondary" onclick="showPage('homePage')">← Back</button>
+</div>
+
+<div id="staffPage" class="hidden">
+  <h2>Staff Portal</h2>
+  <p class="page-sub">Search plate, confirm washes and check membership status.</p>
+
+  <div class="form-group">
+    <label>Search Plate Number</label>
+    <input type="text" id="staffSearchPlate" placeholder="e.g. ABC123" oninput="this.value=this.value.toUpperCase()">
+  </div>
+
+  <button class="btn btn-primary" onclick="searchPlate()">Search Plate</button>
+
+  <div id="plateResult" class="result-card hidden"></div>
+
+  <div class="admin-section-title">Pending Approval</div>
+  <div id="pendingList">
+    <div class="admin-box">No pending records loaded yet.</div>
+  </div>
+
+  <button class="btn btn-dark" onclick="loadPending()">Refresh Pending</button>
+  <button class="btn btn-secondary" onclick="returnHome()">Logout</button>
+</div>
+
+<div id="adminLoginPage" class="hidden">
+  <div class="login-title">🔐</div>
+  <h2>Admin Login</h2>
+  <p class="page-sub">Enter admin PIN to continue.</p>
+
+  <div class="form-group">
+    <label>Admin PIN</label>
+    <input type="password" id="adminPin" placeholder="••••" style="text-align:center;letter-spacing:.3em;font-size:24px">
+  </div>
+
+  <div id="adminLoginError" class="error-msg"></div>
+
+  <button class="btn btn-primary" onclick="adminLogin()">Login</button>
+  <button class="btn btn-secondary" onclick="showPage('homePage')">← Back</button>
+</div>
+
+<div id="adminPage" class="hidden">
+  <h2>Admin Dashboard</h2>
+  <p class="page-sub">Car wash rewards overview.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="num" id="kpiToday">--</div>
+      <div class="lbl">Today Washes</div>
+    </div>
+    <div class="kpi">
+      <div class="num" id="kpiPending">--</div>
+      <div class="lbl">Pending</div>
+    </div>
+    <div class="kpi">
+      <div class="num" id="kpiFree">--</div>
+      <div class="lbl">Free Earned</div>
+    </div>
+    <div class="kpi">
+      <div class="num" id="kpiMembers">--</div>
+      <div class="lbl">Monthly Members</div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" onclick="loadAdminData()">Refresh Dashboard</button>
+
+  <div class="admin-section-title">Rewards Progress</div>
+  <div id="rewardsProgress">
+    <div class="admin-box">No reward data loaded yet.</div>
+  </div>
+
+  <div class="admin-section-title">Monthly Members</div>
+  <div id="monthlyMembers">
+    <div class="admin-box">No member data loaded yet.</div>
+  </div>
+
+  <div class="admin-section-title">Recent Confirmed Washes</div>
+  <div id="recentWashes">
+    <div class="admin-box">No wash data loaded yet.</div>
+  </div>
+
+  <button class="btn btn-secondary" onclick="returnHome()">Logout</button>
+</div>
+
+</div>
+</div>
+
+<script>
+const WEBAPP_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+const STAFF_PIN = "1234";
+const ADMIN_PIN = "8888";
+
+let selectedPlan = "";
+
+const PAGES = [
+  "homePage",
+  "customerPlanPage",
+  "customerFormPage",
+  "customerSuccessPage",
+  "staffLoginPage",
+  "staffPage",
+  "adminLoginPage",
+  "adminPage"
+];
+
+function showPage(id){
+  PAGES.forEach(p=>document.getElementById(p).classList.add("hidden"));
+  document.getElementById(id).classList.remove("hidden");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function returnHome(){
+  selectedPlan = "";
+  clearCustomerForm();
+  showPage("homePage");
+}
+
+function selectCustomerPlan(plan){
+  selectedPlan = plan;
+
+  if(plan === "reward"){
+    document.getElementById("customerFormTitle").textContent = "Wash 3 Times Get 1 FREE";
+    document.getElementById("customerFormSub").textContent = "Submit your automatic wash for reward tracking.";
+  }else{
+    document.getElementById("customerFormTitle").textContent = "Unlimited Monthly Membership";
+    document.getElementById("customerFormSub").textContent = "Register or renew your monthly car wash membership.";
+  }
+
+  showPage("customerFormPage");
+}
+
+function showError(id,msg){
+  const el = document.getElementById(id);
+  el.textContent = msg;
+  el.classList.add("show");
+  el.scrollIntoView({behavior:"smooth",block:"nearest"});
+  return false;
+}
+
+function hideError(id){
+  document.getElementById(id).classList.remove("show");
+}
+
+function cleanPlate(v){
+  return String(v||"").replace(/\s+/g,"").toUpperCase();
+}
+
+function validateCustomer(){
+  const phone = document.getElementById("customerPhone").value.trim();
+  const email = document.getElementById("customerEmail").value.trim();
+  const plate = cleanPlate(document.getElementById("customerPlate").value);
+  const washType = document.getElementById("washType").value;
+
+  if(!phone) return showError("customerError","Please enter your mobile number.");
+  if(!email) return showError("customerError","Please enter your email address.");
+  if(!email.includes("@")) return showError("customerError","Please enter a valid email address.");
+  if(!plate) return showError("customerError","Please enter your plate number.");
+  if(!washType) return showError("customerError","Please select wash type.");
+
+  hideError("customerError");
+  return true;
+}
+
+function fileToBase64(file){
+  return new Promise((resolve,reject)=>{
+    if(!file){
+      resolve("");
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+async function submitCustomerCheckin(){
+  if(!validateCustomer()) return;
+
+  const btn = event.target;
+  btn.disabled = true;
+  btn.textContent = "Submitting...";
+
+  try{
+    const file = document.getElementById("paymentPhoto").files[0];
+    const photoBase64 = await fileToBase64(file);
+
+    const payload = {
+      action:"customer_checkin",
+      plan:selectedPlan,
+      phone:document.getElementById("customerPhone").value.trim(),
+      email:document.getElementById("customerEmail").value.trim(),
+      plate:cleanPlate(document.getElementById("customerPlate").value),
+      washType:document.getElementById("washType").value,
+      notes:document.getElementById("customerNotes").value.trim(),
+      photoBase64:photoBase64,
+      photoName:file ? file.name : "",
+      status:"Pending"
+    };
+
+    if(WEBAPP_URL.includes("PASTE_YOUR")){
+      console.log("Demo payload:",payload);
+      showPage("customerSuccessPage");
+      return;
+    }
+
+    const res = await fetch(WEBAPP_URL,{
+      method:"POST",
+      body:JSON.stringify(payload)
+    });
+
+    const json = await res.json();
+
+    if(!json.success){
+      alert(json.message || "Submission failed. Please try again.");
+      btn.disabled = false;
+      btn.textContent = "Submit Wash";
+      return;
+    }
+
+    clearCustomerForm();
+    showPage("customerSuccessPage");
+
+  }catch(err){
+    alert("Submission failed. Please try again.");
+  }
+
+  btn.disabled = false;
+  btn.textContent = "Submit Wash";
+}
+
+function clearCustomerForm(){
+  ["customerPhone","customerEmail","customerPlate","customerNotes"].forEach(id=>{
+    document.getElementById(id).value = "";
+  });
+  document.getElementById("washType").value = "";
+  document.getElementById("paymentPhoto").value = "";
+  hideError("customerError");
+}
+
+function showStaffLogin(){
+  document.getElementById("staffPin").value = "";
+  hideError("staffLoginError");
+  showPage("staffLoginPage");
+}
+
+function staffLogin(){
+  const pin = document.getElementById("staffPin").value;
+  if(pin !== STAFF_PIN){
+    return showError("staffLoginError","Incorrect staff PIN.");
+  }
+  showPage("staffPage");
+  loadPending();
+}
+
+function showAdminLogin(){
+  document.getElementById("adminPin").value = "";
+  hideError("adminLoginError");
+  showPage("adminLoginPage");
+}
+
+function adminLogin(){
+  const pin = document.getElementById("adminPin").value;
+  if(pin !== ADMIN_PIN){
+    return showError("adminLoginError","Incorrect admin PIN.");
+  }
+  showPage("adminPage");
+  loadAdminData();
+}
+
+document.getElementById("staffPin").addEventListener("keydown",e=>{
+  if(e.key==="Enter") staffLogin();
+});
+
+document.getElementById("adminPin").addEventListener("keydown",e=>{
+  if(e.key==="Enter") adminLogin();
+});
+
+async function searchPlate(){
+  const plate = cleanPlate(document.getElementById("staffSearchPlate").value);
+  if(!plate){
+    alert("Please enter plate number.");
+    return;
+  }
+
+  const box = document.getElementById("plateResult");
+  box.classList.remove("hidden");
+  box.innerHTML = "Searching...";
+
+  try{
+    if(WEBAPP_URL.includes("PASTE_YOUR")){
+      renderPlateResult({
+        plate,
+        eligibleToday:true,
+        alreadyUsedToday:false,
+        plan:"Wash 3 Get 1 FREE",
+        progress:2,
+        target:3,
+        monthlyActive:false,
+        freeAvailable:0,
+        lastWash:"Frankston - 20 May 2026"
+      });
+      return;
+    }
+
+    const res = await fetch(WEBAPP_URL + "?action=search_plate&plate=" + encodeURIComponent(plate));
+    const json = await res.json();
+
+    if(!json.success){
+      box.innerHTML = `<div class="status-bad">${json.message || "Plate not found."}</div>`;
+      return;
+    }
+
+    renderPlateResult(json.data);
+
+  }catch(err){
+    box.innerHTML = `<div class="status-bad">Search failed.</div>`;
+  }
+}
+
+function renderPlateResult(data){
+  const box = document.getElementById("plateResult");
+  const pct = Math.min(100,Math.round((Number(data.progress||0)/Number(data.target||3))*100));
+
+  let status = "";
+  if(data.alreadyUsedToday){
+    status = `<div class="status-bad">⚠ Already Used Today</div>`;
+  }else if(data.eligibleToday){
+    status = `<div class="status-good">✅ Eligible Today</div>`;
+  }else{
+    status = `<div class="status-warn">⚠ Not Eligible</div>`;
+  }
+
+  box.innerHTML = `
+    <div style="font-size:18px;font-weight:900;margin-bottom:8px">${data.plate}</div>
+    ${status}
+    <div class="small-row"><span>Plan</span><span>${data.plan || "-"}</span></div>
+    <div class="small-row"><span>Monthly Member</span><span>${data.monthlyActive ? "Active" : "No"}</span></div>
+    <div class="small-row"><span>Free Wash Available</span><span>${data.freeAvailable || 0}</span></div>
+    <div class="small-row"><span>Last Wash</span><span>${data.lastWash || "-"}</span></div>
+    <div style="margin-top:12px;font-size:13px;font-weight:800">Reward Progress: ${data.progress || 0} / ${data.target || 3}</div>
+    <div class="progress-wrap"><div class="progress-bar" style="width:${pct}%"></div></div>
+    <button class="btn btn-success" onclick="confirmWash('${data.plate}')">✓ Confirm Wash</button>
+  `;
+}
+
+async function loadPending(){
+  const box = document.getElementById("pendingList");
+  box.innerHTML = `<div class="admin-box">Loading pending records...</div>`;
+
+  try{
+    if(WEBAPP_URL.includes("PASTE_YOUR")){
+      box.innerHTML = `
+        <div class="admin-box">
+          <b>ABC123</b><br>
+          Wash 3 Get 1 FREE<br>
+          Premium Automatic Wash<br>
+          Status: Pending<br>
+          <button class="btn btn-success" onclick="confirmWash('ABC123')">✓ Confirm Wash</button>
+        </div>
+        <div class="admin-box">
+          <b>XYZ888</b><br>
+          Unlimited Monthly Membership<br>
+          Ultimate Automatic Wash<br>
+          Status: Pending<br>
+          <button class="btn btn-success" onclick="confirmWash('XYZ888')">✓ Confirm Wash</button>
+        </div>
+      `;
+      return;
+    }
+
+    const res = await fetch(WEBAPP_URL + "?action=pending");
+    const json = await res.json();
+
+    if(!json.success || !json.data || json.data.length === 0){
+      box.innerHTML = `<div class="admin-box">No pending records.</div>`;
+      return;
+    }
+
+    box.innerHTML = json.data.map(r=>`
+      <div class="admin-box">
+        <b>${r.plate}</b><br>
+        ${r.plan}<br>
+        ${r.washType}<br>
+        Phone: ${r.phone || "-"}<br>
+        Email: ${r.email || "-"}<br>
+        ${r.photoUrl ? `<a href="${r.photoUrl}" target="_blank">View Screenshot</a><br>` : ""}
+        Status: Pending
+        <button class="btn btn-success" onclick="confirmWash('${r.plate}','${r.id || ""}')">✓ Confirm Wash</button>
+      </div>
+    `).join("");
+
+  }catch(err){
+    box.innerHTML = `<div class="admin-box">Failed to load pending records.</div>`;
+  }
+}
+
+async function confirmWash(plate,id=""){
+  if(!confirm("Confirm wash for " + plate + "?")) return;
+
+  try{
+    if(WEBAPP_URL.includes("PASTE_YOUR")){
+      alert("Demo: Wash confirmed for " + plate);
+      loadPending();
+      return;
+    }
+
+    const res = await fetch(WEBAPP_URL,{
+      method:"POST",
+      body:JSON.stringify({
+        action:"confirm_wash",
+        plate,
+        id,
+        confirmedBy:"Staff"
+      })
+    });
+
+    const json = await res.json();
+
+    if(!json.success){
+      alert(json.message || "Failed to confirm wash.");
+      return;
+    }
+
+    alert("Wash confirmed.");
+    loadPending();
+    searchPlate();
+
+  }catch(err){
+    alert("Failed to confirm wash.");
+  }
+}
+
+async function loadAdminData(){
+  document.getElementById("rewardsProgress").innerHTML = `<div class="admin-box">Loading...</div>`;
+  document.getElementById("monthlyMembers").innerHTML = `<div class="admin-box">Loading...</div>`;
+  document.getElementById("recentWashes").innerHTML = `<div class="admin-box">Loading...</div>`;
+
+  try{
+    if(WEBAPP_URL.includes("PASTE_YOUR")){
+      renderAdminData({
+        todayWashes:18,
+        pending:6,
+        freeEarned:4,
+        monthlyMembers:12,
+        rewards:[
+          {plate:"ABC123",progress:2,target:3,status:"1 more wash to FREE"},
+          {plate:"MEL888",progress:1,target:3,status:"2 more washes to FREE"},
+          {plate:"CAR520",progress:3,target:3,status:"FREE wash earned"}
+        ],
+        members:[
+          {plate:"XYZ888",plan:"Monthly Unlimited",expiry:"20 Jun 2026",usedToday:"No"},
+          {plate:"SIN001",plan:"Monthly Unlimited",expiry:"28 Jun 2026",usedToday:"Yes"}
+        ],
+        recent:[
+          {plate:"ABC123",time:"Today 10:15 AM",wash:"Premium Wash"},
+          {plate:"XYZ888",time:"Today 9:20 AM",wash:"Ultimate Wash"}
+        ]
+      });
+      return;
+    }
+
+    const res = await fetch(WEBAPP_URL + "?action=admin");
+    const json = await res.json();
+
+    if(!json.success){
+      alert(json.message || "Failed to load admin data.");
+      return;
+    }
+
+    renderAdminData(json.data);
+
+  }catch(err){
+    alert("Failed to load admin data.");
+  }
+}
+
+function renderAdminData(data){
+  document.getElementById("kpiToday").textContent = data.todayWashes || 0;
+  document.getElementById("kpiPending").textContent = data.pending || 0;
+  document.getElementById("kpiFree").textContent = data.freeEarned || 0;
+  document.getElementById("kpiMembers").textContent = data.monthlyMembers || 0;
+
+  document.getElementById("rewardsProgress").innerHTML = (data.rewards || []).length
+    ? data.rewards.map(r=>{
+        const pct = Math.min(100,Math.round((Number(r.progress||0)/Number(r.target||3))*100));
+        return `
+          <div class="admin-box">
+            <b>${r.plate}</b><br>
+            Progress: ${r.progress} / ${r.target}<br>
+            ${r.status}
+            <div class="progress-wrap"><div class="progress-bar" style="width:${pct}%"></div></div>
+          </div>
+        `;
+      }).join("")
+    : `<div class="admin-box">No reward progress.</div>`;
+
+  document.getElementById("monthlyMembers").innerHTML = (data.members || []).length
+    ? data.members.map(m=>`
+      <div class="admin-box">
+        <b>${m.plate}</b><br>
+        ${m.plan}<br>
+        Expiry: ${m.expiry}<br>
+        Used Today: ${m.usedToday}
+      </div>
+    `).join("")
+    : `<div class="admin-box">No monthly members.</div>`;
+
+  document.getElementById("recentWashes").innerHTML = (data.recent || []).length
+    ? data.recent.map(w=>`
+      <div class="admin-box">
+        <b>${w.plate}</b><br>
+        ${w.time}<br>
+        ${w.wash}
+      </div>
+    `).join("")
+    : `<div class="admin-box">No recent washes.</div>`;
+}
+</script>
+
+</body>
+</html>
