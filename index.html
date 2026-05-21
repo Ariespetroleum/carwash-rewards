@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Sinopec Car Wash Rewards</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
+
 <style>
 :root {
   --red:#c8102e; --red-dark:#9e0c24; --red-bg:#fff1f3; --red-border:#fecdd3;
@@ -17,183 +18,101 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:15px}
-
 .header{background:var(--red);padding:0 16px;height:56px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:100}
 .hlogo{width:32px;height:32px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--red);font-weight:700;font-size:14px;flex-shrink:0;font-family:'DM Mono',monospace}
-.htext{flex:1}
-.htitle{color:#fff;font-size:15px;font-weight:700;line-height:1.2}
-.hsub{color:rgba(255,255,255,.6);font-size:11px;margin-top:1px}
+.htext{flex:1}.htitle{color:#fff;font-size:15px;font-weight:700;line-height:1.2}.hsub{color:rgba(255,255,255,.6);font-size:11px;margin-top:1px}
 .hback{background:rgba(255,255,255,.18);border:none;color:#fff;border-radius:6px;padding:5px 11px;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;display:none}
 .hback.show{display:block}
-
-.wrap{max-width:480px;margin:0 auto;padding:20px 14px 60px}
-.page{display:none}.page.active{display:block}
-
-.pg-title{font-size:22px;font-weight:700;margin-bottom:4px}
-.pg-sub{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.55}
+.wrap{max-width:480px;margin:0 auto;padding:20px 14px 60px}.page{display:none}.page.active{display:block}
+.pg-title{font-size:22px;font-weight:700;margin-bottom:4px}.pg-sub{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.55}
 .section-title{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:20px 0 8px}
-
-.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:12px}
-
 .tap{width:100%;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:15px 14px;margin-bottom:10px;display:flex;align-items:center;gap:13px;cursor:pointer;text-align:left}
-.tap:active{background:#f9f8f5}
 .tap-icon{width:42px;height:42px;background:var(--red-bg);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-.tap-label{font-size:15px;font-weight:700}
-.tap-desc{font-size:12px;color:var(--muted);margin-top:2px}
-.tap-arr{margin-left:auto;color:var(--muted);font-size:20px;line-height:1}
-
-.plan{background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:12px}
-.plan.featured{border-color:var(--red);background:var(--red-bg)}
+.tap-label{font-size:15px;font-weight:700}.tap-desc{font-size:12px;color:var(--muted);margin-top:2px}.tap-arr{margin-left:auto;color:var(--muted);font-size:20px}
+.plan{background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:12px}.plan.featured{border-color:var(--red);background:var(--red-bg)}
 .plan-badge{display:inline-block;background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;margin-bottom:8px;text-transform:uppercase;letter-spacing:.04em}
-.plan-name{font-size:17px;font-weight:700;margin-bottom:5px}
-.plan-desc{font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:12px}
+.plan-name{font-size:17px;font-weight:700;margin-bottom:5px}.plan-desc{font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:12px}
 .plan-price{font-size:26px;font-weight:700;color:var(--red);font-family:'DM Mono',monospace;margin-bottom:12px}
-
-.btn{display:block;width:100%;padding:13px 16px;border:none;border-radius:var(--radius-sm);font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:8px;text-align:center;transition:opacity .12s}
-.btn:active{opacity:.82}
-.btn:disabled{opacity:.5;cursor:not-allowed}
-.btn-red{background:var(--red);color:#fff}
-.btn-dark{background:#111;color:#fff}
-.btn-ghost{background:#f0efea;color:#444}
-.btn-outline{background:transparent;border:1.5px solid var(--border);color:var(--text);display:block;width:100%;padding:12px 16px;border-radius:var(--radius-sm);font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:8px;text-align:center}
-.btn-success{background:var(--success);color:#fff}
-.btn-sm{padding:7px 13px;font-size:13px;width:auto;display:inline-block;margin-top:0;border-radius:7px}
-
-.fg{margin-bottom:14px}
-.flabel{display:block;font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
-.flabel .req{color:var(--red);margin-left:2px}
-input,select,textarea{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:16px;background:#fff;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;-webkit-appearance:none;appearance:none}
-input:focus,select:focus,textarea:focus{border-color:var(--red)}
-textarea{min-height:70px;resize:vertical}
-.plate-input{text-transform:uppercase;font-family:'DM Mono',monospace;font-size:18px;letter-spacing:.06em}
-
+.btn{display:block;width:100%;padding:13px 16px;border:none;border-radius:var(--radius-sm);font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:8px;text-align:center}
+.btn:disabled{opacity:.5;cursor:not-allowed}.btn-red{background:var(--red);color:#fff}.btn-ghost{background:#f0efea;color:#444}.btn-success{background:var(--success);color:#fff}.btn-sm{padding:7px 13px;font-size:13px;width:auto;display:inline-block;margin-top:0;border-radius:7px}
+.fg{margin-bottom:14px}.flabel{display:block;font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}.req{color:var(--red);margin-left:2px}
+input,select,textarea{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:16px;background:#fff;color:var(--text);font-family:'DM Sans',sans-serif;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--red)}textarea{min-height:70px;resize:vertical}.plate-input{text-transform:uppercase;font-family:'DM Mono',monospace;font-size:18px;letter-spacing:.06em}
 .file-zone{border:1.5px dashed var(--red-border);background:var(--red-bg);border-radius:var(--radius-sm);padding:16px;text-align:center;cursor:pointer;position:relative;overflow:hidden}
-.file-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.fz-icon{font-size:26px;margin-bottom:5px}
-.fz-label{font-size:13px;color:var(--muted)}
-.fz-name{font-size:12px;color:var(--red);font-weight:600;margin-top:4px;display:none}
-.img-preview{margin-top:10px;border-radius:var(--radius-sm);overflow:hidden;max-height:200px;display:none}
-.img-preview img{width:100%;display:block;object-fit:cover;max-height:200px}
-.img-size{font-size:11px;color:var(--muted);margin-top:4px;display:none}
-/* required ring when untouched */
-.file-zone.required-missing{border-color:var(--red);background:#fff5f6}
-
-.notice{border-radius:var(--radius-sm);padding:11px 13px;font-size:13px;line-height:1.55;margin-bottom:14px}
-.n-warn{background:var(--warn-bg);border:1px solid var(--warn-border);color:var(--warn)}
-.n-info{background:var(--info-bg);border:1px solid var(--info-border);color:var(--info)}
-.n-success{background:var(--success-bg);border:1px solid var(--success-border);color:var(--success)}
-
-.err{background:var(--red-bg);border:1px solid var(--red-border);border-radius:var(--radius-sm);padding:10px 12px;font-size:13px;color:var(--red);font-weight:600;margin-top:10px;display:none}
-.err.show{display:block}
-
-.success-wrap{text-align:center;padding:28px 0 20px}
-.s-emoji{font-size:58px;margin-bottom:12px}
-.s-title{font-size:22px;font-weight:700;margin-bottom:6px;color:var(--success)}
-.s-sub{font-size:14px;color:var(--muted);line-height:1.6;max-width:300px;margin:0 auto}
-
-/* pending progress card — shown only after staff confirms */
-.prog-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:12px}
-.stars{display:flex;gap:8px;margin:10px 0 6px}
-.star{width:38px;height:38px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:15px;background:#fff;color:var(--muted);font-weight:700;font-family:'DM Mono',monospace;transition:all .25s}
-.star.lit{background:var(--red);border-color:var(--red);color:#fff}
-.prog-bar{height:5px;background:var(--border);border-radius:3px;overflow:hidden;margin-top:8px}
-.prog-fill{height:100%;background:var(--red);border-radius:3px;transition:width .5s cubic-bezier(.4,0,.2,1);width:0%}
-.prog-lbl{font-size:12px;color:var(--muted);margin-top:6px}
-
-.kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
-.kpi{background:var(--bg);border-radius:var(--radius-sm);padding:13px;text-align:center}
-.kpi-num{font-size:28px;font-weight:700;color:var(--red);font-family:'DM Mono',monospace;line-height:1}
-.kpi-lbl{font-size:11px;color:var(--muted);margin-top:4px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
-
-.rec{border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 13px;margin-bottom:8px;background:var(--card)}
-.rec-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:4px;gap:8px}
-.rec-plate{font-size:16px;font-weight:700;font-family:'DM Mono',monospace;letter-spacing:.02em}
-.rec-meta{font-size:12px;color:var(--muted);line-height:1.6}
-.rec-actions{display:flex;gap:6px;margin-top:8px}
-.receipt-thumb{width:44px;height:44px;border-radius:6px;object-fit:cover;border:1px solid var(--border);cursor:pointer;flex-shrink:0}
-
-.badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;text-transform:uppercase;letter-spacing:.03em;vertical-align:middle;margin-left:4px}
-.b-pending{background:var(--warn-bg);color:var(--warn)}
-.b-done{background:var(--success-bg);color:var(--success)}
-.b-monthly{background:var(--info-bg);color:var(--info)}
-.b-reward{background:var(--red-bg);color:var(--red)}
-.b-free{background:#fdf4ff;color:#7c3aed}
-
-.sbox{border-radius:var(--radius-sm);padding:13px;margin-top:10px}
-.sbox-ok{background:var(--success-bg);border:1px solid var(--success-border)}
-.sbox-no{background:var(--red-bg);border:1px solid var(--red-border)}
-
-.div{height:1px;background:var(--border);margin:12px 0}
-.empty{text-align:center;padding:20px 0;color:var(--muted);font-size:13px}
-.loading{text-align:center;padding:18px 0;color:var(--muted);font-size:13px}
-.spinner{display:inline-block;width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--red);border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:6px}
-@keyframes spin{to{transform:rotate(360deg)}}
+.file-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}.fz-icon{font-size:26px;margin-bottom:5px}.fz-label{font-size:13px;color:var(--muted)}.fz-name{font-size:12px;color:var(--red);font-weight:600;margin-top:4px;display:none}
+.img-preview{margin-top:10px;border-radius:var(--radius-sm);overflow:hidden;max-height:200px;display:none}.img-preview img{width:100%;display:block;object-fit:cover;max-height:200px}.img-size{font-size:11px;color:var(--muted);margin-top:4px;display:none}
+.required-missing{border-color:var(--red);background:#fff5f6}
+.notice{border-radius:var(--radius-sm);padding:11px 13px;font-size:13px;line-height:1.55;margin-bottom:14px}.n-warn{background:var(--warn-bg);border:1px solid var(--warn-border);color:var(--warn)}
+.err{background:var(--red-bg);border:1px solid var(--red-border);border-radius:var(--radius-sm);padding:10px 12px;font-size:13px;color:var(--red);font-weight:600;margin-top:10px;display:none}.err.show{display:block}
+.success-wrap{text-align:center;padding:28px 0 20px}.s-emoji{font-size:58px;margin-bottom:12px}.s-title{font-size:22px;font-weight:700;margin-bottom:6px;color:var(--success)}.s-sub{font-size:14px;color:var(--muted);line-height:1.6;max-width:300px;margin:0 auto}
+.prog-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:12px}.stars{display:flex;gap:8px;margin:10px 0 6px}.star{width:38px;height:38px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:15px;background:#fff;color:var(--muted);font-weight:700;font-family:'DM Mono',monospace}.star.lit{background:var(--red);border-color:var(--red);color:#fff}.prog-bar{height:5px;background:var(--border);border-radius:3px;overflow:hidden;margin-top:8px}.prog-fill{height:100%;background:var(--red);border-radius:3px;width:0%}.prog-lbl{font-size:12px;color:var(--muted);margin-top:6px}
+.kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}.kpi{background:var(--bg);border-radius:var(--radius-sm);padding:13px;text-align:center}.kpi-num{font-size:28px;font-weight:700;color:var(--red);font-family:'DM Mono',monospace;line-height:1}.kpi-lbl{font-size:11px;color:var(--muted);margin-top:4px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.rec{border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 13px;margin-bottom:8px;background:var(--card)}.rec-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:4px;gap:8px}.rec-plate{font-size:16px;font-weight:700;font-family:'DM Mono',monospace;letter-spacing:.02em}.rec-meta{font-size:12px;color:var(--muted);line-height:1.6}.rec-actions{display:flex;gap:6px;margin-top:8px}.receipt-thumb{width:44px;height:44px;border-radius:6px;object-fit:cover;border:1px solid var(--border);cursor:pointer;flex-shrink:0}
+.badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;text-transform:uppercase;letter-spacing:.03em;vertical-align:middle;margin-left:4px}.b-pending{background:var(--warn-bg);color:var(--warn)}.b-done{background:var(--success-bg);color:var(--success)}.b-monthly{background:var(--info-bg);color:var(--info)}.b-reward{background:var(--red-bg);color:var(--red)}.b-free{background:#fdf4ff;color:#7c3aed}
+.sbox{border-radius:var(--radius-sm);padding:13px;margin-top:10px}.sbox-ok{background:var(--success-bg);border:1px solid var(--success-border)}.sbox-no{background:var(--red-bg);border:1px solid var(--red-border)}
+.div{height:1px;background:var(--border);margin:12px 0}.empty{text-align:center;padding:20px 0;color:var(--muted);font-size:13px}.loading{text-align:center;padding:18px 0;color:var(--muted);font-size:13px}.spinner{display:inline-block;width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--red);border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:6px}@keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
-<body>
 
-<div class="header" id="hdr">
+<body>
+<div class="header">
   <div class="hlogo">S</div>
   <div class="htext">
     <div class="htitle">Sinopec Car Wash</div>
-    <div class="hsub">Rewards &amp; Membership</div>
+    <div class="hsub">Rewards & Membership</div>
   </div>
   <button class="hback" id="back-btn" onclick="goBack()">← Back</button>
 </div>
 
 <div class="wrap">
 
-<!-- HOME -->
 <div id="pg-home" class="page active">
   <div class="pg-title">Welcome</div>
   <p class="pg-sub">Select your role to continue.</p>
-  <button class="tap" onclick="go('pg-plans')">
-    <div class="tap-icon">🚗</div>
-    <div><div class="tap-label">Customer Check-in</div><div class="tap-desc">Submit a wash or join a membership</div></div>
-    <div class="tap-arr">›</div>
-  </button>
-  <button class="tap" onclick="go('pg-staff-login')">
-    <div class="tap-icon">🔧</div>
-    <div><div class="tap-label">Staff Portal</div><div class="tap-desc">Search plates &amp; confirm washes</div></div>
-    <div class="tap-arr">›</div>
-  </button>
-  <button class="tap" onclick="go('pg-admin-login')">
-    <div class="tap-icon">📊</div>
-    <div><div class="tap-label">Admin Dashboard</div><div class="tap-desc">Reports, rewards &amp; member overview</div></div>
-    <div class="tap-arr">›</div>
-  </button>
+  <button class="tap" onclick="go('pg-plans')"><div class="tap-icon">🚗</div><div><div class="tap-label">Customer Check-in</div><div class="tap-desc">Submit a wash or join a membership</div></div><div class="tap-arr">›</div></button>
+  <button class="tap" onclick="go('pg-staff-login')"><div class="tap-icon">🔧</div><div><div class="tap-label">Staff Portal</div><div class="tap-desc">Search plates & confirm washes</div></div><div class="tap-arr">›</div></button>
+  <button class="tap" onclick="go('pg-admin-login')"><div class="tap-icon">📊</div><div><div class="tap-label">Admin Dashboard</div><div class="tap-desc">Reports, rewards & member overview</div></div><div class="tap-arr">›</div></button>
 </div>
 
-<!-- PLANS -->
 <div id="pg-plans" class="page">
   <div class="pg-title">Choose a Plan</div>
   <p class="pg-sub">Your plate number is your membership ID — no card needed.</p>
 
   <div class="plan featured">
     <div class="plan-name">🎁 Wash 3, Get 1 Free</div>
-    <div class="plan-desc">Buy 3 automatic washes and your 4th is completely free. Progress tracked automatically after staff confirms each wash.</div>
+    <div class="plan-desc">Buy 3 automatic washes and your 4th is completely free. Progress tracked after staff confirms each wash.</div>
     <button class="btn btn-red" onclick="startForm('reward')">Select this plan →</button>
   </div>
 
   <div class="plan featured">
     <div class="plan-badge">Best Value</div>
     <div class="plan-name">⭐ Car Wash Membership</div>
-    <div class="plan-desc">Monthly membership with one automatic wash per calendar day. Choose the tier that suits your needs.</div>
+    <div class="plan-desc">Monthly membership with one automatic wash per calendar day.</div>
     <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px">
       <div class="plan-price" style="margin-bottom:0">From $49/mo</div>
-      <div style="font-size:13px;color:var(--muted)">1 wash per calendar day</div>
+      <div style="font-size:13px;color:var(--muted)">1 wash/day</div>
     </div>
     <button class="btn btn-red" onclick="startForm('monthly')">Select membership →</button>
   </div>
 </div>
 
-<!-- CUSTOMER FORM -->
 <div id="pg-form" class="page">
   <div class="pg-title" id="form-title"></div>
   <p class="pg-sub" id="form-sub"></p>
 
   <div class="notice n-warn">
     <strong>Note:</strong> Your wash will show as <em>Pending</em> until a staff member confirms it at the station.
+  </div>
+
+  <div class="fg">
+    <label class="flabel">Station <span class="req">*</span></label>
+    <select id="f-station">
+      <option value="">— Select station —</option>
+      <option>Sinopec Frankston</option>
+      <option>Sinopec Thomastown</option>
+      <option>Sinopec Shepparton</option>
+      <option>Sinopec Ballarat</option>
+    </select>
   </div>
 
   <div id="tier-wrap" style="display:none" class="fg">
@@ -231,20 +150,10 @@ textarea{min-height:70px;resize:vertical}
     </select>
   </div>
 
-  <div class="fg">
-    <label class="flabel">Mobile Number <span class="req">*</span></label>
-    <input type="tel" id="f-phone" placeholder="04xx xxx xxx" inputmode="tel">
-  </div>
-  <div class="fg">
-    <label class="flabel">Email Address <span class="req">*</span></label>
-    <input type="email" id="f-email" placeholder="you@email.com" inputmode="email">
-  </div>
-  <div class="fg">
-    <label class="flabel">Plate Number <span class="req">*</span></label>
-    <input type="text" id="f-plate" class="plate-input" placeholder="e.g. ABC123" autocomplete="off" autocorrect="off" spellcheck="false">
-  </div>
+  <div class="fg"><label class="flabel">Mobile Number <span class="req">*</span></label><input type="tel" id="f-phone" placeholder="04xx xxx xxx" inputmode="tel"></div>
+  <div class="fg"><label class="flabel">Email Address <span class="req">*</span></label><input type="email" id="f-email" placeholder="you@email.com" inputmode="email"></div>
+  <div class="fg"><label class="flabel">Plate Number <span class="req">*</span></label><input type="text" id="f-plate" class="plate-input" placeholder="e.g. ABC123" autocomplete="off" autocorrect="off" spellcheck="false"></div>
 
-  <!-- FIX 3: receipt is now required -->
   <div class="fg">
     <label class="flabel">Payment Receipt <span class="req">*</span></label>
     <div class="file-zone" id="fzone">
@@ -257,25 +166,18 @@ textarea{min-height:70px;resize:vertical}
     <div class="img-size" id="img-size"></div>
   </div>
 
-  <div class="fg">
-    <label class="flabel">Notes <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted)">(optional)</span></label>
-    <textarea id="f-notes" placeholder="Any extra details..."></textarea>
-  </div>
+  <div class="fg"><label class="flabel">Notes <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted)">(optional)</span></label><textarea id="f-notes" placeholder="Any extra details..."></textarea></div>
 
   <div id="form-err" class="err"></div>
   <button class="btn btn-red" id="submit-btn" onclick="submitWash()">Submit Wash</button>
 </div>
 
-<!-- SUCCESS -->
 <div id="pg-success" class="page">
   <div class="success-wrap">
     <div class="s-emoji">✅</div>
     <div class="s-title">Submitted!</div>
-    <!-- FIX 4: accurate pending messaging — no false "progress updated" -->
     <div class="s-sub" id="s-msg"></div>
   </div>
-
-  <!-- Progress card: shows last confirmed count, clearly labelled as confirmed not current pending -->
   <div id="prog-box" class="prog-card" style="display:none">
     <div style="font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Confirmed Wash Progress</div>
     <div style="font-size:12px;color:var(--muted);margin-bottom:10px">Based on your previously confirmed washes</div>
@@ -283,83 +185,64 @@ textarea{min-height:70px;resize:vertical}
     <div class="prog-bar"><div class="prog-fill" id="prog-fill"></div></div>
     <div class="prog-lbl" id="prog-lbl"></div>
   </div>
-
   <button class="btn btn-ghost" onclick="home()">← Back to Home</button>
 </div>
 
-<!-- STAFF LOGIN -->
 <div id="pg-staff-login" class="page">
   <div class="pg-title">Staff Login</div>
   <p class="pg-sub">Enter your PIN to continue.</p>
-  <div class="fg">
-    <label class="flabel">Staff PIN</label>
-    <input type="password" id="s-pin" placeholder="••••" maxlength="12" onkeydown="if(event.key==='Enter')staffLogin()">
-  </div>
+  <div class="fg"><label class="flabel">Staff PIN</label><input type="password" id="s-pin" placeholder="••••" maxlength="12" onkeydown="if(event.key==='Enter')staffLogin()"></div>
   <div id="s-login-err" class="err"></div>
   <button class="btn btn-red" id="s-login-btn" onclick="staffLogin()">Login</button>
 </div>
 
-<!-- STAFF -->
 <div id="pg-staff" class="page">
   <div class="pg-title">Staff Portal</div>
   <p class="pg-sub">Search a plate or confirm pending washes below.</p>
+
+  <div class="fg">
+    <label class="flabel">Staff Name</label>
+    <input type="text" id="s-staff-name" placeholder="Enter your name">
+  </div>
+
   <div style="display:flex;gap:8px;margin-bottom:4px">
     <input type="text" id="s-search" class="plate-input" placeholder="Plate number..." style="flex:1;font-size:16px" onkeydown="if(event.key==='Enter')staffSearch()">
     <button class="btn btn-red" style="width:auto;padding:11px 18px;margin-top:0" onclick="staffSearch()">Search</button>
   </div>
   <div id="s-result"></div>
+
   <div class="section-title">Pending Washes</div>
   <div id="pending-list"></div>
   <button class="btn btn-ghost" style="margin-top:16px" onclick="home()">Logout</button>
 </div>
 
-<!-- ADMIN LOGIN -->
 <div id="pg-admin-login" class="page">
   <div class="pg-title">Admin Login</div>
   <p class="pg-sub">Enter admin PIN to continue.</p>
-  <div class="fg">
-    <label class="flabel">Admin PIN</label>
-    <input type="password" id="a-pin" placeholder="••••" maxlength="12" onkeydown="if(event.key==='Enter')adminLogin()">
-  </div>
+  <div class="fg"><label class="flabel">Admin PIN</label><input type="password" id="a-pin" placeholder="••••" maxlength="12" onkeydown="if(event.key==='Enter')adminLogin()"></div>
   <div id="a-login-err" class="err"></div>
   <button class="btn btn-red" id="a-login-btn" onclick="adminLogin()">Login</button>
 </div>
 
-<!-- ADMIN -->
 <div id="pg-admin" class="page">
   <div class="pg-title">Admin Dashboard</div>
   <p class="pg-sub">Live data from Google Sheets.</p>
-  <div class="kpi-grid" id="kpi-grid">
-    <div class="kpi" style="grid-column:1/-1"><div class="loading"><span class="spinner"></span>Loading...</div></div>
-  </div>
-  <div class="section-title">Reward Members</div>
-  <div id="admin-rewards"></div>
-  <div class="section-title">Monthly Members</div>
-  <div id="admin-monthly"></div>
-  <div class="section-title">Recent Confirmed Washes</div>
-  <div id="admin-washes"></div>
+  <div class="kpi-grid" id="kpi-grid"><div class="kpi" style="grid-column:1/-1"><div class="loading"><span class="spinner"></span>Loading...</div></div></div>
+  <div class="section-title">Reward Members</div><div id="admin-rewards"></div>
+  <div class="section-title">Monthly Members</div><div id="admin-monthly"></div>
+  <div class="section-title">Recent Confirmed Washes</div><div id="admin-washes"></div>
   <button class="btn btn-ghost" style="margin-top:16px" onclick="home()">Logout</button>
 </div>
 
-</div><!-- /wrap -->
+</div>
 
 <script>
-// ─────────────────────────────────────────────────────────
-//  CONFIG
-//  API_TOKEN must match the value in Apps Script
-// ─────────────────────────────────────────────────────────
 const API_URL   = "https://script.google.com/macros/s/AKfycbyNP1svcMCkS6mdSJhXW2PhTxWRlBrG19s-_cNSFntuLiEjIAPyI8nDVe3SsjQDaEX3/exec";
-const API_TOKEN = "scw_prod_2025";
+const API_TOKEN = "scw_prod_2026_secure_v3";
 
-// ─────────────────────────────────────────────────────────
-//  STATE
-// ─────────────────────────────────────────────────────────
 let plan = "";
 let hist = ["pg-home"];
 
-// ─────────────────────────────────────────────────────────
-//  NAVIGATION
-// ─────────────────────────────────────────────────────────
 function go(id) {
   document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
   document.getElementById(id).classList.add("active");
@@ -367,6 +250,7 @@ function go(id) {
   document.getElementById("back-btn").classList.toggle("show", id !== "pg-home");
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
+
 function goBack() {
   hist.pop();
   const prev = hist[hist.length - 1] || "pg-home";
@@ -375,22 +259,22 @@ function goBack() {
   document.getElementById("back-btn").classList.toggle("show", prev !== "pg-home");
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
+
 function home() {
-  plan = ""; hist = ["pg-home"];
+  plan = "";
+  hist = ["pg-home"];
   document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
   document.getElementById("pg-home").classList.add("active");
   document.getElementById("back-btn").classList.remove("show");
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-// ─────────────────────────────────────────────────────────
-//  API HELPERS
-// ─────────────────────────────────────────────────────────
 async function apiGet(params) {
   const p = new URLSearchParams({ ...params, token: API_TOKEN });
   const r = await fetch(API_URL + "?" + p);
   return r.json();
 }
+
 async function apiPost(body) {
   const r = await fetch(API_URL, {
     method: "POST",
@@ -399,15 +283,12 @@ async function apiPost(body) {
   return r.json();
 }
 
-// ─────────────────────────────────────────────────────────
-//  PHOTO — compress to ≤1 MB via canvas before upload
-// ─────────────────────────────────────────────────────────
 function handlePhoto(input) {
   const file = input.files[0];
   if (!file) return;
 
   const MAX_BYTES = 1 * 1024 * 1024;
-  const MAX_DIM   = 1600;
+  const MAX_DIM   = 1200;
 
   const reader = new FileReader();
   reader.onload = e => {
@@ -419,28 +300,28 @@ function handlePhoto(input) {
         w = Math.round(w * ratio);
         h = Math.round(h * ratio);
       }
+
       const canvas = document.createElement("canvas");
-      canvas.width = w; canvas.height = h;
+      canvas.width = w;
+      canvas.height = h;
       canvas.getContext("2d").drawImage(img, 0, 0, w, h);
 
       let quality = 0.82, dataUrl, base64;
       do {
         dataUrl = canvas.toDataURL("image/jpeg", quality);
-        base64  = dataUrl.split(",")[1];
+        base64 = dataUrl.split(",")[1];
         quality -= 0.1;
       } while (base64.length * 0.75 > MAX_BYTES && quality > 0.2);
 
       input._base64 = base64;
-      input._mime   = "image/jpeg";
+      input._mime = "image/jpeg";
 
-      // Update UI
       document.getElementById("preview-img").src = dataUrl;
       document.getElementById("img-preview").style.display = "block";
       document.getElementById("fz-name").textContent = file.name;
       document.getElementById("fz-name").style.display = "block";
       document.getElementById("fz-label").textContent = "Receipt attached ✓";
-      const kb = Math.round(base64.length * 0.75 / 1024);
-      document.getElementById("img-size").textContent = `Compressed to ${kb} KB`;
+      document.getElementById("img-size").textContent = `Compressed to ${Math.round(base64.length * 0.75 / 1024)} KB`;
       document.getElementById("img-size").style.display = "block";
       document.getElementById("fzone").classList.remove("required-missing");
     };
@@ -449,13 +330,11 @@ function handlePhoto(input) {
   reader.readAsDataURL(file);
 }
 
-// ─────────────────────────────────────────────────────────
-//  CUSTOMER FORM
-// ─────────────────────────────────────────────────────────
 function selectTier(which) {
   const std = document.getElementById("tier-standard");
   const prm = document.getElementById("tier-premium");
   const sel = document.getElementById("f-tier");
+
   if (which === "standard") {
     sel.value = "$49 Standard";
     std.style.border = "1.5px solid var(--red)";
@@ -469,42 +348,55 @@ function selectTier(which) {
     std.style.border = "1px solid var(--border)";
     std.style.background = "#fff";
   }
+
   document.getElementById("form-err").classList.remove("show");
 }
 
 function startForm(p) {
   plan = p;
+
   document.getElementById("form-title").textContent =
     p === "reward" ? "Wash 3, Get 1 Free" : "Car Wash Membership";
+
   document.getElementById("form-sub").textContent =
     p === "reward"
       ? "Submit your wash to track progress toward your free wash."
       : "Register or renew your car wash membership.";
+
   document.getElementById("tier-wrap").style.display = p === "monthly" ? "block" : "none";
 
-  // Reset all fields
   ["f-phone","f-email","f-plate","f-notes"].forEach(id => document.getElementById(id).value = "");
+  document.getElementById("f-station").value = "";
   document.getElementById("f-tier").selectedIndex = 0;
-  const ts = document.getElementById("tier-standard");
-  const tp = document.getElementById("tier-premium");
-  if (ts) { ts.style.border = "1px solid var(--border)"; ts.style.background = "#fff"; }
-  if (tp) { tp.style.border = "1px solid var(--border)"; tp.style.background = "#fff"; }
+
+  ["tier-standard","tier-premium"].forEach(id => {
+    const el = document.getElementById(id);
+    el.style.border = "1px solid var(--border)";
+    el.style.background = "#fff";
+  });
+
   const fi = document.getElementById("f-photo");
-  fi.value = ""; fi._base64 = null; fi._mime = null;
+  fi.value = "";
+  fi._base64 = null;
+  fi._mime = null;
+
   document.getElementById("img-preview").style.display = "none";
   document.getElementById("img-size").style.display = "none";
   document.getElementById("fz-name").style.display = "none";
   document.getElementById("fz-label").textContent = "Tap to photograph or upload your receipt";
   document.getElementById("fzone").classList.remove("required-missing");
   document.getElementById("form-err").classList.remove("show");
+
   resetBtn("submit-btn", "Submit Wash");
   go("pg-form");
 }
 
 function resetBtn(id, label) {
   const b = document.getElementById(id);
-  b.disabled = false; b.innerHTML = label;
+  b.disabled = false;
+  b.innerHTML = label;
 }
+
 function loadingBtn(id, label) {
   const b = document.getElementById(id);
   b.disabled = true;
@@ -512,29 +404,43 @@ function loadingBtn(id, label) {
 }
 
 async function submitWash() {
-  const phone = document.getElementById("f-phone").value.trim();
+  const station = document.getElementById("f-station").value;
+  const phoneRaw = document.getElementById("f-phone").value.trim();
+  const phone = phoneRaw.replace(/\s/g, "");
   const email = document.getElementById("f-email").value.trim();
   const plate = document.getElementById("f-plate").value.trim().toUpperCase();
   const notes = document.getElementById("f-notes").value.trim();
-  const tier  = document.getElementById("f-tier").value;
-  const fi    = document.getElementById("f-photo");
-  const err   = document.getElementById("form-err");
+  const tier = document.getElementById("f-tier").value;
+  const fi = document.getElementById("f-photo");
+  const err = document.getElementById("form-err");
 
-  // Validation
   const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!phone || !email || !plate) {
-    err.textContent = "Please fill in all required fields (mobile, email and plate number).";
-    err.classList.add("show"); return;
+  const phoneRe = /^04\d{8}$/;
+
+  if (!station || !phone || !email || !plate) {
+    err.textContent = "Please fill in all required fields: station, mobile, email and plate number.";
+    err.classList.add("show");
+    return;
   }
+
+  if (!phoneRe.test(phone)) {
+    err.textContent = "Please enter a valid Australian mobile number, e.g. 04xx xxx xxx.";
+    err.classList.add("show");
+    return;
+  }
+
   if (!emailRe.test(email)) {
-    err.textContent = "Please enter a valid email address (e.g. you@email.com).";
-    err.classList.add("show"); return;
+    err.textContent = "Please enter a valid email address, e.g. you@email.com.";
+    err.classList.add("show");
+    return;
   }
+
   if (plan === "monthly" && !tier) {
     err.textContent = "Please select a membership tier.";
-    err.classList.add("show"); return;
+    err.classList.add("show");
+    return;
   }
-  // FIX 3: receipt is required
+
   if (!fi._base64) {
     err.textContent = "Please attach a photo of your payment receipt.";
     err.classList.add("show");
@@ -547,12 +453,16 @@ async function submitWash() {
 
   try {
     const result = await apiPost({
-      action:      "submitWash",
-      phone, email, plate, notes,
+      action: "submitWash",
+      station,
+      phone,
+      email,
+      plate,
+      notes,
       plan,
-      monthlyTier:  tier,
-      photoBase64:  fi._base64,
-      photoMime:    fi._mime
+      monthlyTier: tier,
+      photoBase64: fi._base64,
+      photoMime: fi._mime
     });
 
     if (result.error === "duplicate") {
@@ -561,6 +471,7 @@ async function submitWash() {
       resetBtn("submit-btn", "Submit Wash");
       return;
     }
+
     if (result.error) {
       err.textContent = "Server error: " + result.error;
       err.classList.add("show");
@@ -568,29 +479,30 @@ async function submitWash() {
       return;
     }
 
-    // FIX 4: clear, honest success messaging — no "progress updated" while still pending
     document.getElementById("s-msg").textContent =
       plan === "monthly"
         ? "Your membership has been submitted. Staff will verify your receipt and activate your plan shortly."
-        : "Your wash has been submitted. Progress will update once staff confirms your receipt — usually within a few minutes.";
+        : "Your wash has been submitted. Progress will update once staff confirms your receipt.";
 
-    // Show confirmed-wash progress from PREVIOUS confirmed washes (not the current pending one)
     const pb = document.getElementById("prog-box");
+
     if (plan === "reward" && result.confirmedWashes !== undefined) {
       pb.style.display = "block";
       const mod = result.progressMod || 0;
-      const sr  = document.getElementById("stars");
+      const sr = document.getElementById("stars");
       sr.innerHTML = "";
+
       for (let i = 0; i < 3; i++) {
         const s = document.createElement("div");
         s.className = "star" + (i < mod ? " lit" : "");
         s.textContent = i < mod ? "✓" : (i + 1);
         sr.appendChild(s);
       }
+
       setTimeout(() => {
         document.getElementById("prog-fill").style.width = Math.round((mod / 3) * 100) + "%";
       }, 120);
-      // FIX 4: label makes clear this reflects confirmed washes, not the pending one just submitted
+
       document.getElementById("prog-lbl").textContent =
         mod === 0 && result.confirmedWashes === 0
           ? "No confirmed washes yet — your first is on its way!"
@@ -602,6 +514,7 @@ async function submitWash() {
     }
 
     go("pg-success");
+
   } catch(e) {
     err.textContent = "Connection error. Please check your network and try again.";
     err.classList.add("show");
@@ -609,28 +522,35 @@ async function submitWash() {
   }
 }
 
-// ─────────────────────────────────────────────────────────
-//  STAFF LOGIN — server-side PIN
-// ─────────────────────────────────────────────────────────
 async function staffLogin() {
   const pin = document.getElementById("s-pin").value;
   const err = document.getElementById("s-login-err");
-  if (!pin) { err.textContent = "Please enter your PIN."; err.classList.add("show"); return; }
+
+  if (!pin) {
+    err.textContent = "Please enter your PIN.";
+    err.classList.add("show");
+    return;
+  }
+
   loadingBtn("s-login-btn", "Checking…");
+
   try {
     const r = await apiPost({ action: "staffLogin", pin });
+
     if (!r.success) {
       err.textContent = r.error || "Incorrect PIN.";
       err.classList.add("show");
       resetBtn("s-login-btn", "Login");
       return;
     }
+
     err.classList.remove("show");
     document.getElementById("s-pin").value = "";
     document.getElementById("s-search").value = "";
     document.getElementById("s-result").innerHTML = "";
     go("pg-staff");
     loadPending();
+
   } catch(e) {
     err.textContent = "Connection error. Please try again.";
     err.classList.add("show");
@@ -638,28 +558,34 @@ async function staffLogin() {
   }
 }
 
-// ─────────────────────────────────────────────────────────
-//  STAFF — plate search
-// ─────────────────────────────────────────────────────────
 async function staffSearch() {
-  const q   = document.getElementById("s-search").value.trim().toUpperCase();
+  const q = document.getElementById("s-search").value.trim().toUpperCase();
   const box = document.getElementById("s-result");
-  if (!q) { box.innerHTML = ""; return; }
+
+  if (!q) {
+    box.innerHTML = "";
+    return;
+  }
+
   box.innerHTML = '<div class="loading"><span class="spinner"></span>Searching…</div>';
+
   try {
     const d = await apiGet({ action: "searchPlate", plate: q });
+
     if (!d.found) {
       box.innerHTML = `<div class="sbox sbox-no"><strong>${q}</strong> — not found in system.</div>`;
       return;
     }
+
     const mod = d.confirmedWashes % 3;
+
     box.innerHTML = `
       <div class="sbox sbox-ok">
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
           <span class="rec-plate">${d.plate}</span>
           <span class="badge ${d.plan === 'monthly' ? 'b-monthly' : 'b-reward'}">${d.plan === 'monthly' ? (d.monthlyTier || 'Monthly') : 'Reward'}</span>
         </div>
-        <div class="rec-meta">${d.phone} · ${d.email}</div>
+        <div class="rec-meta">${d.station ? d.station + ' · ' : ''}${d.phone} · ${d.email}</div>
         <div class="div"></div>
         <div style="font-size:13px;line-height:2">
           Confirmed washes: <strong>${d.confirmedWashes}</strong><br>
@@ -667,17 +593,16 @@ async function staffSearch() {
           Free washes earned: <strong>${d.freeUsed}</strong>
         </div>
       </div>`;
+
   } catch(e) {
     box.innerHTML = '<div class="loading" style="color:var(--red)">Connection error.</div>';
   }
 }
 
-// ─────────────────────────────────────────────────────────
-//  STAFF — pending list (re-syncs from server after each action)
-// ─────────────────────────────────────────────────────────
 async function loadPending() {
   const list = document.getElementById("pending-list");
   list.innerHTML = '<div class="loading"><span class="spinner"></span>Loading…</div>';
+
   try {
     const d = await apiGet({ action: "getPending" });
     renderPending(d.pending || []);
@@ -688,10 +613,12 @@ async function loadPending() {
 
 function renderPending(rows) {
   const list = document.getElementById("pending-list");
+
   if (!rows.length) {
     list.innerHTML = '<div class="empty">No pending washes — all clear ✓</div>';
     return;
   }
+
   list.innerHTML = rows.map(w => `
     <div class="rec" id="rec-${w.id}">
       <div class="rec-head">
@@ -704,7 +631,7 @@ function renderPending(rows) {
           ? `<a href="${w.receiptUrl}" target="_blank"><img src="${w.receiptUrl}" class="receipt-thumb" alt="Receipt" onerror="this.style.display='none'"></a>`
           : '<span style="font-size:11px;color:var(--muted);flex-shrink:0">No receipt</span>'}
       </div>
-      <div class="rec-meta">${w.washDate} · ${w.phone}${w.notes ? ' · ' + w.notes : ''}</div>
+      <div class="rec-meta">${w.station ? w.station + ' · ' : ''}${w.washDate} · ${w.phone}${w.notes ? ' · ' + w.notes : ''}</div>
       <div class="rec-actions">
         <button class="btn btn-success btn-sm" onclick="confirmWash('${w.id}')">✓ Confirm</button>
         <button class="btn btn-ghost btn-sm" onclick="rejectWash('${w.id}')">✕ Reject</button>
@@ -713,49 +640,84 @@ function renderPending(rows) {
 }
 
 async function confirmWash(id) {
+  const staffName = document.getElementById("s-staff-name").value.trim();
   const rec = document.getElementById("rec-" + id);
-  if (rec) { rec.style.opacity = ".4"; rec.style.pointerEvents = "none"; }
+
+  if (!staffName) {
+    alert("Please enter your staff name before confirming.");
+    return;
+  }
+
+  if (rec) {
+    rec.style.opacity = ".4";
+    rec.style.pointerEvents = "none";
+  }
+
   try {
-    await apiPost({ action: "confirmWash", id });
+    await apiPost({ action: "confirmWash", id, staffName });
     await loadPending();
   } catch(e) {
-    if (rec) { rec.style.opacity = "1"; rec.style.pointerEvents = ""; }
+    if (rec) {
+      rec.style.opacity = "1";
+      rec.style.pointerEvents = "";
+    }
     alert("Error confirming wash. Please try again.");
   }
 }
 
 async function rejectWash(id) {
+  const staffName = document.getElementById("s-staff-name").value.trim();
   const rec = document.getElementById("rec-" + id);
-  if (rec) { rec.style.opacity = ".4"; rec.style.pointerEvents = "none"; }
+
+  if (!staffName) {
+    alert("Please enter your staff name before rejecting.");
+    return;
+  }
+
+  if (rec) {
+    rec.style.opacity = ".4";
+    rec.style.pointerEvents = "none";
+  }
+
   try {
-    await apiPost({ action: "rejectWash", id });
+    await apiPost({ action: "rejectWash", id, staffName });
     await loadPending();
   } catch(e) {
-    if (rec) { rec.style.opacity = "1"; rec.style.pointerEvents = ""; }
+    if (rec) {
+      rec.style.opacity = "1";
+      rec.style.pointerEvents = "";
+    }
     alert("Error rejecting wash. Please try again.");
   }
 }
 
-// ─────────────────────────────────────────────────────────
-//  ADMIN LOGIN — server-side PIN
-// ─────────────────────────────────────────────────────────
 async function adminLogin() {
   const pin = document.getElementById("a-pin").value;
   const err = document.getElementById("a-login-err");
-  if (!pin) { err.textContent = "Please enter your PIN."; err.classList.add("show"); return; }
+
+  if (!pin) {
+    err.textContent = "Please enter your PIN.";
+    err.classList.add("show");
+    return;
+  }
+
   loadingBtn("a-login-btn", "Checking…");
+
   try {
     const r = await apiPost({ action: "adminLogin", pin });
+
     if (!r.success) {
       err.textContent = r.error || "Incorrect PIN.";
       err.classList.add("show");
       resetBtn("a-login-btn", "Login");
       return;
     }
+
     err.classList.remove("show");
     document.getElementById("a-pin").value = "";
     go("pg-admin");
     loadAdmin();
+
   } catch(e) {
     err.textContent = "Connection error. Please try again.";
     err.classList.add("show");
@@ -763,36 +725,33 @@ async function adminLogin() {
   }
 }
 
-// ─────────────────────────────────────────────────────────
-//  ADMIN DASHBOARD
-// ─────────────────────────────────────────────────────────
 async function loadAdmin() {
   try {
     const d = await apiGet({ action: "getAdminData" });
 
     document.getElementById("kpi-grid").innerHTML = `
-      <div class="kpi"><div class="kpi-num">${d.todayCount}</div><div class="kpi-lbl">Today Washes</div></div>
-      <div class="kpi"><div class="kpi-num">${d.pendingCount}</div><div class="kpi-lbl">Pending</div></div>
-      <div class="kpi"><div class="kpi-num">${d.freeEarned}</div><div class="kpi-lbl">Free Earned</div></div>
-      <div class="kpi"><div class="kpi-num">${d.monthlyCount}</div><div class="kpi-lbl">Monthly Members</div></div>`;
+      <div class="kpi"><div class="kpi-num">${d.todayCount || 0}</div><div class="kpi-lbl">Today Washes</div></div>
+      <div class="kpi"><div class="kpi-num">${d.pendingCount || 0}</div><div class="kpi-lbl">Pending</div></div>
+      <div class="kpi"><div class="kpi-num">${d.freeEarned || 0}</div><div class="kpi-lbl">Free Earned</div></div>
+      <div class="kpi"><div class="kpi-num">${d.monthlyCount || 0}</div><div class="kpi-lbl">Monthly Members</div></div>`;
 
     const rewards = (d.members || []).filter(m => m.plan === "reward");
+
     document.getElementById("admin-rewards").innerHTML = rewards.length
       ? rewards.map(m => {
           const mod = m.confirmedWashes % 3;
           return `<div class="rec">
             <div class="rec-head">
               <span class="rec-plate">${m.plate}</span>
-              <span style="font-size:13px;color:var(--muted)">${mod}/3
-                <span class="badge b-free">${m.freeUsed} free</span>
-              </span>
+              <span style="font-size:13px;color:var(--muted)">${mod}/3 <span class="badge b-free">${m.freeUsed} free</span></span>
             </div>
-            <div class="rec-meta">${m.phone} · ${m.confirmedWashes} confirmed wash${m.confirmedWashes !== 1 ? "es" : ""}</div>
+            <div class="rec-meta">${m.station ? m.station + ' · ' : ''}${m.phone} · ${m.confirmedWashes} confirmed wash${m.confirmedWashes !== 1 ? "es" : ""}</div>
           </div>`;
         }).join("")
       : '<div class="empty">No reward members yet.</div>';
 
     const monthly = (d.members || []).filter(m => m.plan === "monthly");
+
     document.getElementById("admin-monthly").innerHTML = monthly.length
       ? monthly.map(m => `
           <div class="rec">
@@ -800,11 +759,12 @@ async function loadAdmin() {
               <span class="rec-plate">${m.plate}</span>
               <span class="badge b-monthly">${m.monthlyTier || "Monthly"}</span>
             </div>
-            <div class="rec-meta">${m.phone} · Joined ${m.joinedAt}</div>
+            <div class="rec-meta">${m.station ? m.station + ' · ' : ''}${m.phone} · Joined ${m.joinedAt || '-'}</div>
           </div>`).join("")
       : '<div class="empty">No monthly members yet.</div>';
 
     const recent = d.recent || [];
+
     document.getElementById("admin-washes").innerHTML = recent.length
       ? recent.map(w => `
           <div class="rec">
@@ -812,7 +772,7 @@ async function loadAdmin() {
               <span class="rec-plate">${w.plate}</span>
               <span class="badge b-done">Confirmed</span>
             </div>
-            <div class="rec-meta">${w.washDate} · ${w.phone}${w.plan === "monthly" ? " · " + (w.monthlyTier || "Monthly") : ""}</div>
+            <div class="rec-meta">${w.station ? w.station + ' · ' : ''}${w.washDate} · ${w.phone}${w.plan === "monthly" ? " · " + (w.monthlyTier || "Monthly") : ""}${w.staffName ? " · confirmed by " + w.staffName : ""}</div>
           </div>`).join("")
       : '<div class="empty">No confirmed washes yet.</div>';
 
