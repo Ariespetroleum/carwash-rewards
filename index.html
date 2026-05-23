@@ -5,493 +5,916 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Aries Petroleum — Rewards & Offers</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
 <style>
 :root{
-  --bg:#0e0c0a;--surface:#181410;--surface2:#221e18;--surface3:#2a2420;
-  --gold:#d4a843;--gold2:#e8c068;--gold-dim:#7a5e25;--gold-bg:rgba(212,168,67,.08);--gold-border:rgba(212,168,67,.2);
-  --red:#c8102e;--red-bg:rgba(200,16,46,.08);--red-border:rgba(200,16,46,.25);
-  --green:#22c55e;--green-bg:rgba(34,197,94,.08);--green-border:rgba(34,197,94,.2);
-  --blue:#38bdf8;--blue-bg:rgba(56,189,248,.08);--blue-border:rgba(56,189,248,.2);
-  --text:#f0ede8;--muted:#8a7e6e;--label:#c4b89a;
-  --border:#2e2820;--border2:#3d3428;
-  --radius:16px;--radius-sm:10px;
-  --mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;--display:'Playfair Display',serif;
+  --sinopec-red:#E60012;
+  --sinopec-red-dark:#B8000E;
+  --sinopec-yellow:#FFD100;
+
+  --bp-green:#00A651;
+  --bp-green-dark:#007A3D;
+  --bp-yellow:#FFDB00;
+
+  --liberty-blue:#003DA5;
+  --liberty-blue-dark:#002A73;
+  --liberty-red:#CE1126;
+
+  --bg:#F4F6F8;
+  --surface:#FFFFFF;
+  --surface-soft:#F8FAFC;
+  --surface-tint:#EEF3FF;
+
+  --border:#DDE3EA;
+  --border-strong:#C9D2DD;
+
+  --text:#142033;
+  --muted:#667085;
+  --label:#344054;
+
+  --danger-light:#FFF1F2;
+  --green-light:#ECFDF3;
+  --blue-light:#EFF6FF;
+  --yellow-light:#FFFAEB;
+
+  --radius:16px;
+  --radius-sm:10px;
+
+  --sans:'DM Sans',sans-serif;
+  --mono:'DM Mono',monospace;
+
+  --shadow:0 4px 18px rgba(15,23,42,.08);
+  --shadow-sm:0 2px 8px rgba(15,23,42,.06);
 }
+
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html{font-size:15px;scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;overflow-x:hidden}
+html{font-size:15px}
+body{
+  background:linear-gradient(180deg,#F8FAFC 0%,#EEF2F6 100%);
+  color:var(--text);
+  font-family:var(--sans);
+  min-height:100vh;
+  overflow-x:hidden;
+}
 
-/* ── GRAIN OVERLAY ── */
-body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.035;
-background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-
-/* ── SCREENS ── */
-.screen{display:none;position:relative;z-index:1}
+.screen{display:none}
 .screen.active{display:block}
 
-/* ── HERO HEADER ── */
 .hero{
-  background:linear-gradient(160deg,#1a1208 0%,#0e0c0a 60%);
-  border-bottom:1px solid var(--border2);
-  padding:36px 20px 32px;
-  text-align:center;
-  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--sinopec-red) 0%,var(--liberty-blue) 100%);
+  color:#fff;
+  padding:18px 16px 16px;
+  position:sticky;
+  top:0;
+  z-index:100;
+  box-shadow:0 6px 20px rgba(0,0,0,.18);
 }
-.hero::after{
-  content:'';position:absolute;top:-40px;left:50%;transform:translateX(-50%);
-  width:300px;height:200px;
-  background:radial-gradient(ellipse,rgba(212,168,67,.12) 0%,transparent 70%);
-  pointer-events:none;
+
+.hero-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:10px;
 }
+
 .hero-logo{
-  width:52px;height:52px;background:linear-gradient(135deg,var(--gold),var(--gold2));
-  border-radius:14px;display:flex;align-items:center;justify-content:center;
-  margin:0 auto 16px;font-size:24px;box-shadow:0 4px 20px rgba(212,168,67,.25);
+  width:42px;
+  height:42px;
+  background:rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.24);
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  flex-shrink:0;
 }
-.hero-brand{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:8px}
-.hero-title{font-family:var(--display);font-size:28px;line-height:1.2;margin-bottom:8px;
-  background:linear-gradient(135deg,var(--gold2),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{font-size:13px;color:var(--muted);line-height:1.6;max-width:280px;margin:0 auto}
 
-/* ── SECTION LABELS ── */
+.hero-titles{text-align:center;flex:1}
+.hero-title{font-size:21px;font-weight:800;line-height:1.15}
+.hero-brand{
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.82);
+  margin-top:4px;
+}
+
+.hero-sub{
+  text-align:center;
+  font-size:12px;
+  color:rgba(255,255,255,.88);
+}
+
+.lang-toggle{
+  display:flex;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:9px;
+  overflow:hidden;
+  flex-shrink:0;
+}
+
+.lang-btn{
+  padding:6px 10px;
+  font-family:var(--mono);
+  font-size:11px;
+  color:#fff;
+  cursor:pointer;
+  border:none;
+  background:transparent;
+  font-weight:600;
+}
+
+.lang-btn.active{
+  background:#fff;
+  color:var(--liberty-blue);
+}
+
+.brand-stripe{
+  display:flex;
+  height:5px;
+  box-shadow:var(--shadow-sm);
+}
+
+.brand-stripe span{flex:1}
+
+.page-wrap{
+  max-width:540px;
+  margin:0 auto;
+}
+
 .section-label{
-  font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--gold-dim);padding:20px 20px 10px;
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--muted);
+  padding:18px 16px 9px;
+  font-weight:700;
 }
 
-/* ── OFFER CARDS ── */
 .offer-card{
-  margin:0 14px 14px;background:var(--surface);border:1px solid var(--border2);
-  border-radius:var(--radius);overflow:hidden;position:relative;
-  transition:border-color .2s;cursor:pointer;
+  margin:0 12px 14px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+  animation:slideUp .32s ease both;
 }
-.offer-card:active{transform:scale(.99)}
-.offer-card-stripe{height:3px;width:100%}
-.offer-card-body{padding:18px 18px 14px}
-.offer-card-icon{font-size:26px;margin-bottom:10px;display:block}
-.offer-card-title{font-family:var(--display);font-size:19px;margin-bottom:4px;line-height:1.3}
-.offer-card-title-en{font-family:var(--sans);font-size:11px;color:var(--muted);margin-bottom:10px;font-style:italic}
-.offer-card-desc{font-size:13px;color:var(--label);line-height:1.65;margin-bottom:14px}
-.offer-card-action{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:10px 18px;border-top:1px solid var(--border);
-  font-family:var(--mono);font-size:11px;color:var(--muted);
-}
-.offer-card-cta{
-  font-size:12px;font-weight:600;font-family:var(--sans);
-  padding:6px 14px;border-radius:7px;border:none;cursor:pointer;
-  transition:opacity .15s;
-}
-.cta-gold{background:var(--gold);color:#1a0f00}
-.cta-gold:hover{opacity:.88}
 
-/* ── PROGRESS DOTS for coffee ── */
-.coffee-dots{display:flex;gap:6px;margin:12px 0 4px}
-.coffee-dot{
-  width:32px;height:32px;border-radius:50%;
-  border:1.5px solid var(--border2);background:var(--surface2);
-  display:flex;align-items:center;justify-content:center;
-  font-size:13px;color:var(--muted);font-family:var(--mono);font-weight:500;
-  transition:all .3s;
+@keyframes slideUp{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:none}
 }
-.coffee-dot.lit{background:var(--gold);border-color:var(--gold);color:#1a0f00;font-size:14px}
-.coffee-dot.free{background:linear-gradient(135deg,var(--gold),var(--gold2));border-color:var(--gold2);color:#1a0f00;font-size:11px;font-weight:700}
 
-/* ── WASH PROGRESS DOTS ── */
-.wash-dots{display:flex;gap:6px;margin:12px 0 4px}
-.wash-dot{
-  width:32px;height:32px;border-radius:50%;
-  border:1.5px solid var(--border2);background:var(--surface2);
-  display:flex;align-items:center;justify-content:center;
-  font-size:12px;color:var(--muted);font-family:var(--mono);font-weight:500;
+.offer-stripe{height:5px;width:100%}
+
+.offer-body{padding:16px 16px 13px}
+.offer-icon{font-size:28px;margin-bottom:8px;display:block}
+.offer-title{font-size:18px;font-weight:800;color:var(--text);margin-bottom:3px}
+.offer-title-sub{font-size:12px;color:var(--muted);margin-bottom:9px;font-weight:600}
+.offer-tagline{font-size:13px;color:var(--label);line-height:1.6}
+
+.offer-note-box{
+  margin-top:10px;
+  padding:10px 11px;
+  border-radius:10px;
+  background:var(--blue-light);
+  border:1px solid #C7D7FE;
+  color:#1E3A8A;
+  font-size:12px;
+  line-height:1.55;
 }
-.wash-dot.lit{background:var(--red);border-color:var(--red);color:#fff;font-size:14px}
-.wash-dot.free{background:linear-gradient(135deg,#c8102e,#e8385a);border-color:#e8385a;color:#fff;font-size:11px;font-weight:700}
 
-/* ── FORM SCREEN ── */
+.offer-footer{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:12px 16px;
+  border-top:1px solid var(--border);
+  background:var(--surface-soft);
+}
+
+.offer-note{
+  font-family:var(--mono);
+  font-size:10px;
+  color:var(--muted);
+}
+
+.offer-cta{
+  font-size:13px;
+  font-weight:800;
+  padding:8px 16px;
+  border-radius:9px;
+  border:none;
+  cursor:pointer;
+  white-space:nowrap;
+}
+
+.cw-btns{
+  display:flex;
+  gap:9px;
+  padding:13px 16px;
+  border-top:1px solid var(--border);
+  background:var(--surface-soft);
+}
+
+.cw-btn{
+  flex:1;
+  padding:12px 8px;
+  border:none;
+  border-radius:11px;
+  font-size:13px;
+  font-weight:800;
+  font-family:var(--sans);
+  cursor:pointer;
+  text-align:center;
+  line-height:1.35;
+  box-shadow:var(--shadow-sm);
+}
+
+.cw-btn-label{
+  font-size:11px;
+  font-weight:500;
+  opacity:.9;
+  margin-top:3px;
+  display:block;
+}
+
 .form-header{
-  background:var(--surface);border-bottom:1px solid var(--border2);
-  padding:16px 18px;display:flex;align-items:center;gap:12px;
-  position:sticky;top:0;z-index:50;
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  padding:12px 16px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  position:sticky;
+  top:0;
+  z-index:50;
+  box-shadow:var(--shadow-sm);
 }
+
 .form-back{
-  width:34px;height:34px;border-radius:8px;border:1px solid var(--border2);
-  background:transparent;color:var(--muted);font-size:16px;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0;
+  width:36px;
+  height:36px;
+  border-radius:10px;
+  border:1.5px solid var(--border);
+  background:#fff;
+  color:var(--label);
+  font-size:17px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
 }
-.form-back:hover{border-color:var(--gold);color:var(--gold)}
-.form-header-text{flex:1}
-.form-header-title{font-size:14px;font-weight:600}
+
+.form-header-title{font-size:15px;font-weight:800;color:var(--text)}
 .form-header-sub{font-size:11px;color:var(--muted);margin-top:1px}
 
-.form-body{padding:20px 18px 60px;max-width:480px;margin:0 auto}
+.form-body{
+  padding:18px 16px 56px;
+  max-width:520px;
+  margin:0 auto;
+}
 
 .notice{
-  background:var(--gold-bg);border:1px solid var(--gold-border);
-  border-radius:var(--radius-sm);padding:12px 14px;
-  font-size:13px;color:var(--label);line-height:1.6;margin-bottom:20px;
+  background:var(--yellow-light);
+  border:1px solid #FEDF89;
+  border-radius:var(--radius-sm);
+  padding:12px 14px;
+  font-size:13px;
+  color:#5F4300;
+  line-height:1.65;
+  margin-bottom:14px;
 }
-.notice strong{color:var(--gold2)}
 
-.fg{margin-bottom:16px}
-.flabel{display:block;font-size:11px;font-weight:600;color:var(--muted);
-  text-transform:uppercase;letter-spacing:.07em;margin-bottom:7px;font-family:var(--mono)}
-.req{color:var(--gold);margin-left:2px}
-.flabel-en{font-size:10px;color:var(--gold-dim);margin-left:4px;font-weight:400;
-  text-transform:none;letter-spacing:0;font-style:italic;font-family:var(--sans)}
+.notice strong{color:#3D2A00}
+.notice-it{
+  font-size:12px;
+  color:var(--muted);
+  font-style:italic;
+  margin-top:4px;
+  display:block;
+}
+
+.location-box{
+  background:#fff;
+  border:1px solid var(--border);
+  border-left:4px solid var(--liberty-blue);
+  border-radius:12px;
+  padding:13px 14px;
+  margin-bottom:16px;
+  font-size:13px;
+  line-height:1.75;
+  color:var(--label);
+  box-shadow:var(--shadow-sm);
+}
+
+.location-title{
+  font-weight:800;
+  color:var(--text);
+  margin-bottom:6px;
+}
+
+.fg{margin-bottom:15px}
+
+.flabel{
+  display:block;
+  font-size:11px;
+  font-weight:700;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.07em;
+  margin-bottom:6px;
+  font-family:var(--mono);
+}
+
+.req{color:var(--sinopec-red);margin-left:2px}
 
 input,select,textarea{
-  width:100%;padding:11px 14px;
-  border:1.5px solid var(--border2);border-radius:var(--radius-sm);
-  font-size:15px;background:var(--surface2);color:var(--text);
-  font-family:var(--sans);outline:none;transition:border-color .2s;
+  width:100%;
+  padding:12px 13px;
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);
+  font-size:15px;
+  background:#fff;
+  color:var(--text);
+  font-family:var(--sans);
+  outline:none;
+  transition:border-color .2s,box-shadow .2s;
   -webkit-appearance:none;
 }
-input:focus,select:focus,textarea:focus{border-color:var(--gold)}
-input::placeholder,textarea::placeholder{color:var(--muted)}
-select option{background:var(--surface2)}
-textarea{min-height:80px;resize:vertical;line-height:1.6}
-.plate-input{text-transform:uppercase;font-family:var(--mono);font-size:18px;letter-spacing:.08em}
 
-/* ── RECEIPT UPLOAD ── */
+input:focus,select:focus,textarea:focus{
+  border-color:var(--liberty-blue);
+  box-shadow:0 0 0 3px rgba(0,61,165,.10);
+}
+
+textarea{
+  min-height:82px;
+  resize:vertical;
+  line-height:1.6;
+}
+
+.plate-input{
+  text-transform:uppercase;
+  font-family:var(--mono);
+  font-size:18px;
+  letter-spacing:.08em;
+  font-weight:700;
+}
+
 .file-zone{
-  border:1.5px dashed var(--border2);background:var(--surface2);
-  border-radius:var(--radius-sm);padding:20px;text-align:center;
-  cursor:pointer;position:relative;overflow:hidden;transition:border-color .2s;
+  border:2px dashed var(--border-strong);
+  background:var(--surface-soft);
+  border-radius:var(--radius-sm);
+  padding:18px;
+  text-align:center;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
 }
-.file-zone:hover{border-color:var(--gold-border)}
-.file-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.fz-icon{font-size:28px;margin-bottom:6px}
+
+.file-zone input[type=file]{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  cursor:pointer;
+  width:100%;
+  height:100%;
+}
+
+.fz-icon{font-size:27px;margin-bottom:5px}
 .fz-label{font-size:13px;color:var(--muted)}
-.fz-name{font-size:12px;color:var(--gold);font-weight:600;margin-top:4px;display:none}
-.img-preview{margin-top:10px;border-radius:var(--radius-sm);overflow:hidden;display:none}
-.img-preview img{width:100%;display:block;object-fit:cover;max-height:180px}
-.img-size{font-size:11px;color:var(--muted);margin-top:4px;display:none}
+.fz-name{font-size:12px;color:var(--bp-green-dark);font-weight:700;margin-top:4px;display:none}
 
-/* ── TIER SELECT ── */
+.img-preview{
+  margin-top:10px;
+  border-radius:var(--radius-sm);
+  overflow:hidden;
+  display:none;
+  border:1px solid var(--border);
+}
+
+.img-preview img{
+  width:100%;
+  display:block;
+  object-fit:cover;
+  max-height:190px;
+}
+
+.img-size{
+  font-size:11px;
+  color:var(--muted);
+  margin-top:4px;
+  display:none;
+}
+
 .tier-option{
-  border:1.5px solid var(--border2);border-radius:var(--radius-sm);
-  padding:14px;margin-bottom:10px;cursor:pointer;transition:all .2s;
-  background:var(--surface2);
+  border:2px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:13px;
+  margin-bottom:9px;
+  cursor:pointer;
+  background:#fff;
 }
-.tier-option:hover{border-color:var(--border2)}
-.tier-option.selected{border-color:var(--red);background:var(--red-bg)}
-.tier-name{font-size:15px;font-weight:700;margin-bottom:3px}
-.tier-price{font-family:var(--mono);font-size:15px;color:var(--red);font-weight:600}
-.tier-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-top:4px}
-.tier-best{display:inline-block;background:var(--red);color:#fff;
-  font-size:9px;font-weight:700;padding:2px 7px;border-radius:4px;
-  text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
 
-/* ── BUTTONS ── */
+.tier-option.selected{
+  border-color:var(--liberty-blue);
+  background:var(--blue-light);
+}
+
+.tier-name{font-size:15px;font-weight:800;color:var(--text)}
+.tier-price{
+  font-family:var(--mono);
+  font-size:15px;
+  color:var(--sinopec-red);
+  font-weight:700;
+  margin-top:1px;
+}
+
+.tier-desc{
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.6;
+  margin-top:5px;
+}
+
+.tier-best{
+  display:inline-block;
+  background:var(--sinopec-red);
+  color:#fff;
+  font-size:9px;
+  font-weight:800;
+  padding:3px 8px;
+  border-radius:5px;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  margin-bottom:6px;
+}
+
 .btn{
-  display:block;width:100%;padding:14px 18px;border:none;border-radius:var(--radius-sm);
-  font-size:15px;font-weight:600;cursor:pointer;font-family:var(--sans);
-  text-align:center;transition:opacity .15s,transform .1s;letter-spacing:.01em;
+  display:block;
+  width:100%;
+  padding:14px 18px;
+  border:none;
+  border-radius:var(--radius-sm);
+  font-size:15px;
+  font-weight:800;
+  cursor:pointer;
+  font-family:var(--sans);
+  text-align:center;
 }
-.btn:active{transform:scale(.98)}
-.btn:disabled{opacity:.4;cursor:not-allowed}
-.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a0f00}
-.btn-ghost{background:var(--surface2);color:var(--label);border:1px solid var(--border2)}
-.btn-ghost:hover{border-color:var(--border2);color:var(--text)}
-.btn-red{background:var(--red);color:#fff}
 
-/* ── ERROR ── */
-.err{
-  background:var(--red-bg);border:1px solid var(--red-border);
-  border-radius:var(--radius-sm);padding:10px 13px;
-  font-size:13px;color:#f87171;margin-top:12px;display:none;line-height:1.5;
+.btn:disabled{opacity:.55;cursor:not-allowed}
+
+.btn-primary{
+  background:linear-gradient(135deg,var(--sinopec-red),var(--sinopec-red-dark));
+  color:#fff;
+  box-shadow:0 4px 14px rgba(230,0,18,.22);
 }
+
+.btn-green{
+  background:linear-gradient(135deg,var(--bp-green),var(--bp-green-dark));
+  color:#fff;
+  box-shadow:0 4px 14px rgba(0,166,81,.20);
+}
+
+.btn-blue{
+  background:linear-gradient(135deg,var(--liberty-blue),var(--liberty-blue-dark));
+  color:#fff;
+  box-shadow:0 4px 14px rgba(0,61,165,.22);
+}
+
+.btn-ghost{
+  background:#fff;
+  color:var(--label);
+  border:1.5px solid var(--border);
+}
+
+.rating-row{
+  display:flex;
+  gap:7px;
+  margin-top:5px;
+}
+
+.rating-btn{
+  flex:1;
+  padding:10px 4px;
+  border:1.5px solid var(--border);
+  border-radius:10px;
+  background:#fff;
+  color:var(--muted);
+  font-size:20px;
+  cursor:pointer;
+  text-align:center;
+}
+
+.rating-btn.selected{
+  border-color:var(--bp-green);
+  background:var(--green-light);
+  transform:scale(1.06);
+}
+
+.err{
+  background:var(--danger-light);
+  border:1.5px solid #FDA4AF;
+  border-radius:var(--radius-sm);
+  padding:10px 13px;
+  font-size:13px;
+  color:var(--sinopec-red-dark);
+  margin-top:12px;
+  display:none;
+  line-height:1.5;
+  font-weight:600;
+}
+
 .err.show{display:block}
 
-/* ── SUCCESS ── */
-.success-wrap{text-align:center;padding:48px 20px 32px}
-.s-glyph{font-size:60px;margin-bottom:16px;display:block;
-  animation:pop .4s cubic-bezier(.175,.885,.32,1.275) both}
-@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
-.s-title{font-family:var(--display);font-size:26px;margin-bottom:6px;color:var(--gold2)}
-.s-title-en{font-size:13px;font-style:italic;color:var(--muted);margin-bottom:16px}
-.s-msg{font-size:14px;color:var(--label);line-height:1.7;max-width:300px;margin:0 auto 24px}
+.success-wrap{
+  text-align:center;
+  padding:36px 16px 24px;
+}
 
-/* ── COFFEE PROGRESS BOX ── */
+.s-glyph{
+  font-size:56px;
+  margin-bottom:12px;
+  display:block;
+  animation:pop .4s cubic-bezier(.175,.885,.32,1.275) both;
+}
+
+@keyframes pop{
+  from{transform:scale(.3);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+.s-title{font-size:22px;font-weight:800;margin-bottom:3px;color:var(--text)}
+.s-title-sub{font-size:12px;color:var(--muted);font-style:italic;margin-bottom:14px}
+.s-msg{
+  font-size:13px;
+  color:var(--label);
+  line-height:1.7;
+  max-width:330px;
+  margin:0 auto 22px;
+}
+
 .prog-box{
-  background:var(--surface2);border:1px solid var(--gold-border);
-  border-radius:var(--radius);padding:18px;margin-bottom:20px;
+  background:#fff;
+  border:1.5px solid var(--border);
+  border-radius:var(--radius);
+  padding:16px;
+  margin-bottom:16px;
+  box-shadow:var(--shadow-sm);
 }
-.prog-box-title{font-family:var(--mono);font-size:10px;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--gold-dim);margin-bottom:12px}
-.prog-track{display:flex;gap:8px;align-items:center;margin-bottom:8px}
-.prog-dot{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--border2);
-  background:var(--surface);display:flex;align-items:center;justify-content:center;
-  font-size:14px;color:var(--muted);transition:all .3s;}
-.prog-dot.lit{background:var(--gold);border-color:var(--gold);color:#1a0f00}
-.prog-arrow{color:var(--muted);font-size:14px}
-.prog-free{width:44px;height:44px;border-radius:50%;
-  background:linear-gradient(135deg,var(--gold),var(--gold2));border:2px solid var(--gold2);
-  display:flex;align-items:center;justify-content:center;font-size:10px;
-  font-weight:700;color:#1a0f00;font-family:var(--mono);box-shadow:0 0 16px rgba(212,168,67,.3)}
-.prog-lbl{font-size:13px;color:var(--label);line-height:1.6}
 
-/* ── FEEDBACK FORM SPECIFIC ── */
-.rating-row{display:flex;gap:8px;margin-top:4px}
-.rating-btn{
-  flex:1;padding:10px 4px;border:1.5px solid var(--border2);border-radius:8px;
-  background:var(--surface2);color:var(--muted);font-size:18px;cursor:pointer;
-  text-align:center;transition:all .15s;font-family:var(--sans);
+.prog-box-title{
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:12px;
+  font-weight:700;
 }
-.rating-btn.selected{border-color:var(--gold);background:var(--gold-bg);transform:scale(1.08)}
 
-/* ── SPINNER ── */
-.spinner{display:inline-block;width:15px;height:15px;border:2px solid rgba(255,255,255,.3);
-  border-top-color:#fff;border-radius:50%;animation:spin .65s linear infinite;vertical-align:middle;margin-right:6px}
-.spinner-gold{border-color:rgba(212,168,67,.3);border-top-color:var(--gold)}
+.prog-track{
+  display:flex;
+  gap:6px;
+  align-items:center;
+  flex-wrap:wrap;
+  margin-bottom:8px;
+}
+
+.prog-dot{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  border:2px solid var(--border);
+  background:var(--surface-soft);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:13px;
+  color:var(--muted);
+  font-weight:700;
+  font-family:var(--mono);
+}
+
+.prog-dot.lit-red{
+  background:var(--sinopec-red);
+  border-color:var(--sinopec-red);
+  color:#fff;
+}
+
+.prog-dot.lit-green{
+  background:var(--bp-green);
+  border-color:var(--bp-green);
+  color:#fff;
+}
+
+.prog-arrow{color:var(--border-strong);font-size:13px}
+
+.prog-free{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:9px;
+  font-weight:800;
+  font-family:var(--mono);
+  border:2px solid;
+}
+
+.prog-free-red{
+  background:var(--danger-light);
+  border-color:var(--sinopec-red);
+  color:var(--sinopec-red);
+}
+
+.prog-free-green{
+  background:var(--green-light);
+  border-color:var(--bp-green);
+  color:var(--bp-green-dark);
+}
+
+.prog-lbl{
+  font-size:13px;
+  color:var(--label);
+  line-height:1.6;
+}
+
+.spinner{
+  display:inline-block;
+  width:14px;
+  height:14px;
+  border:2px solid rgba(255,255,255,.4);
+  border-top-color:#fff;
+  border-radius:50%;
+  animation:spin .6s linear infinite;
+  vertical-align:middle;
+  margin-right:6px;
+}
+
+.spinner-dark{
+  border-color:rgba(0,0,0,.15);
+  border-top-color:var(--text);
+}
+
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ── DIVIDER ── */
-.divider{height:1px;background:var(--border);margin:6px 0}
+.page-footer{
+  text-align:center;
+  padding:20px 16px 36px;
+  font-size:11px;
+  color:var(--muted);
+  font-family:var(--mono);
+}
 
-/* ── STAGGERED ENTRY ── */
-.offer-card{animation:slideUp .4s ease both}
-.offer-card:nth-child(1){animation-delay:.05s}
-.offer-card:nth-child(2){animation-delay:.12s}
-.offer-card:nth-child(3){animation-delay:.19s}
-.offer-card:nth-child(4){animation-delay:.26s}
-@keyframes slideUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-
-/* ── FOOTER ── */
-.page-footer{text-align:center;padding:28px 20px 40px;font-size:11px;color:var(--gold-dim);font-family:var(--mono)}
+@media(max-width:380px){
+  .offer-title{font-size:17px}
+  .cw-btn{font-size:12px}
+  .hero-title{font-size:19px}
+}
 </style>
 </head>
+
 <body>
 
-<!-- ══════════════════════════════
-     SCREEN 1 — HOME
-═══════════════════════════════ -->
 <div class="screen active" id="screen-home">
-
   <div class="hero">
-    <div class="hero-logo">⛽</div>
-    <div class="hero-brand">Aries Petroleum</div>
-    <div class="hero-title">会员优惠<br>Member Rewards</div>
-    <div class="hero-sub">感谢您的光临 · Thank you for visiting us</div>
-  </div>
-
-  <div class="section-label">咖啡优惠 · Coffee Offers</div>
-
-  <!-- Coffee -->
-  <div class="offer-card" onclick="openForm('coffee')">
-    <div class="offer-card-stripe" style="background:linear-gradient(90deg,var(--gold),var(--gold2))"></div>
-    <div class="offer-card-body">
-      <span class="offer-card-icon">☕</span>
-      <div class="offer-card-title">买五送一</div>
-      <div class="offer-card-title-en">Buy 5 Coffees, Get 1 Free</div>
-      <div class="coffee-dots">
-        <div class="coffee-dot lit">✓</div>
-        <div class="coffee-dot lit">✓</div>
-        <div class="coffee-dot lit">✓</div>
-        <div class="coffee-dot">4</div>
-        <div class="coffee-dot">5</div>
-        <div class="coffee-dot free">FREE</div>
+    <div class="hero-top">
+      <div class="hero-logo">⛽</div>
+      <div class="hero-titles">
+        <div class="hero-title" id="h-title">Member Rewards</div>
+        <div class="hero-brand">Aries Petroleum</div>
       </div>
-      <div class="offer-card-desc">每购买一杯咖啡即可集一点，集满5点即可免费获得一杯咖啡。<br>每次购买后在此登记，员工确认后您将收到邮件通知。</div>
-    </div>
-    <div class="offer-card-action">
-      <span>立即参与 · Join now</span>
-      <button class="offer-card-cta cta-gold" onclick="openForm('coffee');event.stopPropagation()">登记 →</button>
-    </div>
-  </div>
-
-  <div class="section-label">洗车优惠 · Car Wash Offers</div>
-
-  <!-- Wash 3 Get 1 -->
-  <div class="offer-card" onclick="openForm('carwash')">
-    <div class="offer-card-stripe" style="background:linear-gradient(90deg,var(--red),#e8385a)"></div>
-    <div class="offer-card-body">
-      <span class="offer-card-icon">🚗</span>
-      <div class="offer-card-title">洗三送一</div>
-      <div class="offer-card-title-en">Wash 3, Get 1 Free</div>
-      <div class="wash-dots">
-        <div class="wash-dot lit">✓</div>
-        <div class="wash-dot lit">✓</div>
-        <div class="wash-dot">3</div>
-        <div class="wash-dot free">FREE</div>
+      <div class="lang-toggle">
+        <button class="lang-btn active" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('zh')">中文</button>
       </div>
-      <div class="offer-card-desc">购买3次自动洗车，第4次完全免费。每次洗车后上传收据，员工审核确认后自动记录您的进度。</div>
     </div>
-    <div class="offer-card-action">
-      <span>仅限 Sinopec 站点</span>
-      <button class="offer-card-cta" style="background:var(--red);color:#fff;padding:6px 14px;border-radius:7px;border:none;font-size:12px;font-weight:600;cursor:pointer" onclick="openForm('carwash');event.stopPropagation()">登记 →</button>
-    </div>
+    <div class="hero-sub" id="h-sub">Rewards, offers and feedback in one place</div>
   </div>
 
-  <!-- Monthly -->
-  <div class="offer-card" onclick="openForm('monthly')">
-    <div class="offer-card-stripe" style="background:linear-gradient(90deg,var(--blue),#7dd3fc)"></div>
-    <div class="offer-card-body">
-      <span class="offer-card-icon">💳</span>
-      <div class="offer-card-title">洗车包月会员</div>
-      <div class="offer-card-title-en">Monthly Car Wash Membership</div>
-      <div style="display:flex;gap:10px;margin:10px 0">
-        <div style="flex:1;background:var(--surface2);border:1px solid var(--border2);border-radius:8px;padding:10px;text-align:center">
-          <div style="font-family:var(--mono);font-size:18px;font-weight:600;color:var(--blue)">$49</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:2px">Standard / 月</div>
-        </div>
-        <div style="flex:1;background:var(--blue-bg);border:1px solid var(--blue-border);border-radius:8px;padding:10px;text-align:center;position:relative">
-          <div style="position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;white-space:nowrap">最划算</div>
-          <div style="font-family:var(--mono);font-size:18px;font-weight:600;color:var(--blue)">$69</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:2px">Premium / 月</div>
+  <div class="brand-stripe">
+    <span style="background:var(--sinopec-red)"></span>
+    <span style="background:var(--sinopec-yellow)"></span>
+    <span style="background:var(--bp-green)"></span>
+    <span style="background:var(--bp-yellow)"></span>
+    <span style="background:var(--liberty-red)"></span>
+    <span style="background:var(--liberty-blue)"></span>
+  </div>
+
+  <div class="page-wrap">
+    <div class="section-label" id="lbl-coffee">☕ COFFEE OFFERS</div>
+    <div class="offer-card">
+      <div class="offer-stripe" style="background:linear-gradient(90deg,var(--bp-green),var(--bp-yellow),var(--sinopec-red))"></div>
+      <div class="offer-body">
+        <span class="offer-icon">☕</span>
+        <div class="offer-title" id="c-card-title">Buy 5 Coffees, Get 1 Free</div>
+        <div class="offer-title-sub" id="c-card-sub">Buy 5, get 1 free</div>
+        <div class="offer-tagline" id="c-card-desc">Register each coffee purchase here. Once 5 purchases are confirmed, your next coffee is free.</div>
+      </div>
+      <div class="offer-footer">
+        <span class="offer-note" id="c-card-note">No paper card needed</span>
+        <button class="offer-cta" style="background:var(--bp-green);color:#fff" onclick="openForm('coffee')" id="c-card-btn">Register →</button>
+      </div>
+    </div>
+
+    <div class="section-label" id="lbl-carwash">🚗 CAR WASH REWARDS</div>
+    <div class="offer-card">
+      <div class="offer-stripe" style="background:linear-gradient(90deg,var(--sinopec-red),var(--liberty-blue))"></div>
+      <div class="offer-body">
+        <span class="offer-icon">🚗</span>
+        <div class="offer-title" id="cw-card-title">Automatic Car Wash Offers</div>
+        <div class="offer-title-sub" id="cw-card-sub">Wash reward progress shared at participating locations</div>
+        <div class="offer-tagline" id="cw-card-desc">Two ways to save — collect stamps toward a free wash, or apply for a monthly membership.</div>
+        <div class="offer-note-box" id="cw-card-note-box">
+          Wash reward progress is shared across participating car wash locations in Thomastown, Frankston, Ballarat and Shepparton.
         </div>
       </div>
-      <div class="offer-card-desc">每月无限次洗车（每日1次），车牌即会员号，无需携带卡片。</div>
+      <div class="cw-btns">
+        <button class="cw-btn" style="background:var(--sinopec-red);color:#fff" onclick="openForm('carwash')" id="cw-btn-reward">
+          🎁 <span id="cw-btn-reward-line1">Wash 3, Get 1 Free</span>
+          <span class="cw-btn-label" id="cw-btn-reward-line2">Register a wash →</span>
+        </button>
+        <button class="cw-btn" style="background:var(--liberty-blue);color:#fff" onclick="openForm('monthly')" id="cw-btn-monthly">
+          💳 <span id="cw-btn-monthly-line1">Monthly Membership</span>
+          <span class="cw-btn-label" id="cw-btn-monthly-line2">From $49/mo →</span>
+        </button>
+      </div>
     </div>
-    <div class="offer-card-action">
-      <span>仅限 Sinopec 站点</span>
-      <button class="offer-card-cta" style="background:var(--blue);color:#fff;padding:6px 14px;border-radius:7px;border:none;font-size:12px;font-weight:600;cursor:pointer" onclick="openForm('monthly');event.stopPropagation()">申请 →</button>
+
+    <div class="section-label" id="lbl-feedback">💬 FEEDBACK</div>
+    <div class="offer-card">
+      <div class="offer-stripe" style="background:linear-gradient(90deg,var(--liberty-blue),var(--bp-green))"></div>
+      <div class="offer-body">
+        <span class="offer-icon">💬</span>
+        <div class="offer-title" id="f-card-title">Share Your Feedback</div>
+        <div class="offer-title-sub" id="f-card-sub">Feedback & suggestions</div>
+        <div class="offer-tagline" id="f-card-desc">Your message goes directly to our management team. We read and act on every message.</div>
+      </div>
+      <div class="offer-footer">
+        <span class="offer-note" id="f-card-note">Management team receives this</span>
+        <button class="offer-cta" style="background:var(--liberty-blue);color:#fff" onclick="openForm('feedback')" id="f-card-btn">Leave a message →</button>
+      </div>
     </div>
+
+    <div class="page-footer">Aries Petroleum · ariespetroleum.com.au</div>
   </div>
-
-  <div class="section-label">联系我们 · Feedback</div>
-
-  <!-- Feedback -->
-  <div class="offer-card" onclick="openForm('feedback')">
-    <div class="offer-card-stripe" style="background:linear-gradient(90deg,var(--green),#4ade80)"></div>
-    <div class="offer-card-body">
-      <span class="offer-card-icon">💬</span>
-      <div class="offer-card-title">意见与建议</div>
-      <div class="offer-card-title-en">Share Your Feedback</div>
-      <div class="offer-card-desc">您的每一条意见都会直接发送给我们的管理团队。欢迎分享您的体验，帮助我们持续改进服务。</div>
-    </div>
-    <div class="offer-card-action">
-      <span>我们认真倾听每一条反馈</span>
-      <button class="offer-card-cta" style="background:var(--green);color:#0a1a0f;padding:6px 14px;border-radius:7px;border:none;font-size:12px;font-weight:600;cursor:pointer" onclick="openForm('feedback');event.stopPropagation()">留言 →</button>
-    </div>
-  </div>
-
-  <div class="page-footer">Aries Petroleum · ariespetroleum.com.au</div>
 </div>
 
-<!-- ══════════════════════════════
-     SCREEN 2 — COFFEE FORM
-═══════════════════════════════ -->
 <div class="screen" id="screen-coffee">
   <div class="form-header">
     <button class="form-back" onclick="goHome()">←</button>
-    <div class="form-header-text">
-      <div class="form-header-title">☕ 咖啡集点登记</div>
-      <div class="form-header-sub">Buy 5 Coffees, Get 1 Free</div>
+    <div>
+      <div class="form-header-title">☕ <span id="cf-header-title">Coffee — Buy 5 Get 1 Free</span></div>
+      <div class="form-header-sub" id="cf-header-sub">Register your purchase</div>
     </div>
   </div>
+
   <div class="form-body">
-    <div class="notice">
-      <strong>提交后</strong>，员工将核实您的购买记录，确认后您将收到包含集点进度的邮件。<br>
-      <span style="font-size:12px;font-style:italic">After submission, staff will verify your purchase. You'll receive an email with your points progress.</span>
+    <div class="notice" id="cf-notice">
+      <strong>How it works</strong> — Register each coffee purchase here. Once staff confirm it, you will receive an email showing your points progress. Collect 5 confirmed purchases to receive your free coffee.
+      <span class="notice-it">No paper card needed. Please use the same mobile number each time.</span>
     </div>
+
     <div class="fg">
-      <label class="flabel">姓名 <span class="req">*</span> <span class="flabel-en">Full Name</span></label>
-      <input type="text" id="c-name" placeholder="您的姓名 / Your name" autocomplete="name">
+      <label class="flabel" id="cf-l-name">Name <span class="req">*</span></label>
+      <input type="text" id="c-name" placeholder="Your name" autocomplete="name">
     </div>
+
     <div class="fg">
-      <label class="flabel">手机号码 <span class="req">*</span> <span class="flabel-en">Mobile</span></label>
+      <label class="flabel" id="cf-l-phone">Mobile <span class="req">*</span></label>
       <input type="tel" id="c-phone" placeholder="04xx xxx xxx" inputmode="tel" autocomplete="tel">
     </div>
+
     <div class="fg">
-      <label class="flabel">电子邮箱 <span class="req">*</span> <span class="flabel-en">Email</span></label>
+      <label class="flabel" id="cf-l-email">Email <span class="req">*</span></label>
       <input type="email" id="c-email" placeholder="you@email.com" inputmode="email" autocomplete="email">
     </div>
+
     <div class="fg">
-      <label class="flabel">备注 <span class="flabel-en">Notes (optional)</span></label>
-      <textarea id="c-notes" placeholder="任何补充说明 / Any additional details…"></textarea>
+      <label class="flabel" id="cf-l-notes">Notes</label>
+      <textarea id="c-notes" placeholder="Any details…"></textarea>
     </div>
+
     <div id="c-err" class="err"></div>
-    <button class="btn btn-gold" id="c-btn" onclick="submitCoffee()">提交登记 · Submit</button>
+    <button class="btn btn-green" id="c-btn" onclick="submitCoffee()">Submit</button>
   </div>
 </div>
 
-<!-- ══════════════════════════════
-     SCREEN 3 — CARWASH FORM
-═══════════════════════════════ -->
 <div class="screen" id="screen-carwash">
   <div class="form-header">
     <button class="form-back" onclick="goHome()">←</button>
-    <div class="form-header-text">
-      <div class="form-header-title" id="cw-header-title">🚗 洗三送一登记</div>
-      <div class="form-header-sub" id="cw-header-sub">Wash 3, Get 1 Free</div>
+    <div>
+      <div class="form-header-title" id="cw-header-title">🚗 Wash 3, Get 1 Free</div>
+      <div class="form-header-sub" id="cw-header-sub">Register your wash</div>
     </div>
   </div>
+
   <div class="form-body">
     <div class="notice" id="cw-notice">
-      <strong>提交后</strong>，员工将审核您的收据并确认本次洗车记录。确认后您将收到包含进度的邮件通知。<br>
-      <span style="font-size:12px;font-style:italic">Staff will verify your receipt. You'll receive a confirmation email with your wash progress.</span>
+      <strong>How it works</strong> — Upload your payment receipt below. Staff will verify it and confirm your wash. You will receive an email with your updated progress.
+      <span class="notice-it">Please make sure the receipt photo clearly shows the date and amount.</span>
     </div>
 
-    <!-- Monthly tier selector (shown only for monthly plan) -->
+    <div class="location-box" id="cw-location-box">
+      <div class="location-title" id="cw-location-title">Participating car wash locations</div>
+      325A Nepean Hwy, Frankston VIC 3199<br>
+      50 Mahoneys Rd, Thomastown VIC 3074<br>
+      620 Creswick Rd, Soldiers Hill VIC 3350<br>
+      7958-7960 Goulburn Valley Hwy, Kialla VIC 3631
+    </div>
+
     <div id="cw-tier-wrap" style="display:none" class="fg">
-      <label class="flabel">会员套餐 <span class="req">*</span> <span class="flabel-en">Membership Tier</span></label>
+      <label class="flabel" id="cw-l-tier">Choose your plan <span class="req">*</span></label>
+
       <div class="tier-option" id="tier-std" onclick="selectTier('standard')">
-        <div class="tier-name">$49 Standard</div>
-        <div class="tier-price">$49 / 月</div>
-        <div class="tier-desc">基础自动洗车 · 每日1次<br><span style="color:var(--green)">（单次价值 $12–$14）</span></div>
+        <div class="tier-name">Standard · $49/month</div>
+        <div class="tier-price">$49 / mo</div>
+        <div class="tier-desc">
+          Basic automatic wash · 1 wash per day<br>
+          <span style="color:var(--bp-green-dark);font-weight:700">Each wash valued at $12–$14</span>
+        </div>
       </div>
+
       <div class="tier-option" id="tier-prm" onclick="selectTier('premium')">
-        <div class="tier-best">最划算 Best Value</div>
-        <div class="tier-name">$69 Premium</div>
-        <div class="tier-price">$69 / 月</div>
-        <div class="tier-desc">高级自动洗车 · 每日1次<br><span style="color:var(--green)">（单次价值 $20）</span></div>
+        <div class="tier-best">Best Value</div>
+        <div class="tier-name">Premium · $69/month</div>
+        <div class="tier-price">$69 / mo</div>
+        <div class="tier-desc">
+          Premium automatic wash · 1 wash per day<br>
+          <span style="color:var(--bp-green-dark);font-weight:700">Each wash valued at $20</span>
+        </div>
       </div>
+
       <input type="hidden" id="cw-tier">
     </div>
 
     <div class="fg">
-      <label class="flabel">手机号码 <span class="req">*</span> <span class="flabel-en">Mobile</span></label>
-      <input type="tel" id="cw-phone" placeholder="04xx xxx xxx" inputmode="tel" autocomplete="tel">
-    </div>
-    <div class="fg">
-      <label class="flabel">电子邮箱 <span class="req">*</span> <span class="flabel-en">Email</span></label>
-      <input type="email" id="cw-email" placeholder="you@email.com" inputmode="email" autocomplete="email">
-    </div>
-    <div class="fg">
-      <label class="flabel">车牌号码 <span class="req">*</span> <span class="flabel-en">Plate Number</span></label>
+      <label class="flabel" id="cw-l-plate">Plate Number <span class="req">*</span></label>
       <input type="text" id="cw-plate" class="plate-input" placeholder="e.g. ABC123" autocomplete="off" autocorrect="off" spellcheck="false">
     </div>
+
     <div class="fg">
-      <label class="flabel">付款凭证 <span class="req">*</span> <span class="flabel-en">Payment Receipt</span></label>
+      <label class="flabel" id="cw-l-phone">Mobile <span class="req">*</span></label>
+      <input type="tel" id="cw-phone" placeholder="04xx xxx xxx" inputmode="tel" autocomplete="tel">
+    </div>
+
+    <div class="fg">
+      <label class="flabel" id="cw-l-email">Email <span class="req">*</span></label>
+      <input type="email" id="cw-email" placeholder="you@email.com" inputmode="email" autocomplete="email">
+    </div>
+
+    <div class="fg">
+      <label class="flabel" id="cw-l-receipt">Payment Receipt <span class="req">*</span></label>
       <div class="file-zone" id="cw-fzone">
         <input type="file" id="cw-photo" accept="image/*" capture="environment" onchange="handlePhoto('cw')">
         <div class="fz-icon">📷</div>
-        <div class="fz-label" id="cw-fz-label">拍照或上传您的收据 / Tap to upload receipt</div>
+        <div class="fz-label" id="cw-fz-label">Tap to photograph or upload receipt</div>
         <div class="fz-name" id="cw-fz-name"></div>
       </div>
       <div class="img-preview" id="cw-img-preview"><img id="cw-preview-img" src="" alt="Receipt"></div>
       <div class="img-size" id="cw-img-size"></div>
     </div>
+
     <div class="fg">
-      <label class="flabel">备注 <span class="flabel-en">Notes (optional)</span></label>
-      <textarea id="cw-notes" placeholder="任何补充说明 / Any additional details…"></textarea>
+      <label class="flabel" id="cw-l-notes">Notes</label>
+      <textarea id="cw-notes" placeholder="Any details…"></textarea>
     </div>
+
     <div id="cw-err" class="err"></div>
-    <button class="btn btn-red" id="cw-btn" onclick="submitCarwash()">提交登记 · Submit</button>
+    <button class="btn btn-primary" id="cw-btn" onclick="submitCarwash()">Submit</button>
   </div>
 </div>
 
-<!-- ══════════════════════════════
-     SCREEN 4 — FEEDBACK FORM
-═══════════════════════════════ -->
 <div class="screen" id="screen-feedback">
   <div class="form-header">
     <button class="form-back" onclick="goHome()">←</button>
-    <div class="form-header-text">
-      <div class="form-header-title">💬 意见与建议</div>
-      <div class="form-header-sub">Share Your Feedback</div>
+    <div>
+      <div class="form-header-title">💬 <span id="fb-header-title">Feedback & Suggestions</span></div>
+      <div class="form-header-sub" id="fb-header-sub">Help us improve</div>
     </div>
   </div>
+
   <div class="form-body">
-    <div class="notice">
-      您的反馈将直接发送给管理团队，我们将认真阅读每一条留言。<br>
-      <span style="font-size:12px;font-style:italic">Your feedback goes directly to our management team. We read every message.</span>
+    <div class="notice" id="fb-notice">
+      Your message goes directly to our management team. We read and act on every piece of feedback.
+      <span class="notice-it">If you would like a reply, please leave your email.</span>
     </div>
+
     <div class="fg">
-      <label class="flabel">整体评分 <span class="flabel-en">Overall Rating</span></label>
+      <label class="flabel" id="fb-l-rating">Overall Rating</label>
       <div class="rating-row">
         <button class="rating-btn" onclick="setRating(1,this)">😞</button>
         <button class="rating-btn" onclick="setRating(2,this)">😐</button>
@@ -501,76 +924,336 @@ textarea{min-height:80px;resize:vertical;line-height:1.6}
       </div>
       <input type="hidden" id="f-rating">
     </div>
+
     <div class="fg">
-      <label class="flabel">姓名 <span class="flabel-en">Name (optional)</span></label>
-      <input type="text" id="f-name" placeholder="您的姓名 / Your name (optional)" autocomplete="name">
+      <label class="flabel" id="fb-l-msg">Your Message <span class="req">*</span></label>
+      <textarea id="f-msg" style="min-height:112px" placeholder="Tell us about your experience or any suggestions…"></textarea>
     </div>
+
     <div class="fg">
-      <label class="flabel">电子邮箱 <span class="flabel-en">Email (optional)</span></label>
-      <input type="email" id="f-email" placeholder="如需回复请留下邮箱 / Leave email for a reply" inputmode="email" autocomplete="email">
+      <label class="flabel" id="fb-l-name">Name</label>
+      <input type="text" id="f-name" placeholder="Optional" autocomplete="name">
     </div>
+
     <div class="fg">
-      <label class="flabel">您的留言 <span class="req">*</span> <span class="flabel-en">Your Message</span></label>
-      <textarea id="f-msg" placeholder="请告诉我们您的体验，或者任何建议… / Tell us about your experience or any suggestions…" style="min-height:110px"></textarea>
+      <label class="flabel" id="fb-l-email">Email</label>
+      <input type="email" id="f-email" placeholder="Leave email if you would like a reply" inputmode="email" autocomplete="email">
     </div>
+
     <div id="f-err" class="err"></div>
-    <button class="btn" style="background:linear-gradient(135deg,var(--green),#4ade80);color:#0a1a0f" id="f-btn" onclick="submitFeedback()">提交反馈 · Submit Feedback</button>
+    <button class="btn btn-blue" id="f-btn" onclick="submitFeedback()">Submit Feedback</button>
   </div>
 </div>
 
-<!-- ══════════════════════════════
-     SCREEN 5 — SUCCESS
-═══════════════════════════════ -->
 <div class="screen" id="screen-success">
   <div class="form-header">
     <button class="form-back" onclick="goHome()">←</button>
-    <div class="form-header-text">
-      <div class="form-header-title" id="succ-header">提交成功</div>
-    </div>
+    <div><div class="form-header-title" id="succ-header">Submitted!</div></div>
   </div>
+
   <div class="form-body">
     <div class="success-wrap">
       <span class="s-glyph" id="succ-glyph">✅</span>
-      <div class="s-title" id="succ-title">已提交！</div>
-      <div class="s-title-en" id="succ-title-en">Submitted!</div>
+      <div class="s-title" id="succ-title">Submitted!</div>
+      <div class="s-title-sub" id="succ-title-sub">Thank you</div>
       <div class="s-msg" id="succ-msg"></div>
     </div>
 
-    <!-- Coffee progress box -->
-    <div class="prog-box" id="succ-prog-box" style="display:none">
-      <div class="prog-box-title">您的集点进度 · Your Points Progress</div>
-      <div class="prog-track" id="succ-prog-track"></div>
-      <div class="prog-lbl" id="succ-prog-lbl"></div>
+    <div class="prog-box" id="succ-coffee-box" style="display:none">
+      <div class="prog-box-title" id="succ-coffee-box-title">Your Coffee Points</div>
+      <div class="prog-track" id="succ-coffee-track"></div>
+      <div class="prog-lbl" id="succ-coffee-lbl"></div>
     </div>
 
-    <!-- Wash progress box -->
     <div class="prog-box" id="succ-wash-box" style="display:none">
-      <div class="prog-box-title">您的洗车进度 · Your Wash Progress</div>
+      <div class="prog-box-title" id="succ-wash-box-title">Your Wash Progress</div>
       <div class="prog-track" id="succ-wash-track"></div>
       <div class="prog-lbl" id="succ-wash-lbl"></div>
     </div>
 
-    <button class="btn btn-ghost" onclick="goHome()">← 返回首页 · Back to Home</button>
+    <button class="btn btn-ghost" onclick="goHome()" id="succ-back-btn">← Back to Home</button>
   </div>
 </div>
 
 <script>
-// ══════════════════════════════════════════
-// CONFIG — replace with your new Apps Script URL after deploying
-// ══════════════════════════════════════════
-const API_URL   = "YOUR_NEW_APPS_SCRIPT_URL_HERE";
+const API_URL   = "https://script.google.com/macros/s/AKfycbyNP1svcMCkS6mdSJhXW2PhTxWRlBrG19s-_cNSFntuLiEjIAPyI8nDVe3SsjQDaEX3/exec";
 const API_TOKEN = "aries_rewards_2026_v1";
 
-// ══════════════════════════════════════════
-// STATE
-// ══════════════════════════════════════════
-let currentPlan = "";  // 'coffee' | 'carwash' | 'monthly' | 'feedback'
+let lang = localStorage.getItem('ap_lang') || 'en';
+let currentPlan = '';
 let selectedRating = 0;
-let selectedTier = "";
+let selectedTier = '';
 
-// ══════════════════════════════════════════
-// NAVIGATION
-// ══════════════════════════════════════════
+const S = {
+  en:{
+    heroTitle:'Member Rewards',
+    heroSub:'Rewards, offers and feedback in one place',
+
+    lblCoffee:'☕ COFFEE OFFERS',
+    lblCarwash:'🚗 CAR WASH REWARDS',
+    lblFeedback:'💬 FEEDBACK',
+
+    cCardTitle:'Buy 5 Coffees, Get 1 Free',
+    cCardSub:'Buy 5, get 1 free',
+    cCardDesc:'Register each coffee purchase here. Once 5 purchases are confirmed, your next coffee is free.',
+    cCardNote:'No paper card needed',
+    cCardBtn:'Register →',
+
+    cwCardTitle:'Automatic Car Wash Offers',
+    cwCardSub:'Wash reward progress shared at participating locations',
+    cwCardDesc:'Two ways to save — collect stamps toward a free wash, or apply for a monthly membership.',
+    cwCardNoteBox:'Wash reward progress is shared across participating car wash locations in Thomastown, Frankston, Ballarat and Shepparton.',
+    cwBtnReward1:'Wash 3, Get 1 Free',
+    cwBtnReward2:'Register a wash →',
+    cwBtnMonthly1:'Monthly Membership',
+    cwBtnMonthly2:'From $49/mo →',
+
+    fCardTitle:'Share Your Feedback',
+    fCardSub:'Feedback & suggestions',
+    fCardDesc:'Your message goes directly to our management team. We read and act on every message.',
+    fCardNote:'Management team receives this',
+    fCardBtn:'Leave a message →',
+
+    cfHeaderTitle:'Coffee — Buy 5 Get 1 Free',
+    cfHeaderSub:'Register your purchase',
+    cfNotice:'<strong>How it works</strong> — Register each coffee purchase here. Once staff confirm it, you will receive an email showing your points progress. Collect 5 confirmed purchases to receive your free coffee.<span class="notice-it">No paper card needed. Please use the same mobile number each time.</span>',
+    cfLName:'Name',
+    cfLPhone:'Mobile',
+    cfLEmail:'Email',
+    cfLNotes:'Notes',
+    cfBtn:'Submit',
+
+    cwHeaderReward:'🚗 Wash 3, Get 1 Free',
+    cwSubReward:'Register your wash',
+    cwHeaderMonthly:'💳 Monthly Car Wash Membership',
+    cwSubMonthly:'Apply for membership',
+    cwNoticeReward:'<strong>How it works</strong> — Upload your payment receipt below. Staff will verify it and confirm your wash. You will receive an email with your updated progress.<span class="notice-it">Please make sure the receipt photo clearly shows the date and amount.</span>',
+    cwNoticeMonthly:'<strong>Monthly membership</strong> — Upload your payment receipt to apply. Staff will verify and activate your membership, then email you confirmation.<span class="notice-it">One wash per day. Membership is linked to one plate number only.</span>',
+    cwLocationTitle:'Participating car wash locations',
+    cwLTier:'Choose your plan',
+    cwLPlate:'Plate Number',
+    cwLPhone:'Mobile',
+    cwLEmail:'Email',
+    cwLReceipt:'Payment Receipt',
+    cwLNotes:'Notes',
+    cwBtnSubmitReward:'Submit',
+    cwBtnSubmitMonthly:'Apply',
+    cwFzLabel:'Tap to photograph or upload receipt',
+    cwFzDone:'Receipt attached ✓',
+
+    fbHeaderTitle:'Feedback & Suggestions',
+    fbHeaderSub:'Help us improve',
+    fbNotice:'Your message goes directly to our management team. We read and act on every piece of feedback.<span class="notice-it">If you would like a reply, please leave your email.</span>',
+    fbLRating:'Overall Rating',
+    fbLMsg:'Your Message',
+    fbLName:'Name',
+    fbLEmail:'Email',
+    fbBtn:'Submit Feedback',
+
+    errRequired:'Please fill in all required fields.',
+    errPhone:'Please enter a valid Australian mobile number, for example 04xx xxx xxx.',
+    errEmail:'Please enter a valid email address.',
+    errTier:'Please select a membership plan.',
+    errReceipt:'Please attach a photo of your payment receipt.',
+    errDupCoffee:'You already have a pending coffee entry for today. Please wait for staff to confirm.',
+    errDupWash:'This plate already has a pending wash for today. Please wait for staff to confirm.',
+    errMsg:'Please enter your message.',
+    errNetwork:'Connection error. Please check your network and try again.',
+    submitting:'Submitting…',
+
+    succBack:'← Back to Home',
+    coffeeBoxTitle:'Your Coffee Points',
+    washBoxTitle:'Your Wash Progress',
+    progCoffee0:'Your purchase has been submitted and is waiting for staff confirmation.',
+    progWash0:'Your wash has been submitted and is waiting for staff confirmation.',
+    progFree:'🎉 Free coffee ready — please show this screen to staff.',
+    progWashFree:'🎉 Free wash ready — please mention your plate number at the station.',
+
+    succCoffeeHeader:'Coffee Registered',
+    succCoffeeTitle:'Submitted!',
+    succCoffeeSub:'Thank you',
+    succCoffeeMsg:'Your purchase has been logged. Once staff verify it, you will receive an email with your updated points tally.',
+    succCoffeeMsgIt:'',
+
+    succWashHeader:'Wash Registered',
+    succWashTitle:'Submitted!',
+    succWashSub:'Thank you',
+    succWashMsg:'Your wash has been logged. Once staff verify your receipt, you will receive a confirmation email with your progress.',
+    succWashMsgIt:'',
+
+    succMonthlyHeader:'Membership Applied',
+    succMonthlyTitle:'Application Submitted!',
+    succMonthlyTitleSub:'Thank you',
+    succMonthlyMsg:'Your membership application is in. Staff will verify your receipt, activate your plan, and email you confirmation.',
+    succMonthlyMsgIt:'',
+
+    succFeedbackHeader:'Thank You!',
+    succFeedbackTitle:'Thank You!',
+    succFeedbackTitleSub:'Feedback sent',
+    succFeedbackMsg:'Your message has been sent to our management team. We really appreciate your feedback.',
+    succFeedbackMsgIt:''
+  },
+
+  zh:{
+    heroTitle:'会员优惠',
+    heroSub:'优惠登记、洗车会员与意见反馈',
+
+    lblCoffee:'☕ 咖啡优惠',
+    lblCarwash:'🚗 洗车优惠',
+    lblFeedback:'💬 意见与建议',
+
+    cCardTitle:'买五送一',
+    cCardSub:'购买 5 杯，第 6 杯免费',
+    cCardDesc:'每次购买咖啡后在此登记，员工确认满 5 次后，即可领取免费咖啡。',
+    cCardNote:'无需纸质集点卡',
+    cCardBtn:'立即登记 →',
+
+    cwCardTitle:'自动洗车优惠',
+    cwCardSub:'洗车奖励进度可在参与地点共享',
+    cwCardDesc:'两种优惠方式：集满 3 次送 1 次，或申请包月洗车会员。',
+    cwCardNoteBox:'洗车奖励进度仅在 Thomastown、Frankston、Ballarat、Shepparton 区域的参与洗车点共享。',
+    cwBtnReward1:'洗三送一',
+    cwBtnReward2:'登记本次洗车 →',
+    cwBtnMonthly1:'包月会员',
+    cwBtnMonthly2:'每月 $49 起 →',
+
+    fCardTitle:'意见与建议',
+    fCardSub:'直接发送给管理团队',
+    fCardDesc:'您的留言会直接发送给我们的管理团队，我们会认真阅读每一条反馈。',
+    fCardNote:'管理团队会收到',
+    fCardBtn:'留言 →',
+
+    cfHeaderTitle:'咖啡集点 — 买五送一',
+    cfHeaderSub:'登记本次购买',
+    cfNotice:'<strong>活动规则</strong> — 每次购买咖啡后在此登记，员工确认后您会收到邮件显示当前集点进度。确认满 5 次后，即可领取免费咖啡。<span class="notice-it">无需纸质集点卡。请每次使用同一个手机号码。</span>',
+    cfLName:'姓名',
+    cfLPhone:'手机号码',
+    cfLEmail:'电子邮箱',
+    cfLNotes:'备注',
+    cfBtn:'提交',
+
+    cwHeaderReward:'🚗 洗三送一登记',
+    cwSubReward:'登记本次洗车',
+    cwHeaderMonthly:'💳 包月洗车会员申请',
+    cwSubMonthly:'申请包月会员',
+    cwNoticeReward:'<strong>活动规则</strong> — 请上传付款收据，员工审核确认后，您会收到邮件显示当前洗车进度。<span class="notice-it">请确保收据照片能清楚看到日期和金额。</span>',
+    cwNoticeMonthly:'<strong>包月会员</strong> — 上传付款收据后提交申请，员工审核后会激活您的会员资格，并发送邮件确认。<span class="notice-it">每车牌每日限洗一次，会员仅绑定一个车牌。</span>',
+    cwLocationTitle:'参与活动的洗车点地址',
+    cwLTier:'选择套餐',
+    cwLPlate:'车牌号码',
+    cwLPhone:'手机号码',
+    cwLEmail:'电子邮箱',
+    cwLReceipt:'付款收据',
+    cwLNotes:'备注',
+    cwBtnSubmitReward:'提交',
+    cwBtnSubmitMonthly:'申请',
+    cwFzLabel:'拍照或上传付款收据',
+    cwFzDone:'收据已上传 ✓',
+
+    fbHeaderTitle:'意见与建议',
+    fbHeaderSub:'帮助我们改进服务',
+    fbNotice:'您的留言会直接发送给管理团队，我们会认真阅读每一条反馈。<span class="notice-it">如果您希望我们回复，请留下邮箱。</span>',
+    fbLRating:'整体评分',
+    fbLMsg:'您的留言',
+    fbLName:'姓名',
+    fbLEmail:'邮箱',
+    fbBtn:'提交反馈',
+
+    errRequired:'请填写所有必填项。',
+    errPhone:'请输入有效的澳大利亚手机号码，例如 04xx xxx xxx。',
+    errEmail:'请输入有效的电子邮箱地址。',
+    errTier:'请选择您的包月套餐。',
+    errReceipt:'请上传付款收据照片。',
+    errDupCoffee:'您今天已经有一条咖啡待确认记录，请等待员工确认。',
+    errDupWash:'该车牌今天已有待确认洗车记录，请等待员工确认。',
+    errMsg:'请填写您的留言。',
+    errNetwork:'网络错误，请检查网络后重试。',
+    submitting:'提交中…',
+
+    succBack:'← 返回首页',
+    coffeeBoxTitle:'您的咖啡集点进度',
+    washBoxTitle:'您的洗车进度',
+    progCoffee0:'您的购买记录已提交，正在等待员工确认。',
+    progWash0:'您的洗车记录已提交，正在等待员工确认。',
+    progFree:'🎉 免费咖啡已解锁！请向员工出示此页面领取。',
+    progWashFree:'🎉 免费洗车已解锁！请告知员工您的车牌号码。',
+
+    succCoffeeHeader:'咖啡登记成功',
+    succCoffeeTitle:'提交成功！',
+    succCoffeeSub:'Thank you',
+    succCoffeeMsg:'您的购买记录已提交。员工确认后，您会收到包含集点进度的邮件通知。',
+    succCoffeeMsgIt:'',
+
+    succWashHeader:'洗车登记成功',
+    succWashTitle:'提交成功！',
+    succWashSub:'Thank you',
+    succWashMsg:'您的洗车记录已提交。员工审核收据后，您会收到确认邮件和洗车进度。',
+    succWashMsgIt:'',
+
+    succMonthlyHeader:'包月申请已提交',
+    succMonthlyTitle:'申请成功！',
+    succMonthlyTitleSub:'Thank you',
+    succMonthlyMsg:'您的包月会员申请已提交。员工审核后会激活会员资格，并发送邮件确认。',
+    succMonthlyMsgIt:'',
+
+    succFeedbackHeader:'感谢您的反馈',
+    succFeedbackTitle:'感谢！',
+    succFeedbackTitleSub:'Feedback sent',
+    succFeedbackMsg:'您的留言已发送给管理团队，感谢您帮助我们改进服务。',
+    succFeedbackMsgIt:''
+  }
+};
+
+function t(){ return S[lang]; }
+
+function setText(id,val){
+  const el=document.getElementById(id);
+  if(el && val !== undefined) el.innerHTML = val;
+}
+
+function setLang(l){
+  lang = l;
+  localStorage.setItem('ap_lang',l);
+
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active',(l==='en' && b.textContent==='EN') || (l==='zh' && b.textContent==='中文'));
+  });
+
+  applyLang();
+}
+
+function applyLang(){
+  const L=t();
+
+  setText('h-title',L.heroTitle);
+  setText('h-sub',L.heroSub);
+
+  setText('lbl-coffee',L.lblCoffee);
+  setText('lbl-carwash',L.lblCarwash);
+  setText('lbl-feedback',L.lblFeedback);
+
+  setText('c-card-title',L.cCardTitle);
+  setText('c-card-sub',L.cCardSub);
+  setText('c-card-desc',L.cCardDesc);
+  setText('c-card-note',L.cCardNote);
+  setText('c-card-btn',L.cCardBtn);
+
+  setText('cw-card-title',L.cwCardTitle);
+  setText('cw-card-sub',L.cwCardSub);
+  setText('cw-card-desc',L.cwCardDesc);
+  setText('cw-card-note-box',L.cwCardNoteBox);
+  setText('cw-btn-reward-line1',L.cwBtnReward1);
+  setText('cw-btn-reward-line2',L.cwBtnReward2);
+  setText('cw-btn-monthly-line1',L.cwBtnMonthly1);
+  setText('cw-btn-monthly-line2',L.cwBtnMonthly2);
+
+  setText('f-card-title',L.fCardTitle);
+  setText('f-card-sub',L.fCardSub);
+  setText('f-card-desc',L.fCardDesc);
+  setText('f-card-note',L.fCardNote);
+  setText('f-card-btn',L.fCardBtn);
+}
+
 function showScreen(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById('screen-'+id).classList.add('active');
@@ -582,101 +1265,170 @@ function goHome(){
 }
 
 function openForm(type){
-  currentPlan = type;
+  const L=t();
+  currentPlan=type;
+
   if(type==='coffee'){
+    setText('cf-header-title',L.cfHeaderTitle);
+    setText('cf-header-sub',L.cfHeaderSub);
+    setText('cf-notice',L.cfNotice);
+    setText('cf-l-name',L.cfLName+' <span class="req">*</span>');
+    setText('cf-l-phone',L.cfLPhone+' <span class="req">*</span>');
+    setText('cf-l-email',L.cfLEmail+' <span class="req">*</span>');
+    setText('cf-l-notes',L.cfLNotes);
+
+    ['c-name','c-phone','c-email','c-notes'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('c-err').classList.remove('show');
+    setBtn('c-btn',L.cfBtn,false);
+
     showScreen('coffee');
-  } else if(type==='carwash'||type==='monthly'){
-    // Configure carwash form for plan type
-    const isMonthly = type==='monthly';
-    document.getElementById('cw-header-title').textContent = isMonthly ? '💳 洗车包月申请' : '🚗 洗三送一登记';
-    document.getElementById('cw-header-sub').textContent = isMonthly ? 'Monthly Car Wash Membership' : 'Wash 3, Get 1 Free';
-    document.getElementById('cw-notice').innerHTML = isMonthly
-      ? '<strong>提交后</strong>，员工将审核您的付款凭证并激活您的包月会员资格。确认后您将收到邮件通知。<br><span style="font-size:12px;font-style:italic">Staff will verify your receipt and activate your membership. You\'ll receive a confirmation email.</span>'
-      : '<strong>提交后</strong>，员工将审核您的收据并确认本次洗车记录。确认后您将收到包含进度的邮件通知。<br><span style="font-size:12px;font-style:italic">Staff will verify your receipt. You\'ll receive a confirmation email with your wash progress.</span>';
-    document.getElementById('cw-tier-wrap').style.display = isMonthly ? 'block' : 'none';
-    document.getElementById('cw-btn').textContent = isMonthly ? '提交申请 · Apply' : '提交登记 · Submit';
-    document.getElementById('cw-btn').className = isMonthly ? 'btn' : 'btn btn-red';
-    if(isMonthly) document.getElementById('cw-btn').style.background='var(--blue)';
-    else document.getElementById('cw-btn').style.background='';
-    // Reset form
-    ['cw-phone','cw-email','cw-plate','cw-notes'].forEach(id=>document.getElementById(id).value='');
+    return;
+  }
+
+  if(type==='carwash' || type==='monthly'){
+    const isM = type==='monthly';
+
+    setText('cw-header-title',isM?L.cwHeaderMonthly:L.cwHeaderReward);
+    setText('cw-header-sub',isM?L.cwSubMonthly:L.cwSubReward);
+    setText('cw-notice',isM?L.cwNoticeMonthly:L.cwNoticeReward);
+    setText('cw-location-title',L.cwLocationTitle);
+
+    setText('cw-l-tier',L.cwLTier+' <span class="req">*</span>');
+    setText('cw-l-plate',L.cwLPlate+' <span class="req">*</span>');
+    setText('cw-l-phone',L.cwLPhone+' <span class="req">*</span>');
+    setText('cw-l-email',L.cwLEmail+' <span class="req">*</span>');
+    setText('cw-l-receipt',L.cwLReceipt+' <span class="req">*</span>');
+    setText('cw-l-notes',L.cwLNotes);
+
+    document.getElementById('cw-tier-wrap').style.display = isM ? 'block' : 'none';
+
+    ['cw-plate','cw-phone','cw-email','cw-notes'].forEach(id=>document.getElementById(id).value='');
+
     document.getElementById('cw-tier').value='';
     selectedTier='';
     ['tier-std','tier-prm'].forEach(id=>document.getElementById(id).classList.remove('selected'));
+
     const fi=document.getElementById('cw-photo');
-    fi.value='';fi._base64=null;fi._mime=null;
+    fi.value='';
+    fi._base64=null;
+    fi._mime=null;
+
     document.getElementById('cw-img-preview').style.display='none';
     document.getElementById('cw-img-size').style.display='none';
     document.getElementById('cw-fz-name').style.display='none';
-    document.getElementById('cw-fz-label').textContent='拍照或上传您的收据 / Tap to upload receipt';
+    setText('cw-fz-label',L.cwFzLabel);
+
     document.getElementById('cw-err').classList.remove('show');
+    setBtn('cw-btn',isM?L.cwBtnSubmitMonthly:L.cwBtnSubmitReward,false);
+    document.getElementById('cw-btn').className='btn '+(isM?'btn-blue':'btn-primary');
+
     showScreen('carwash');
-  } else if(type==='feedback'){
-    showScreen('feedback');
+    return;
   }
+
+  setText('fb-header-title',L.fbHeaderTitle);
+  setText('fb-header-sub',L.fbHeaderSub);
+  setText('fb-notice',L.fbNotice);
+  setText('fb-l-rating',L.fbLRating);
+  setText('fb-l-msg',L.fbLMsg+' <span class="req">*</span>');
+  setText('fb-l-name',L.fbLName);
+  setText('fb-l-email',L.fbLEmail);
+
+  ['f-msg','f-name','f-email'].forEach(id=>document.getElementById(id).value='');
+
+  selectedRating=0;
+  document.querySelectorAll('.rating-btn').forEach(b=>b.classList.remove('selected'));
+  document.getElementById('f-rating').value='';
+  document.getElementById('f-err').classList.remove('show');
+  setBtn('f-btn',L.fbBtn,false);
+
+  showScreen('feedback');
 }
 
-// ══════════════════════════════════════════
-// TIER SELECT
-// ══════════════════════════════════════════
 function selectTier(which){
   selectedTier = which==='standard' ? '$49 Standard' : '$69 Premium';
   document.getElementById('cw-tier').value = selectedTier;
-  document.getElementById('tier-std').classList.toggle('selected', which==='standard');
-  document.getElementById('tier-prm').classList.toggle('selected', which==='premium');
+  document.getElementById('tier-std').classList.toggle('selected',which==='standard');
+  document.getElementById('tier-prm').classList.toggle('selected',which==='premium');
   document.getElementById('cw-err').classList.remove('show');
 }
 
-// ══════════════════════════════════════════
-// RATING
-// ══════════════════════════════════════════
-function setRating(n, btn){
-  selectedRating = n;
-  document.getElementById('f-rating').value = n;
+function setRating(n,btn){
+  selectedRating=n;
+  document.getElementById('f-rating').value=n;
   document.querySelectorAll('.rating-btn').forEach(b=>b.classList.remove('selected'));
   btn.classList.add('selected');
 }
 
-// ══════════════════════════════════════════
-// PHOTO UPLOAD (shared)
-// ══════════════════════════════════════════
 function handlePhoto(prefix){
-  const input = document.getElementById(prefix+'-photo');
-  const file = input.files[0];
+  const input=document.getElementById(prefix+'-photo');
+  const file=input.files[0];
   if(!file) return;
-  const MAX_BYTES=1*1024*1024, MAX_DIM=1200;
+
+  const MAX_BYTES=1*1024*1024;
+  const MAX_DIM=1200;
+
   const reader=new FileReader();
+
   reader.onload=e=>{
     const img=new Image();
+
     img.onload=()=>{
-      let w=img.width,h=img.height;
-      if(w>MAX_DIM||h>MAX_DIM){const r=Math.min(MAX_DIM/w,MAX_DIM/h);w=Math.round(w*r);h=Math.round(h*r);}
+      let w=img.width;
+      let h=img.height;
+
+      if(w>MAX_DIM || h>MAX_DIM){
+        const r=Math.min(MAX_DIM/w,MAX_DIM/h);
+        w=Math.round(w*r);
+        h=Math.round(h*r);
+      }
+
       const canvas=document.createElement('canvas');
-      canvas.width=w;canvas.height=h;
+      canvas.width=w;
+      canvas.height=h;
       canvas.getContext('2d').drawImage(img,0,0,w,h);
-      let quality=0.82,dataUrl,base64;
-      do{dataUrl=canvas.toDataURL('image/jpeg',quality);base64=dataUrl.split(',')[1];quality-=0.1;}
-      while(base64.length*0.75>MAX_BYTES&&quality>0.2);
-      input._base64=base64;input._mime='image/jpeg';
+
+      let quality=0.82;
+      let dataUrl;
+      let base64;
+
+      do{
+        dataUrl=canvas.toDataURL('image/jpeg',quality);
+        base64=dataUrl.split(',')[1];
+        quality-=0.1;
+      }while(base64.length*0.75>MAX_BYTES && quality>0.2);
+
+      input._base64=base64;
+      input._mime='image/jpeg';
+
       document.getElementById(prefix+'-preview-img').src=dataUrl;
       document.getElementById(prefix+'-img-preview').style.display='block';
       document.getElementById(prefix+'-fz-name').textContent=file.name;
       document.getElementById(prefix+'-fz-name').style.display='block';
-      document.getElementById(prefix+'-fz-label').textContent='收据已附上 ✓ Receipt attached';
-      document.getElementById(prefix+'-img-size').textContent=`已压缩至 ${Math.round(base64.length*0.75/1024)} KB`;
+      setText(prefix+'-fz-label',t().cwFzDone);
+      document.getElementById(prefix+'-img-size').textContent=Math.round(base64.length*0.75/1024)+' KB';
       document.getElementById(prefix+'-img-size').style.display='block';
     };
+
     img.src=e.target.result;
   };
+
   reader.readAsDataURL(file);
 }
 
-// ══════════════════════════════════════════
-// API HELPERS
-// ══════════════════════════════════════════
 async function apiPost(body){
-  const r=await fetch(API_URL,{method:'POST',body:JSON.stringify({...body,token:API_TOKEN})});
-  return r.json();
+  const r=await fetch(API_URL,{
+    method:'POST',
+    body:JSON.stringify({...body,token:API_TOKEN})
+  });
+
+  const text=await r.text();
+
+  try{
+    return JSON.parse(text);
+  }catch(e){
+    throw new Error('Invalid server response');
+  }
 }
 
 function setBtn(id,html,disabled){
@@ -685,197 +1437,296 @@ function setBtn(id,html,disabled){
   b.innerHTML=html;
 }
 
-// ══════════════════════════════════════════
-// SUBMIT COFFEE
-// ══════════════════════════════════════════
 async function submitCoffee(){
+  const L=t();
+
   const name=document.getElementById('c-name').value.trim();
   const phone=document.getElementById('c-phone').value.trim().replace(/\s/g,'');
   const email=document.getElementById('c-email').value.trim();
   const notes=document.getElementById('c-notes').value.trim();
   const err=document.getElementById('c-err');
 
-  if(!name||!phone||!email){
-    err.textContent='请填写姓名、手机号码和电子邮箱。/ Please fill in name, mobile, and email.';
-    err.classList.add('show');return;
+  if(!name || !phone || !email){
+    err.textContent=L.errRequired;
+    err.classList.add('show');
+    return;
   }
+
   if(!/^04\d{8}$/.test(phone)){
-    err.textContent='请输入有效的澳大利亚手机号码，例如：0412 345 678 / Please enter a valid AU mobile, e.g. 04xx xxx xxx.';
-    err.classList.add('show');return;
+    err.textContent=L.errPhone;
+    err.classList.add('show');
+    return;
   }
+
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-    err.textContent='请输入有效的电子邮箱地址。/ Please enter a valid email address.';
-    err.classList.add('show');return;
+    err.textContent=L.errEmail;
+    err.classList.add('show');
+    return;
   }
+
   err.classList.remove('show');
-  setBtn('c-btn','<span class="spinner"></span>提交中…',true);
+  setBtn('c-btn','<span class="spinner"></span>'+L.submitting,true);
 
   try{
     const result=await apiPost({action:'submitCoffee',name,phone,email,notes});
+
     if(result.error){
-      err.textContent=result.error;err.classList.add('show');
-      setBtn('c-btn','提交登记 · Submit',false);return;
+      err.textContent=result.error==='duplicate'?L.errDupCoffee:result.error;
+      err.classList.add('show');
+      setBtn('c-btn',L.cfBtn,false);
+      return;
     }
-    showSuccess('coffee', result);
+
+    showSuccess('coffee',result);
   }catch(e){
-    err.textContent='网络错误，请重试。/ Connection error. Please try again.';
+    err.textContent=L.errNetwork;
     err.classList.add('show');
-    setBtn('c-btn','提交登记 · Submit',false);
+    setBtn('c-btn',L.cfBtn,false);
   }
 }
 
-// ══════════════════════════════════════════
-// SUBMIT CARWASH / MONTHLY
-// ══════════════════════════════════════════
 async function submitCarwash(){
-  const isMonthly=currentPlan==='monthly';
+  const L=t();
+
+  const isM=currentPlan==='monthly';
+  const plate=document.getElementById('cw-plate').value.trim().toUpperCase();
   const phone=document.getElementById('cw-phone').value.trim().replace(/\s/g,'');
   const email=document.getElementById('cw-email').value.trim();
-  const plate=document.getElementById('cw-plate').value.trim().toUpperCase();
   const notes=document.getElementById('cw-notes').value.trim();
   const tier=document.getElementById('cw-tier').value;
   const fi=document.getElementById('cw-photo');
   const err=document.getElementById('cw-err');
+  const btnLabel=isM?L.cwBtnSubmitMonthly:L.cwBtnSubmitReward;
 
-  if(!phone||!email||!plate){
-    err.textContent='请填写手机号码、电子邮箱和车牌号码。/ Please fill in mobile, email, and plate number.';
-    err.classList.add('show');return;
+  if(!plate || !phone || !email){
+    err.textContent=L.errRequired;
+    err.classList.add('show');
+    return;
   }
+
   if(!/^04\d{8}$/.test(phone)){
-    err.textContent='请输入有效的澳大利亚手机号码。/ Please enter a valid AU mobile number.';
-    err.classList.add('show');return;
+    err.textContent=L.errPhone;
+    err.classList.add('show');
+    return;
   }
+
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-    err.textContent='请输入有效的电子邮箱地址。/ Please enter a valid email address.';
-    err.classList.add('show');return;
+    err.textContent=L.errEmail;
+    err.classList.add('show');
+    return;
   }
-  if(isMonthly&&!tier){
-    err.textContent='请选择您的包月套餐。/ Please select a membership tier.';
-    err.classList.add('show');return;
+
+  if(isM && !tier){
+    err.textContent=L.errTier;
+    err.classList.add('show');
+    return;
   }
+
   if(!fi._base64){
-    err.textContent='请上传付款收据照片。/ Please attach a photo of your payment receipt.';
-    err.classList.add('show');return;
+    err.textContent=L.errReceipt;
+    err.classList.add('show');
+    return;
   }
+
   err.classList.remove('show');
-  setBtn('cw-btn','<span class="spinner"></span>提交中…',true);
+  setBtn('cw-btn','<span class="spinner"></span>'+L.submitting,true);
 
   try{
     const result=await apiPost({
-      action:'submitCarwash',plan:currentPlan,
-      phone,email,plate,notes,monthlyTier:tier,
-      photoBase64:fi._base64,photoMime:fi._mime
+      action:'submitCarwash',
+      plan:currentPlan,
+      plate,
+      phone,
+      email,
+      notes,
+      monthlyTier:tier,
+      photoBase64:fi._base64,
+      photoMime:fi._mime
     });
+
     if(result.error==='duplicate'){
-      err.textContent=result.message||'该车牌今天已有一条待确认记录，请等待员工确认后再次提交。';
+      err.textContent=L.errDupWash;
       err.classList.add('show');
-      setBtn('cw-btn',isMonthly?'提交申请 · Apply':'提交登记 · Submit',false);return;
+      setBtn('cw-btn',btnLabel,false);
+      return;
     }
+
     if(result.error){
-      err.textContent=result.error;err.classList.add('show');
-      setBtn('cw-btn',isMonthly?'提交申请 · Apply':'提交登记 · Submit',false);return;
+      err.textContent=result.error;
+      err.classList.add('show');
+      setBtn('cw-btn',btnLabel,false);
+      return;
     }
-    showSuccess(currentPlan, result);
+
+    showSuccess(currentPlan,result);
   }catch(e){
-    err.textContent='网络错误，请重试。/ Connection error. Please try again.';
+    err.textContent=L.errNetwork;
     err.classList.add('show');
-    setBtn('cw-btn',isMonthly?'提交申请 · Apply':'提交登记 · Submit',false);
+    setBtn('cw-btn',btnLabel,false);
   }
 }
 
-// ══════════════════════════════════════════
-// SUBMIT FEEDBACK
-// ══════════════════════════════════════════
 async function submitFeedback(){
+  const L=t();
+
   const msg=document.getElementById('f-msg').value.trim();
   const name=document.getElementById('f-name').value.trim();
   const email=document.getElementById('f-email').value.trim();
-  const rating=selectedRating;
   const err=document.getElementById('f-err');
 
   if(!msg){
-    err.textContent='请填写您的留言。/ Please enter your message.';
-    err.classList.add('show');return;
+    err.textContent=L.errMsg;
+    err.classList.add('show');
+    return;
   }
+
   err.classList.remove('show');
-  setBtn('f-btn','<span class="spinner spinner-gold"></span>提交中…',true);
+  setBtn('f-btn','<span class="spinner"></span>'+L.submitting,true);
 
   try{
-    const result=await apiPost({action:'submitFeedback',name,email,rating,message:msg});
+    const result=await apiPost({
+      action:'submitFeedback',
+      name,
+      email,
+      rating:selectedRating,
+      message:msg
+    });
+
     if(result.error){
-      err.textContent=result.error;err.classList.add('show');
-      setBtn('f-btn','提交反馈 · Submit Feedback',false);return;
+      err.textContent=result.error;
+      err.classList.add('show');
+      setBtn('f-btn',L.fbBtn,false);
+      return;
     }
-    showSuccess('feedback', result);
+
+    showSuccess('feedback',result);
   }catch(e){
-    err.textContent='网络错误，请重试。/ Connection error. Please try again.';
+    err.textContent=L.errNetwork;
     err.classList.add('show');
-    setBtn('f-btn','提交反馈 · Submit Feedback',false);
+    setBtn('f-btn',L.fbBtn,false);
   }
 }
 
-// ══════════════════════════════════════════
-// SHOW SUCCESS
-// ══════════════════════════════════════════
-function showSuccess(type, result){
+function showSuccess(type,result){
+  const L=t();
+
   const configs={
-    coffee:{glyph:'☕',title:'登记成功！',titleEn:'Submitted!',header:'咖啡集点登记',
-      msg:'您的购买记录已提交，员工确认后您将收到邮件通知，邮件中包含您当前的集点进度。<br><span style="font-size:12px;font-style:italic;color:var(--muted)">Your purchase has been logged. You\'ll receive an email confirmation with your points progress once staff verifies it.</span>'},
-    carwash:{glyph:'🚗',title:'登记成功！',titleEn:'Submitted!',header:'洗三送一登记',
-      msg:'您的洗车记录已提交，员工审核收据后您将收到邮件确认，邮件中包含您当前的洗车进度。<br><span style="font-size:12px;font-style:italic;color:var(--muted)">Your wash has been logged. You\'ll receive an email once staff confirms your receipt.</span>'},
-    monthly:{glyph:'💳',title:'申请成功！',titleEn:'Application Submitted!',header:'包月会员申请',
-      msg:'您的包月会员申请已提交，员工审核付款凭证后将激活您的会员资格并发送确认邮件。<br><span style="font-size:12px;font-style:italic;color:var(--muted)">Your membership application has been submitted. Staff will verify your payment and activate your membership.</span>'},
-    feedback:{glyph:'💬',title:'感谢您的反馈！',titleEn:'Thank You!',header:'意见与建议',
-      msg:'您的留言已发送给我们的管理团队，感谢您帮助我们改进服务！<br><span style="font-size:12px;font-style:italic;color:var(--muted)">Your feedback has been sent to our management team. Thank you for helping us improve!</span>'}
+    coffee:{
+      header:L.succCoffeeHeader,
+      title:L.succCoffeeTitle,
+      sub:L.succCoffeeSub,
+      glyph:'☕',
+      msg:L.succCoffeeMsg,
+      msgIt:L.succCoffeeMsgIt
+    },
+    carwash:{
+      header:L.succWashHeader,
+      title:L.succWashTitle,
+      sub:L.succWashSub,
+      glyph:'🚗',
+      msg:L.succWashMsg,
+      msgIt:L.succWashMsgIt
+    },
+    monthly:{
+      header:L.succMonthlyHeader,
+      title:L.succMonthlyTitle,
+      sub:L.succMonthlyTitleSub,
+      glyph:'💳',
+      msg:L.succMonthlyMsg,
+      msgIt:L.succMonthlyMsgIt
+    },
+    feedback:{
+      header:L.succFeedbackHeader,
+      title:L.succFeedbackTitle,
+      sub:L.succFeedbackTitleSub,
+      glyph:'💬',
+      msg:L.succFeedbackMsg,
+      msgIt:L.succFeedbackMsgIt
+    }
   };
-  const c=configs[type]||configs.feedback;
-  document.getElementById('succ-glyph').textContent=c.glyph;
-  document.getElementById('succ-title').textContent=c.title;
-  document.getElementById('succ-title-en').textContent=c.titleEn;
-  document.getElementById('succ-msg').innerHTML=c.msg;
-  document.getElementById('succ-header').textContent=c.header;
 
-  // Coffee progress
-  const cpb=document.getElementById('succ-prog-box');
+  const c=configs[type] || configs.feedback;
+
+  setText('succ-header',c.header);
+  setText('succ-glyph',c.glyph);
+  setText('succ-title',c.title);
+  setText('succ-title-sub',c.sub);
+  setText('succ-msg',c.msg + (c.msgIt ? '<span class="notice-it">'+c.msgIt+'</span>' : ''));
+  setText('succ-back-btn',L.succBack);
+
+  const cpb=document.getElementById('succ-coffee-box');
   const wpb=document.getElementById('succ-wash-box');
-  cpb.style.display='none';wpb.style.display='none';
 
-  if(type==='coffee'&&result.confirmedPurchases!==undefined){
+  cpb.style.display='none';
+  wpb.style.display='none';
+
+  if(type==='coffee' && result.confirmedPurchases!==undefined){
     cpb.style.display='block';
-    const mod=result.progressMod||0;
+    setText('succ-coffee-box-title',L.coffeeBoxTitle);
+
+    const rewardReady = !!result.rewardReady;
+    const mod = rewardReady ? 5 : Number(result.progressMod || 0);
+
     let track='';
+
     for(let i=0;i<5;i++){
-      track+=`<div class="prog-dot${i<mod?' lit':''}">${i<mod?'✓':(i+1)}</div>`;
+      track+=`<div class="prog-dot${i<mod?' lit-green':''}">${i<mod?'✓':(i+1)}</div>`;
       if(i<4) track+='<span class="prog-arrow">›</span>';
     }
-    track+='<span class="prog-arrow">›</span>';
-    track+=`<div class="prog-free" style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#1a0f00;font-family:var(--mono)">FREE</div>`;
-    document.getElementById('succ-prog-track').innerHTML=track;
-    document.getElementById('succ-prog-lbl').textContent=
-      mod===0?'还没有已确认的购买记录 — 您的第一次已在路上！/ No confirmed purchases yet — your first is on the way!'
-      :mod<5?`已确认 ${mod} 次，还需 ${5-mod} 次即可免费获得一杯咖啡 / ${mod} confirmed, ${5-mod} more for your free coffee`
-      :'🎉 免费咖啡已解锁！请向员工出示此页面领取。/ Free coffee ready — show this to staff!';
+
+    track+='<span class="prog-arrow">›</span><div class="prog-free prog-free-green">FREE</div>';
+
+    setText('succ-coffee-track',track);
+
+    if(rewardReady){
+      setText('succ-coffee-lbl',L.progFree);
+    }else if(mod===0){
+      setText('succ-coffee-lbl',L.progCoffee0);
+    }else{
+      setText('succ-coffee-lbl',
+        mod+'/5 '+(lang==='zh'?'次已确认，还需 '+(5-mod)+' 次':'confirmed · '+(5-mod)+' more for your free coffee')
+      );
+    }
   }
 
-  if((type==='carwash')&&result.confirmedWashes!==undefined){
+  if(type==='carwash' && result.confirmedWashes!==undefined){
     wpb.style.display='block';
-    const mod=result.progressMod||0;
+    setText('succ-wash-box-title',L.washBoxTitle);
+
+    const rewardReady = !!result.rewardReady;
+    const mod = rewardReady ? 3 : Number(result.progressMod || 0);
+
     let track='';
+
     for(let i=0;i<3;i++){
-      track+=`<div class="prog-dot${i<mod?' lit':''}" style="width:36px;height:36px;border-radius:50%;border:1.5px solid var(--border2);background:${i<mod?'var(--red)':'var(--surface)'};display:flex;align-items:center;justify-content:center;font-size:13px;color:${i<mod?'#fff':'var(--muted)'}">${i<mod?'✓':(i+1)}</div>`;
+      track+=`<div class="prog-dot${i<mod?' lit-red':''}">${i<mod?'✓':(i+1)}</div>`;
       if(i<2) track+='<span class="prog-arrow">›</span>';
     }
-    track+='<span class="prog-arrow">›</span>';
-    track+=`<div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#c8102e,#e8385a);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;font-family:var(--mono)">FREE</div>`;
-    document.getElementById('succ-wash-track').innerHTML=track;
-    document.getElementById('succ-wash-lbl').textContent=
-      mod===0?'还没有已确认的洗车记录 — 加油！/ No confirmed washes yet — keep it up!'
-      :mod<3?`已确认 ${mod} 次，还需 ${3-mod} 次即可免费洗车 / ${mod} confirmed, ${3-mod} more for your free wash`
-      :'🎉 免费洗车已解锁！请向员工出示此页面领取。/ Free wash ready — show this to staff!';
+
+    track+='<span class="prog-arrow">›</span><div class="prog-free prog-free-red">FREE</div>';
+
+    setText('succ-wash-track',track);
+
+    if(rewardReady){
+      setText('succ-wash-lbl',L.progWashFree);
+    }else if(mod===0){
+      setText('succ-wash-lbl',L.progWash0);
+    }else{
+      setText('succ-wash-lbl',
+        mod+'/3 '+(lang==='zh'?'次已确认，还需 '+(3-mod)+' 次':'confirmed · '+(3-mod)+' more for your free wash')
+      );
+    }
   }
 
   showScreen('success');
 }
+
+document.querySelectorAll('.lang-btn').forEach(b=>{
+  b.classList.toggle('active',(lang==='en' && b.textContent==='EN') || (lang==='zh' && b.textContent==='中文'));
+});
+
+applyLang();
 </script>
+
 </body>
 </html>
