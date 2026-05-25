@@ -266,7 +266,7 @@ textarea{min-height:82px;resize:vertical;line-height:1.6}
     </div>
     <div class="fg">
       <label class="flabel" id="cf-l-date">Purchase Date <span class="req">*</span></label>
-      <input type="date" id="c-date">
+      <input type="date" id="c-date" max="">
     </div>
     <div class="fg">
       <label class="flabel" id="cf-l-notes">Notes</label>
@@ -356,14 +356,14 @@ textarea{min-height:82px;resize:vertical;line-height:1.6}
       </select>
     </div>
 
-    <div class="fg">
+    <div class="fg" id="cw-date-wrap">
       <label class="flabel" id="cw-l-date">Wash Date <span class="req">*</span></label>
-      <input type="date" id="cw-date">
+      <input type="date" id="cw-date" max="">
     </div>
 
     <div id="cw-monthly-start-wrap" style="display:none" class="fg">
       <label class="flabel" id="cw-l-start">Membership Start Date <span class="req">*</span></label>
-      <input type="date" id="cw-start-date">
+      <input type="date" id="cw-start-date" max="">
     </div>
 
     <div class="fg">
@@ -477,6 +477,14 @@ let selectedTier = "";
 function todayStr(){
   const d=new Date();
   return d.toISOString().slice(0,10);
+}
+
+function setDateMaxToday(){
+  const today=todayStr();
+  ["c-date","cw-date","cw-start-date"].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.max=today;
+  });
 }
 
 const S = {
@@ -676,6 +684,7 @@ function openForm(type){
     ["c-name","c-phone","c-email","c-notes"].forEach(id=>document.getElementById(id).value="");
     document.getElementById("c-location").value="";
     document.getElementById("c-date").value=todayStr();
+    setDateMaxToday();
     document.getElementById("c-err").classList.remove("show");
     setBtn("c-btn",L.cfBtn,false);
     showScreen("coffee"); return;
@@ -700,6 +709,7 @@ function openForm(type){
 
     document.getElementById("cw-tier-wrap").style.display=isM?"block":"none";
     document.getElementById("cw-monthly-start-wrap").style.display=isM?"block":"none";
+    document.getElementById("cw-date-wrap").style.display=isM?"none":"block";
     // hide location box for monthly (linked to plate not location)
     document.getElementById("cw-location-box").style.display=isM?"none":"block";
 
@@ -707,6 +717,7 @@ function openForm(type){
     document.getElementById("cw-location").value="";
     document.getElementById("cw-date").value=todayStr();
     document.getElementById("cw-start-date").value=todayStr();
+    setDateMaxToday();
     document.getElementById("cw-tier").value="";
     selectedTier="";
     ["tier-std","tier-prm"].forEach(id=>document.getElementById(id).classList.remove("selected"));
@@ -824,7 +835,7 @@ async function submitCarwash(){
   const phone=document.getElementById("cw-phone").value.trim().replace(/\s/g,"");
   const email=document.getElementById("cw-email").value.trim();
   const location=document.getElementById("cw-location").value;
-  const washDate=document.getElementById("cw-date").value||todayStr();
+  const washDate=isM?(document.getElementById("cw-start-date").value||todayStr()):(document.getElementById("cw-date").value||todayStr());
   const startDate=document.getElementById("cw-start-date").value||todayStr();
   const notes=document.getElementById("cw-notes").value.trim();
   const tier=document.getElementById("cw-tier").value;
@@ -884,6 +895,17 @@ function showSuccess(type,result){
   const cpb=document.getElementById("succ-coffee-box");
   const wpb=document.getElementById("succ-wash-box");
   cpb.style.display="none"; wpb.style.display="none";
+
+  if(type==="monthly"){
+    const statusLabel = lang==="zh"?"申请状态":"Application Status";
+    const statusBody  = lang==="zh"
+      ?"⏳ 等待员工审核收据并激活会员资格<br>激活后您将收到确认邮件"
+      :"⏳ Awaiting staff to verify your receipt and activate your membership.<br>You will receive a confirmation email once activated.";
+    setText("succ-msg", c.msg +
+      `<div style="margin-top:16px;background:var(--blue-light);border:1px solid #BFDBFE;border-radius:10px;padding:12px 14px;font-size:13px;color:#1E3A8A;text-align:left;line-height:1.7">
+        <strong style="color:#172554">${statusLabel}</strong><br>${statusBody}
+      </div>`);
+  }
 
   if(type==="coffee"){
     cpb.style.display="block";
