@@ -6,678 +6,151 @@
 <title>Aries Petroleum — Rewards & Offers</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
 <style>
 :root{
   --sinopec-red:#E60012;
   --sinopec-red-dark:#B8000E;
-
   --bp-green:#00A651;
   --bp-green-dark:#007A3D;
-
   --liberty-blue:#003DA5;
   --liberty-blue-dark:#002A73;
   --liberty-red:#CE1126;
-
   --bg:#F4F6F8;
   --surface:#FFFFFF;
   --surface-soft:#F8FAFC;
   --surface-tint:#EEF3FF;
-
   --border:#DDE3EA;
   --border-strong:#C9D2DD;
-
   --text:#142033;
   --muted:#667085;
   --label:#344054;
-
   --danger-light:#FFF1F2;
   --green-light:#ECFDF3;
   --blue-light:#EFF6FF;
-
   --radius:16px;
   --radius-sm:10px;
-
-  --sans:'DM Sans',sans-serif;
-  --mono:'DM Mono',monospace;
-
+  --sans:"DM Sans",sans-serif;
+  --mono:"DM Mono",monospace;
   --shadow:0 4px 18px rgba(15,23,42,.08);
   --shadow-sm:0 2px 8px rgba(15,23,42,.06);
 }
-
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{font-size:15px}
-body{
-  background:linear-gradient(180deg,#F8FAFC 0%,#EEF2F6 100%);
-  color:var(--text);
-  font-family:var(--sans);
-  min-height:100vh;
-  overflow-x:hidden;
-}
-
-.screen{display:none}
-.screen.active{display:block}
-
-.hero{
-  background:linear-gradient(135deg,var(--sinopec-red) 0%,var(--liberty-blue) 100%);
-  color:#fff;
-  padding:18px 16px 16px;
-  position:sticky;
-  top:0;
-  z-index:100;
-  box-shadow:0 6px 20px rgba(0,0,0,.18);
-}
-
-.hero-top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin-bottom:10px;
-}
-
-.hero-logo{
-  width:42px;
-  height:42px;
-  background:rgba(255,255,255,.16);
-  border:1px solid rgba(255,255,255,.24);
-  border-radius:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:20px;
-  flex-shrink:0;
-}
-
+body{background:linear-gradient(180deg,#F8FAFC 0%,#EEF2F6 100%);color:var(--text);font-family:var(--sans);min-height:100vh;overflow-x:hidden}
+.screen{display:none}.screen.active{display:block}
+.hero{background:linear-gradient(135deg,var(--sinopec-red) 0%,var(--liberty-blue) 100%);color:#fff;padding:18px 16px 16px;position:sticky;top:0;z-index:100;box-shadow:0 6px 20px rgba(0,0,0,.18)}
+.hero-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+.hero-logo{width:42px;height:42px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.24);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
 .hero-titles{text-align:center;flex:1}
 .hero-title{font-size:21px;font-weight:800;line-height:1.15}
-.hero-brand{
-  font-family:var(--mono);
-  font-size:9px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,.82);
-  margin-top:4px;
-}
-
-.hero-sub{
-  text-align:center;
-  font-size:12px;
-  color:rgba(255,255,255,.88);
-}
-
-.lang-toggle{
-  display:flex;
-  background:rgba(255,255,255,.14);
-  border:1px solid rgba(255,255,255,.22);
-  border-radius:9px;
-  overflow:hidden;
-  flex-shrink:0;
-}
-
-.lang-btn{
-  padding:6px 10px;
-  font-family:var(--mono);
-  font-size:11px;
-  color:#fff;
-  cursor:pointer;
-  border:none;
-  background:transparent;
-  font-weight:600;
-}
-
-.lang-btn.active{
-  background:#fff;
-  color:var(--liberty-blue);
-}
-
-.page-wrap{
-  max-width:540px;
-  margin:0 auto;
-}
-
-.section-label{
-  font-family:var(--mono);
-  font-size:10px;
-  letter-spacing:.13em;
-  text-transform:uppercase;
-  color:var(--muted);
-  padding:18px 16px 9px;
-  font-weight:700;
-}
-
-.offer-card{
-  margin:0 12px 14px;
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  overflow:hidden;
-  box-shadow:var(--shadow-sm);
-  animation:slideUp .32s ease both;
-}
-
-@keyframes slideUp{
-  from{opacity:0;transform:translateY(10px)}
-  to{opacity:1;transform:none}
-}
-
+.hero-brand{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.82);margin-top:4px}
+.hero-sub{text-align:center;font-size:12px;color:rgba(255,255,255,.88)}
+.lang-toggle{display:flex;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);border-radius:9px;overflow:hidden;flex-shrink:0}
+.lang-btn{padding:6px 10px;font-family:var(--mono);font-size:11px;color:#fff;cursor:pointer;border:none;background:transparent;font-weight:600}
+.lang-btn.active{background:#fff;color:var(--liberty-blue)}
+.page-wrap{max-width:540px;margin:0 auto}
+.section-label{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);padding:18px 16px 9px;font-weight:700}
+.offer-card{margin:0 12px 14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);animation:slideUp .32s ease both}
+@keyframes slideUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .offer-stripe{height:5px;width:100%}
-
 .offer-body{padding:16px 16px 13px}
 .offer-icon{font-size:28px;margin-bottom:8px;display:block}
 .offer-title{font-size:18px;font-weight:800;color:var(--text);margin-bottom:3px}
 .offer-title-sub{font-size:12px;color:var(--muted);margin-bottom:9px;font-weight:600}
 .offer-tagline{font-size:13px;color:var(--label);line-height:1.6}
-
-.offer-note-box{
-  margin-top:10px;
-  padding:10px 11px;
-  border-radius:10px;
-  background:var(--blue-light);
-  border:1px solid #C7D7FE;
-  color:#1E3A8A;
-  font-size:12px;
-  line-height:1.55;
-}
-
-.offer-footer{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  padding:12px 16px;
-  border-top:1px solid var(--border);
-  background:var(--surface-soft);
-}
-
-.offer-note{
-  font-family:var(--mono);
-  font-size:10px;
-  color:var(--muted);
-}
-
-.offer-cta{
-  font-size:13px;
-  font-weight:800;
-  padding:8px 16px;
-  border-radius:9px;
-  border:none;
-  cursor:pointer;
-  white-space:nowrap;
-}
-
-.cw-btns{
-  display:flex;
-  gap:9px;
-  padding:13px 16px;
-  border-top:1px solid var(--border);
-  background:var(--surface-soft);
-}
-
-.cw-btn{
-  flex:1;
-  padding:12px 8px;
-  border:none;
-  border-radius:11px;
-  font-size:13px;
-  font-weight:800;
-  font-family:var(--sans);
-  cursor:pointer;
-  text-align:center;
-  line-height:1.35;
-  box-shadow:var(--shadow-sm);
-}
-
-.cw-btn-label{
-  font-size:11px;
-  font-weight:500;
-  opacity:.9;
-  margin-top:3px;
-  display:block;
-}
-
-.form-header{
-  background:#fff;
-  border-bottom:1px solid var(--border);
-  padding:12px 16px;
-  display:flex;
-  align-items:center;
-  gap:12px;
-  position:sticky;
-  top:0;
-  z-index:50;
-  box-shadow:var(--shadow-sm);
-}
-
-.form-back{
-  width:36px;
-  height:36px;
-  border-radius:10px;
-  border:1.5px solid var(--border);
-  background:#fff;
-  color:var(--label);
-  font-size:17px;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-shrink:0;
-}
-
+.offer-note-box{margin-top:10px;padding:10px 11px;border-radius:10px;background:var(--blue-light);border:1px solid #C7D7FE;color:#1E3A8A;font-size:12px;line-height:1.55}
+.offer-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;border-top:1px solid var(--border);background:var(--surface-soft)}
+.offer-note{font-family:var(--mono);font-size:10px;color:var(--muted)}
+.offer-cta{font-size:13px;font-weight:800;padding:8px 16px;border-radius:9px;border:none;cursor:pointer;white-space:nowrap}
+.cw-btns{display:flex;gap:9px;padding:13px 16px;border-top:1px solid var(--border);background:var(--surface-soft)}
+.cw-btn{flex:1;padding:12px 8px;border:none;border-radius:11px;font-size:13px;font-weight:800;font-family:var(--sans);cursor:pointer;text-align:center;line-height:1.35;box-shadow:var(--shadow-sm)}
+.cw-btn-label{font-size:11px;font-weight:500;opacity:.9;margin-top:3px;display:block}
+.form-header{background:#fff;border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:50;box-shadow:var(--shadow-sm)}
+.form-back{width:36px;height:36px;border-radius:10px;border:1.5px solid var(--border);background:#fff;color:var(--label);font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .form-header-title{font-size:15px;font-weight:800;color:var(--text)}
 .form-header-sub{font-size:11px;color:var(--muted);margin-top:1px}
-
-.form-body{
-  padding:18px 16px 56px;
-  max-width:520px;
-  margin:0 auto;
-}
-
-.notice{
-  background:var(--blue-light);
-  border:1px solid #BFDBFE;
-  border-radius:var(--radius-sm);
-  padding:12px 14px;
-  font-size:13px;
-  color:#1E3A8A;
-  line-height:1.65;
-  margin-bottom:14px;
-}
-
+.form-body{padding:18px 16px 56px;max-width:520px;margin:0 auto}
+.notice{background:var(--blue-light);border:1px solid #BFDBFE;border-radius:var(--radius-sm);padding:12px 14px;font-size:13px;color:#1E3A8A;line-height:1.65;margin-bottom:14px}
 .notice strong{color:#172554}
-.notice-it{
-  font-size:12px;
-  color:#475569;
-  font-style:italic;
-  margin-top:4px;
-  display:block;
-}
-
-.location-box{
-  background:#fff;
-  border:1px solid var(--border);
-  border-left:4px solid var(--liberty-blue);
-  border-radius:12px;
-  padding:13px 14px;
-  margin-bottom:16px;
-  font-size:13px;
-  line-height:1.75;
-  color:var(--label);
-  box-shadow:var(--shadow-sm);
-}
-
-.location-title{
-  font-weight:800;
-  color:var(--text);
-  margin-bottom:6px;
-}
-
+.notice-it{font-size:12px;color:#475569;font-style:italic;margin-top:4px;display:block}
+.location-box{background:#fff;border:1px solid var(--border);border-left:4px solid var(--liberty-blue);border-radius:12px;padding:13px 14px;margin-bottom:16px;font-size:13px;line-height:1.75;color:var(--label);box-shadow:var(--shadow-sm)}
+.location-title{font-weight:800;color:var(--text);margin-bottom:6px}
 .fg{margin-bottom:15px}
-
-.flabel{
-  display:block;
-  font-size:11px;
-  font-weight:700;
-  color:var(--muted);
-  text-transform:uppercase;
-  letter-spacing:.07em;
-  margin-bottom:6px;
-  font-family:var(--mono);
-}
-
+.flabel{display:block;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;font-family:var(--mono)}
 .req{color:var(--sinopec-red);margin-left:2px}
-
-input,select,textarea{
-  width:100%;
-  padding:12px 13px;
-  border:1.5px solid var(--border);
-  border-radius:var(--radius-sm);
-  font-size:15px;
-  background:#fff;
-  color:var(--text);
-  font-family:var(--sans);
-  outline:none;
-  transition:border-color .2s,box-shadow .2s;
-  -webkit-appearance:none;
-}
-
-input:focus,select:focus,textarea:focus{
-  border-color:var(--liberty-blue);
-  box-shadow:0 0 0 3px rgba(0,61,165,.10);
-}
-
-textarea{
-  min-height:82px;
-  resize:vertical;
-  line-height:1.6;
-}
-
-.plate-input{
-  text-transform:uppercase;
-  font-family:var(--mono);
-  font-size:18px;
-  letter-spacing:.08em;
-  font-weight:700;
-}
-
-.file-zone{
-  border:2px dashed var(--border-strong);
-  background:var(--surface-soft);
-  border-radius:var(--radius-sm);
-  padding:18px;
-  text-align:center;
-  cursor:pointer;
-  position:relative;
-  overflow:hidden;
-}
-
-.file-zone input[type=file]{
-  position:absolute;
-  inset:0;
-  opacity:0;
-  cursor:pointer;
-  width:100%;
-  height:100%;
-}
-
+input,select,textarea{width:100%;padding:12px 13px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:15px;background:#fff;color:var(--text);font-family:var(--sans);outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none}
+input:focus,select:focus,textarea:focus{border-color:var(--liberty-blue);box-shadow:0 0 0 3px rgba(0,61,165,.10)}
+textarea{min-height:82px;resize:vertical;line-height:1.6}
+.plate-input{text-transform:uppercase;font-family:var(--mono);font-size:18px;letter-spacing:.08em;font-weight:700}
+.file-zone{border:2px dashed var(--border-strong);background:var(--surface-soft);border-radius:var(--radius-sm);padding:18px;text-align:center;cursor:pointer;position:relative;overflow:hidden}
+.file-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
 .fz-icon{font-size:27px;margin-bottom:5px}
 .fz-label{font-size:13px;color:var(--muted)}
 .fz-name{font-size:12px;color:var(--bp-green-dark);font-weight:700;margin-top:4px;display:none}
+.img-preview{margin-top:10px;border-radius:var(--radius-sm);overflow:hidden;display:none;border:1px solid var(--border)}
+.img-preview img{width:100%;display:block;object-fit:cover;max-height:190px}
+.img-size{font-size:11px;color:var(--muted);margin-top:4px;display:none}
 
-.img-preview{
-  margin-top:10px;
-  border-radius:var(--radius-sm);
-  overflow:hidden;
-  display:none;
-  border:1px solid var(--border);
-}
+/* ── Tier cards — redesigned ── */
+.tier-cards{display:flex;flex-direction:column;gap:10px;margin-bottom:4px}
+.tier-card{border:2px solid var(--border);border-radius:14px;padding:14px 15px;cursor:pointer;background:#fff;transition:border-color .18s,background .18s,box-shadow .18s;position:relative;overflow:hidden}
+.tier-card.selected{border-color:var(--liberty-blue);background:var(--blue-light);box-shadow:0 0 0 3px rgba(0,61,165,.09)}
+.tier-card-badge{display:inline-block;background:var(--sinopec-red);color:#fff;font-size:9px;font-weight:800;padding:2px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.tier-card-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
+.tier-card-name{font-size:16px;font-weight:800;color:var(--text)}
+.tier-card-price{font-family:var(--mono);font-size:18px;font-weight:700;color:var(--sinopec-red)}
+.tier-card-price span{font-size:11px;color:var(--muted);font-weight:500}
+.tier-card-features{font-size:12px;color:var(--label);line-height:1.7;margin-top:6px}
+.tier-card-feature{display:flex;align-items:flex-start;gap:6px;margin-bottom:2px}
+.tier-card-feature-icon{color:var(--bp-green);font-size:12px;margin-top:1px;flex-shrink:0}
+.tier-selected-check{position:absolute;top:12px;right:12px;width:22px;height:22px;background:var(--liberty-blue);border-radius:50%;display:none;align-items:center;justify-content:center;color:#fff;font-size:12px}
+.tier-card.selected .tier-selected-check{display:flex}
 
-.img-preview img{
-  width:100%;
-  display:block;
-  object-fit:cover;
-  max-height:190px;
-}
-
-.img-size{
-  font-size:11px;
-  color:var(--muted);
-  margin-top:4px;
-  display:none;
-}
-
-.tier-option{
-  border:2px solid var(--border);
-  border-radius:var(--radius-sm);
-  padding:13px;
-  margin-bottom:9px;
-  cursor:pointer;
-  background:#fff;
-}
-
-.tier-option.selected{
-  border-color:var(--liberty-blue);
-  background:var(--blue-light);
-}
-
-.tier-name{font-size:15px;font-weight:800;color:var(--text)}
-.tier-price{
-  font-family:var(--mono);
-  font-size:15px;
-  color:var(--sinopec-red);
-  font-weight:700;
-  margin-top:1px;
-}
-
-.tier-desc{
-  font-size:12px;
-  color:var(--muted);
-  line-height:1.6;
-  margin-top:5px;
-}
-
-.tier-best{
-  display:inline-block;
-  background:var(--sinopec-red);
-  color:#fff;
-  font-size:9px;
-  font-weight:800;
-  padding:3px 8px;
-  border-radius:5px;
-  text-transform:uppercase;
-  letter-spacing:.05em;
-  margin-bottom:6px;
-}
-
-.btn{
-  display:block;
-  width:100%;
-  padding:14px 18px;
-  border:none;
-  border-radius:var(--radius-sm);
-  font-size:15px;
-  font-weight:800;
-  cursor:pointer;
-  font-family:var(--sans);
-  text-align:center;
-}
-
+.btn{display:block;width:100%;padding:14px 18px;border:none;border-radius:var(--radius-sm);font-size:15px;font-weight:800;cursor:pointer;font-family:var(--sans);text-align:center}
 .btn:disabled{opacity:.55;cursor:not-allowed}
-
-.btn-primary{
-  background:linear-gradient(135deg,var(--sinopec-red),var(--sinopec-red-dark));
-  color:#fff;
-  box-shadow:0 4px 14px rgba(230,0,18,.22);
-}
-
-.btn-green{
-  background:linear-gradient(135deg,var(--bp-green),var(--bp-green-dark));
-  color:#fff;
-  box-shadow:0 4px 14px rgba(0,166,81,.20);
-}
-
-.btn-blue{
-  background:linear-gradient(135deg,var(--liberty-blue),var(--liberty-blue-dark));
-  color:#fff;
-  box-shadow:0 4px 14px rgba(0,61,165,.22);
-}
-
-.btn-ghost{
-  background:#fff;
-  color:var(--label);
-  border:1.5px solid var(--border);
-}
-
-.rating-row{
-  display:flex;
-  gap:7px;
-  margin-top:5px;
-}
-
-.rating-btn{
-  flex:1;
-  padding:10px 4px;
-  border:1.5px solid var(--border);
-  border-radius:10px;
-  background:#fff;
-  color:var(--muted);
-  font-size:20px;
-  cursor:pointer;
-  text-align:center;
-}
-
-.rating-btn.selected{
-  border-color:var(--bp-green);
-  background:var(--green-light);
-  transform:scale(1.06);
-}
-
-.err{
-  background:var(--danger-light);
-  border:1.5px solid #FDA4AF;
-  border-radius:var(--radius-sm);
-  padding:10px 13px;
-  font-size:13px;
-  color:var(--sinopec-red-dark);
-  margin-top:12px;
-  display:none;
-  line-height:1.5;
-  font-weight:600;
-}
-
+.btn-primary{background:linear-gradient(135deg,var(--sinopec-red),var(--sinopec-red-dark));color:#fff;box-shadow:0 4px 14px rgba(230,0,18,.22)}
+.btn-green{background:linear-gradient(135deg,var(--bp-green),var(--bp-green-dark));color:#fff;box-shadow:0 4px 14px rgba(0,166,81,.20)}
+.btn-blue{background:linear-gradient(135deg,var(--liberty-blue),var(--liberty-blue-dark));color:#fff;box-shadow:0 4px 14px rgba(0,61,165,.22)}
+.btn-ghost{background:#fff;color:var(--label);border:1.5px solid var(--border)}
+.rating-row{display:flex;gap:7px;margin-top:5px}
+.rating-btn{flex:1;padding:10px 4px;border:1.5px solid var(--border);border-radius:10px;background:#fff;color:var(--muted);font-size:20px;cursor:pointer;text-align:center}
+.rating-btn.selected{border-color:var(--bp-green);background:var(--green-light);transform:scale(1.06)}
+.err{background:var(--danger-light);border:1.5px solid #FDA4AF;border-radius:var(--radius-sm);padding:10px 13px;font-size:13px;color:var(--sinopec-red-dark);margin-top:12px;display:none;line-height:1.5;font-weight:600}
 .err.show{display:block}
-
-.success-wrap{
-  text-align:center;
-  padding:36px 16px 24px;
-}
-
-.s-glyph{
-  font-size:56px;
-  margin-bottom:12px;
-  display:block;
-  animation:pop .4s cubic-bezier(.175,.885,.32,1.275) both;
-}
-
-@keyframes pop{
-  from{transform:scale(.3);opacity:0}
-  to{transform:scale(1);opacity:1}
-}
-
+.success-wrap{text-align:center;padding:36px 16px 24px}
+.s-glyph{font-size:56px;margin-bottom:12px;display:block;animation:pop .4s cubic-bezier(.175,.885,.32,1.275) both}
+@keyframes pop{from{transform:scale(.3);opacity:0}to{transform:scale(1);opacity:1}}
 .s-title{font-size:22px;font-weight:800;margin-bottom:3px;color:var(--text)}
 .s-title-sub{font-size:12px;color:var(--muted);font-style:italic;margin-bottom:14px}
-.s-msg{
-  font-size:13px;
-  color:var(--label);
-  line-height:1.7;
-  max-width:330px;
-  margin:0 auto 22px;
-}
-
-.prog-box{
-  background:#fff;
-  border:1.5px solid var(--border);
-  border-radius:var(--radius);
-  padding:16px;
-  margin-bottom:16px;
-  box-shadow:var(--shadow-sm);
-}
-
-.prog-box-title{
-  font-family:var(--mono);
-  font-size:9px;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:var(--muted);
-  margin-bottom:12px;
-  font-weight:700;
-}
-
-.prog-track{
-  display:flex;
-  gap:6px;
-  align-items:center;
-  flex-wrap:wrap;
-  margin-bottom:8px;
-}
-
-.prog-dot{
-  width:34px;
-  height:34px;
-  border-radius:50%;
-  border:2px solid var(--border);
-  background:var(--surface-soft);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:13px;
-  color:var(--muted);
-  font-weight:700;
-  font-family:var(--mono);
-}
-
-.prog-dot.lit-red{
-  background:var(--sinopec-red);
-  border-color:var(--sinopec-red);
-  color:#fff;
-}
-
-.prog-dot.lit-green{
-  background:var(--bp-green);
-  border-color:var(--bp-green);
-  color:#fff;
-}
-
+.s-msg{font-size:13px;color:var(--label);line-height:1.7;max-width:330px;margin:0 auto 22px}
+.prog-box{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:16px;box-shadow:var(--shadow-sm)}
+.prog-box-title{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;font-weight:700}
+.prog-track{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.prog-dot{width:34px;height:34px;border-radius:50%;border:2px solid var(--border);background:var(--surface-soft);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--muted);font-weight:700;font-family:var(--mono)}
+.prog-dot.lit-red{background:var(--sinopec-red);border-color:var(--sinopec-red);color:#fff}
+.prog-dot.lit-green{background:var(--bp-green);border-color:var(--bp-green);color:#fff}
 .prog-arrow{color:var(--border-strong);font-size:13px}
+.prog-free{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;font-family:var(--mono);border:2px solid}
+.prog-free-red{background:var(--danger-light);border-color:var(--sinopec-red);color:var(--sinopec-red)}
+.prog-free-green{background:var(--green-light);border-color:var(--bp-green);color:var(--bp-green-dark)}
+.prog-lbl{font-size:13px;color:var(--label);line-height:1.6}
 
-.prog-free{
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:9px;
-  font-weight:800;
-  font-family:var(--mono);
-  border:2px solid;
-}
+/* pending notice in progress box */
+.prog-pending{display:flex;align-items:center;gap:7px;background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:8px 11px;margin-bottom:10px;font-size:12px;color:#92400E;font-weight:600}
+.prog-pending-dot{width:8px;height:8px;border-radius:50%;background:#F59E0B;flex-shrink:0;animation:blink 1.2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 
-.prog-free-red{
-  background:var(--danger-light);
-  border-color:var(--sinopec-red);
-  color:var(--sinopec-red);
-}
-
-.prog-free-green{
-  background:var(--green-light);
-  border-color:var(--bp-green);
-  color:var(--bp-green-dark);
-}
-
-.prog-lbl{
-  font-size:13px;
-  color:var(--label);
-  line-height:1.6;
-}
-
-.spinner{
-  display:inline-block;
-  width:14px;
-  height:14px;
-  border:2px solid rgba(255,255,255,.4);
-  border-top-color:#fff;
-  border-radius:50%;
-  animation:spin .6s linear infinite;
-  vertical-align:middle;
-  margin-right:6px;
-}
-
-.spinner-dark{
-  border-color:rgba(0,0,0,.15);
-  border-top-color:var(--text);
-}
-
+.spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle;margin-right:6px}
+.spinner-dark{border-color:rgba(0,0,0,.15);border-top-color:var(--text)}
 @keyframes spin{to{transform:rotate(360deg)}}
-
-.page-footer{
-  text-align:center;
-  padding:20px 16px 36px;
-  font-size:11px;
-  color:var(--muted);
-  font-family:var(--mono);
-}
-
-@media(max-width:380px){
-  .offer-title{font-size:17px}
-  .cw-btn{font-size:12px}
-  .hero-title{font-size:19px}
-}
+.page-footer{text-align:center;padding:16px 16px 28px;font-size:10px;color:var(--muted);font-family:var(--mono);line-height:1.8}
+.privacy-line{margin-top:4px;font-size:10px;color:var(--muted)}
+@media(max-width:380px){.offer-title{font-size:17px}.cw-btn{font-size:12px}.hero-title{font-size:19px}}
 </style>
 </head>
-
 <body>
 
+<!-- ══════════════════ HOME ══════════════════ -->
 <div class="screen active" id="screen-home">
   <div class="hero">
     <div class="hero-top">
@@ -718,9 +191,7 @@ textarea{
         <div class="offer-title" id="cw-card-title">Automatic Car Wash Offers</div>
         <div class="offer-title-sub" id="cw-card-sub">Wash reward progress shared at participating locations</div>
         <div class="offer-tagline" id="cw-card-desc">Two ways to save — collect stamps toward a free wash, or apply for a monthly membership.</div>
-        <div class="offer-note-box" id="cw-card-note-box">
-          Wash reward progress is shared across participating car wash locations in Thomastown, Frankston, Ballarat and Shepparton.
-        </div>
+        <div class="offer-note-box" id="cw-card-note-box">Wash reward progress is shared across participating car wash locations in Thomastown, Frankston, Ballarat and Shepparton.</div>
       </div>
       <div class="cw-btns">
         <button class="cw-btn" style="background:var(--sinopec-red);color:#fff" onclick="openForm('carwash')" id="cw-btn-reward">
@@ -749,10 +220,14 @@ textarea{
       </div>
     </div>
 
-    <div class="page-footer">Aries Petroleum · ariespetroleum.com.au</div>
+    <div class="page-footer">
+      Aries Petroleum · ariespetroleum.com.au
+      <div class="privacy-line" id="footer-privacy">Your personal information is collected solely for reward program administration and is not shared with third parties.</div>
+    </div>
   </div>
 </div>
 
+<!-- ══════════════════ COFFEE FORM ══════════════════ -->
 <div class="screen" id="screen-coffee">
   <div class="form-header">
     <button class="form-back" onclick="goHome()">←</button>
@@ -761,28 +236,38 @@ textarea{
       <div class="form-header-sub" id="cf-header-sub">Register your purchase</div>
     </div>
   </div>
-
   <div class="form-body">
-    <div class="notice" id="cf-notice">
-      <strong>How it works</strong> — Register each coffee purchase here. Once staff confirm it, you will receive an email showing your points progress. Collect 5 confirmed purchases to receive your free coffee.
-      <span class="notice-it">No paper card needed. Please use the same mobile number each time.</span>
-    </div>
+    <div class="notice" id="cf-notice"></div>
 
     <div class="fg">
       <label class="flabel" id="cf-l-name">Name <span class="req">*</span></label>
       <input type="text" id="c-name" placeholder="Your name" autocomplete="name">
     </div>
-
     <div class="fg">
       <label class="flabel" id="cf-l-phone">Mobile <span class="req">*</span></label>
       <input type="tel" id="c-phone" placeholder="04xx xxx xxx" inputmode="tel" autocomplete="tel">
     </div>
-
     <div class="fg">
       <label class="flabel" id="cf-l-email">Email <span class="req">*</span></label>
       <input type="email" id="c-email" placeholder="you@email.com" inputmode="email" autocomplete="email">
     </div>
-
+    <div class="fg">
+      <label class="flabel" id="cf-l-location">Location <span class="req">*</span></label>
+      <select id="c-location">
+        <option value="" id="c-loc-placeholder">Select your station…</option>
+        <option value="Frankston">Frankston</option>
+        <option value="Thomastown">Thomastown</option>
+        <option value="Ballarat">Ballarat (Soldiers Hill)</option>
+        <option value="Shepparton">Shepparton (Kialla)</option>
+        <option value="Bendigo">Bendigo (Golden Square)</option>
+        <option value="Clayton South">Clayton South</option>
+        <option value="Flemington">Flemington</option>
+      </select>
+    </div>
+    <div class="fg">
+      <label class="flabel" id="cf-l-date">Purchase Date <span class="req">*</span></label>
+      <input type="date" id="c-date">
+    </div>
     <div class="fg">
       <label class="flabel" id="cf-l-notes">Notes</label>
       <textarea id="c-notes" placeholder="Any details…"></textarea>
@@ -793,6 +278,7 @@ textarea{
   </div>
 </div>
 
+<!-- ══════════════════ CARWASH FORM ══════════════════ -->
 <div class="screen" id="screen-carwash">
   <div class="form-header">
     <button class="form-back" onclick="goHome()">←</button>
@@ -801,12 +287,8 @@ textarea{
       <div class="form-header-sub" id="cw-header-sub">Register your wash</div>
     </div>
   </div>
-
   <div class="form-body">
-    <div class="notice" id="cw-notice">
-      <strong>How it works</strong> — Upload your payment receipt below. Staff will verify it and confirm your wash. You will receive an email with your updated progress.
-      <span class="notice-it">Please make sure the receipt photo clearly shows the date and amount.</span>
-    </div>
+    <div class="notice" id="cw-notice"></div>
 
     <div class="location-box" id="cw-location-box">
       <div class="location-title" id="cw-location-title">Participating car wash locations</div>
@@ -818,26 +300,35 @@ textarea{
 
     <div id="cw-tier-wrap" style="display:none" class="fg">
       <label class="flabel" id="cw-l-tier">Choose your plan <span class="req">*</span></label>
-
-      <div class="tier-option" id="tier-std" onclick="selectTier('standard')">
-        <div class="tier-name">Standard · $49/month</div>
-        <div class="tier-price">$49 / mo</div>
-        <div class="tier-desc">
-          Basic automatic wash · 1 wash per day<br>
-          <span style="color:var(--bp-green-dark);font-weight:700">Each wash valued at $12–$14</span>
+      <div class="tier-cards">
+        <div class="tier-card" id="tier-std" onclick="selectTier('standard')">
+          <div class="tier-selected-check">✓</div>
+          <div class="tier-card-row">
+            <div class="tier-card-name">Standard</div>
+            <div class="tier-card-price">$49<span>/mo</span></div>
+          </div>
+          <div class="tier-card-features">
+            <div class="tier-card-feature"><span class="tier-card-feature-icon">✓</span><span id="tier-std-f1">Automatic wash every single day</span></div>
+            <div class="tier-card-feature"><span class="tier-card-feature-icon">✓</span><span id="tier-std-f2">1 wash per day, any day of the month</span></div>
+            <div class="tier-card-feature"><span class="tier-card-feature-icon">✓</span><span id="tier-std-f3">Linked to one plate number only</span></div>
+            <div class="tier-card-feature"><span class="tier-card-feature-icon">✓</span><span id="tier-std-f4">Standard automatic wash program</span></div>
+          </div>
+        </div>
+        <div class="tier-card" id="tier-prm" onclick="selectTier('premium')">
+          <div class="tier-card-badge" id="tier-prm-badge">Best Value</div>
+          <div class="tier-selected-check">✓</div>
+          <div class="tier-card-row">
+            <div class="tier-card-name">Premium</div>
+            <div class="tier-card-price">$69<span>/mo</span></div>
+          </div>
+          <div class="tier-card-features">
+            <div class="tier-card-feature"><span class="tier-card-feature-icon">✓</span><span id="tier-prm-f1">Premium wash every single day</span></div>
+            <div class="tier-card-feature"><span class="tier-card-feature-icon">✓</span><span id="tier-prm-f2">1 wash per day, any day of the month</span></div>
+            <div class="tier-card-feature"><span class="tier-card-feature-icon">✓</span><span id="tier-prm-f3">Linked to one plate number only</span></div>
+            <div class="tier-card-feature"><span class="tier-card-feature-icon">✓</span><span id="tier-prm-f4">Premium wash program (valued at $20/wash)</span></div>
+          </div>
         </div>
       </div>
-
-      <div class="tier-option" id="tier-prm" onclick="selectTier('premium')">
-        <div class="tier-best">Best Value</div>
-        <div class="tier-name">Premium · $69/month</div>
-        <div class="tier-price">$69 / mo</div>
-        <div class="tier-desc">
-          Premium automatic wash · 1 wash per day<br>
-          <span style="color:var(--bp-green-dark);font-weight:700">Each wash valued at $20</span>
-        </div>
-      </div>
-
       <input type="hidden" id="cw-tier">
     </div>
 
@@ -845,15 +336,34 @@ textarea{
       <label class="flabel" id="cw-l-plate">Plate Number <span class="req">*</span></label>
       <input type="text" id="cw-plate" class="plate-input" placeholder="e.g. ABC123" autocomplete="off" autocorrect="off" spellcheck="false">
     </div>
-
     <div class="fg">
       <label class="flabel" id="cw-l-phone">Mobile <span class="req">*</span></label>
       <input type="tel" id="cw-phone" placeholder="04xx xxx xxx" inputmode="tel" autocomplete="tel">
     </div>
-
     <div class="fg">
       <label class="flabel" id="cw-l-email">Email <span class="req">*</span></label>
       <input type="email" id="cw-email" placeholder="you@email.com" inputmode="email" autocomplete="email">
+    </div>
+
+    <div id="cw-location-select-wrap" class="fg">
+      <label class="flabel" id="cw-l-location">Location <span class="req">*</span></label>
+      <select id="cw-location">
+        <option value="" id="cw-loc-placeholder">Select your station…</option>
+        <option value="Frankston">Frankston</option>
+        <option value="Thomastown">Thomastown</option>
+        <option value="Ballarat">Ballarat (Soldiers Hill)</option>
+        <option value="Shepparton">Shepparton (Kialla)</option>
+      </select>
+    </div>
+
+    <div class="fg">
+      <label class="flabel" id="cw-l-date">Wash Date <span class="req">*</span></label>
+      <input type="date" id="cw-date">
+    </div>
+
+    <div id="cw-monthly-start-wrap" style="display:none" class="fg">
+      <label class="flabel" id="cw-l-start">Membership Start Date <span class="req">*</span></label>
+      <input type="date" id="cw-start-date">
     </div>
 
     <div class="fg">
@@ -878,6 +388,7 @@ textarea{
   </div>
 </div>
 
+<!-- ══════════════════ FEEDBACK FORM ══════════════════ -->
 <div class="screen" id="screen-feedback">
   <div class="form-header">
     <button class="form-back" onclick="goHome()">←</button>
@@ -886,13 +397,8 @@ textarea{
       <div class="form-header-sub" id="fb-header-sub">Help us improve</div>
     </div>
   </div>
-
   <div class="form-body">
-    <div class="notice" id="fb-notice">
-      Your message goes directly to our management team. We read and act on every piece of feedback.
-      <span class="notice-it">If you would like a reply, please leave your email.</span>
-    </div>
-
+    <div class="notice" id="fb-notice"></div>
     <div class="fg">
       <label class="flabel" id="fb-l-rating">Overall Rating</label>
       <div class="rating-row">
@@ -904,33 +410,29 @@ textarea{
       </div>
       <input type="hidden" id="f-rating">
     </div>
-
     <div class="fg">
       <label class="flabel" id="fb-l-msg">Your Message <span class="req">*</span></label>
       <textarea id="f-msg" style="min-height:112px" placeholder="Tell us about your experience or any suggestions…"></textarea>
     </div>
-
     <div class="fg">
       <label class="flabel" id="fb-l-name">Name</label>
       <input type="text" id="f-name" placeholder="Optional" autocomplete="name">
     </div>
-
     <div class="fg">
       <label class="flabel" id="fb-l-email">Email</label>
       <input type="email" id="f-email" placeholder="Leave email if you would like a reply" inputmode="email" autocomplete="email">
     </div>
-
     <div id="f-err" class="err"></div>
     <button class="btn btn-blue" id="f-btn" onclick="submitFeedback()">Submit Feedback</button>
   </div>
 </div>
 
+<!-- ══════════════════ SUCCESS ══════════════════ -->
 <div class="screen" id="screen-success">
   <div class="form-header">
     <button class="form-back" onclick="goHome()">←</button>
     <div><div class="form-header-title" id="succ-header">Submitted!</div></div>
   </div>
-
   <div class="form-body">
     <div class="success-wrap">
       <span class="s-glyph" id="succ-glyph">✅</span>
@@ -941,12 +443,20 @@ textarea{
 
     <div class="prog-box" id="succ-coffee-box" style="display:none">
       <div class="prog-box-title" id="succ-coffee-box-title">Your Coffee Points</div>
+      <div class="prog-pending" id="succ-coffee-pending">
+        <span class="prog-pending-dot"></span>
+        <span id="succ-coffee-pending-txt">Awaiting staff confirmation — points will be added once verified.</span>
+      </div>
       <div class="prog-track" id="succ-coffee-track"></div>
       <div class="prog-lbl" id="succ-coffee-lbl"></div>
     </div>
 
     <div class="prog-box" id="succ-wash-box" style="display:none">
       <div class="prog-box-title" id="succ-wash-box-title">Your Wash Progress</div>
+      <div class="prog-pending" id="succ-wash-pending">
+        <span class="prog-pending-dot"></span>
+        <span id="succ-wash-pending-txt">Awaiting staff confirmation — progress will update once verified.</span>
+      </div>
       <div class="prog-track" id="succ-wash-track"></div>
       <div class="prog-lbl" id="succ-wash-lbl"></div>
     </div>
@@ -959,754 +469,468 @@ textarea{
 const API_URL   = "https://script.google.com/macros/s/AKfycbyNP1svcMCkS6mdSJhXW2PhTxWRlBrG19s-_cNSFntuLiEjIAPyI8nDVe3SsjQDaEX3/exec";
 const API_TOKEN = "aries_rewards_2026_v1";
 
-let lang = localStorage.getItem('ap_lang') || 'en';
-let currentPlan = '';
+let lang = localStorage.getItem("ap_lang") || "en";
+let currentPlan = "";
 let selectedRating = 0;
-let selectedTier = '';
+let selectedTier = "";
+
+function todayStr(){
+  const d=new Date();
+  return d.toISOString().slice(0,10);
+}
 
 const S = {
   en:{
-    heroTitle:'Member Rewards',
-    heroSub:'Rewards, offers and feedback in one place',
+    heroTitle:"Member Rewards",heroSub:"Rewards, offers and feedback in one place",
+    lblCoffee:"☕ COFFEE OFFERS",lblCarwash:"🚗 CAR WASH REWARDS",lblFeedback:"💬 FEEDBACK",
+    cCardTitle:"Buy 5 Coffees, Get 1 Free",cCardSub:"Buy 5, get 1 free",
+    cCardDesc:"Register each coffee purchase here. Once 5 purchases are confirmed, your next coffee is free.",
+    cCardNote:"No paper card needed",cCardBtn:"Register →",
+    cwCardTitle:"Automatic Car Wash Offers",cwCardSub:"Wash reward progress shared at participating locations",
+    cwCardDesc:"Two ways to save — collect stamps toward a free wash, or apply for a monthly membership.",
+    cwCardNoteBox:"Wash reward progress is shared across participating car wash locations in Thomastown, Frankston, Ballarat and Shepparton.",
+    cwBtnReward1:"Wash 3, Get 1 Free",cwBtnReward2:"Register a wash →",
+    cwBtnMonthly1:"Monthly Membership",cwBtnMonthly2:"From $49/mo →",
+    fCardTitle:"Share Your Feedback",fCardSub:"Feedback & suggestions",
+    fCardDesc:"Your message goes directly to our management team. We read and act on every message.",
+    fCardNote:"Management team receives this",fCardBtn:"Leave a message →",
+    footerPrivacy:"Your personal information is collected solely for reward program administration and is not shared with third parties.",
 
-    lblCoffee:'☕ COFFEE OFFERS',
-    lblCarwash:'🚗 CAR WASH REWARDS',
-    lblFeedback:'💬 FEEDBACK',
+    cfHeaderTitle:"Coffee — Buy 5 Get 1 Free",cfHeaderSub:"Register your purchase",
+    cfNotice:"<strong>How it works</strong> — Register each coffee purchase here. Once staff confirm it, you will receive an email showing your points progress. Collect 5 confirmed purchases to receive your free coffee.<span class=\"notice-it\">No paper card needed. Please use the same mobile number each time.</span>",
+    cfLName:"Name",cfLPhone:"Mobile",cfLEmail:"Email",cfLLocation:"Station",cfLDate:"Purchase Date",cfLNotes:"Notes",
+    cfLocPlaceholder:"Select your station…",cfBtn:"Submit",
 
-    cCardTitle:'Buy 5 Coffees, Get 1 Free',
-    cCardSub:'Buy 5, get 1 free',
-    cCardDesc:'Register each coffee purchase here. Once 5 purchases are confirmed, your next coffee is free.',
-    cCardNote:'No paper card needed',
-    cCardBtn:'Register →',
+    cwHeaderReward:"🚗 Wash 3, Get 1 Free",cwSubReward:"Register your wash",
+    cwHeaderMonthly:"💳 Monthly Car Wash Membership",cwSubMonthly:"Apply for membership",
+    cwNoticeReward:"<strong>How it works</strong> — Upload your payment receipt below. Staff will verify it and confirm your wash. You will receive an email with your updated progress.<span class=\"notice-it\">Please make sure the receipt photo clearly shows the date and amount.</span>",
+    cwNoticeMonthly:"<strong>Monthly membership</strong> — Upload your payment receipt to apply. Staff will verify and activate your membership, then email you confirmation.<span class=\"notice-it\">One wash per day, every day of the month. Membership is linked to one plate number only. Each plate requires its own membership.</span>",
+    cwLocationTitle:"Participating car wash locations",
+    cwLTier:"Choose your plan",cwLPlate:"Plate Number",cwLPhone:"Mobile",cwLEmail:"Email",
+    cwLLocation:"Station",cwLocPlaceholder:"Select your station…",
+    cwLDate:"Wash Date",cwLStart:"Membership Start Date",
+    cwLReceipt:"Payment Receipt",cwLNotes:"Notes",
+    cwBtnSubmitReward:"Submit",cwBtnSubmitMonthly:"Apply",
+    cwFzLabel:"Tap to photograph or upload receipt",cwFzDone:"Receipt attached ✓",
+    tierStdF1:"Automatic wash every single day",tierStdF2:"1 wash per day, any day of the month",
+    tierStdF3:"Linked to one plate number only",tierStdF4:"Standard automatic wash program",
+    tierPrmF1:"Premium wash every single day",tierPrmF2:"1 wash per day, any day of the month",
+    tierPrmF3:"Linked to one plate number only",tierPrmF4:"Premium wash program (valued at $20/wash)",
+    tierPrmBadge:"Best Value",
 
-    cwCardTitle:'Automatic Car Wash Offers',
-    cwCardSub:'Wash reward progress shared at participating locations',
-    cwCardDesc:'Two ways to save — collect stamps toward a free wash, or apply for a monthly membership.',
-    cwCardNoteBox:'Wash reward progress is shared across participating car wash locations in Thomastown, Frankston, Ballarat and Shepparton.',
-    cwBtnReward1:'Wash 3, Get 1 Free',
-    cwBtnReward2:'Register a wash →',
-    cwBtnMonthly1:'Monthly Membership',
-    cwBtnMonthly2:'From $49/mo →',
+    fbHeaderTitle:"Feedback & Suggestions",fbHeaderSub:"Help us improve",
+    fbNotice:"Your message goes directly to our management team. We read and act on every piece of feedback.<span class=\"notice-it\">If you would like a reply, please leave your email. We aim to respond within 2 business days.</span>",
+    fbLRating:"Overall Rating",fbLMsg:"Your Message",fbLName:"Name",fbLEmail:"Email",fbBtn:"Submit Feedback",
 
-    fCardTitle:'Share Your Feedback',
-    fCardSub:'Feedback & suggestions',
-    fCardDesc:'Your message goes directly to our management team. We read and act on every message.',
-    fCardNote:'Management team receives this',
-    fCardBtn:'Leave a message →',
+    errRequired:"Please fill in all required fields.",
+    errPhone:"Please enter a valid Australian mobile number, for example 04xx xxx xxx.",
+    errEmail:"Please enter a valid email address.",
+    errTier:"Please select a membership plan.",
+    errReceipt:"Please attach a photo of your payment receipt.",
+    errMsg:"Please enter your message.",
+    errNetwork:"Connection error. Please check your network and try again.",
+    submitting:"Submitting…",
 
-    cfHeaderTitle:'Coffee — Buy 5 Get 1 Free',
-    cfHeaderSub:'Register your purchase',
-    cfNotice:'<strong>How it works</strong> — Register each coffee purchase here. Once staff confirm it, you will receive an email showing your points progress. Collect 5 confirmed purchases to receive your free coffee.<span class="notice-it">No paper card needed. Please use the same mobile number each time.</span>',
-    cfLName:'Name',
-    cfLPhone:'Mobile',
-    cfLEmail:'Email',
-    cfLNotes:'Notes',
-    cfBtn:'Submit',
+    succBack:"← Back to Home",
+    coffeeBoxTitle:"Your Coffee Points",washBoxTitle:"Your Wash Progress",
+    coffeePendingTxt:"Awaiting staff confirmation — points will be added once verified.",
+    washPendingTxt:"Awaiting staff confirmation — progress will update once verified.",
+    progCoffee0:"Your purchase has been submitted and is awaiting staff confirmation.",
+    progWash0:"Your wash has been submitted and is awaiting staff confirmation.",
+    progFree:"🎉 Free coffee ready — please show this screen to staff.",
+    progWashFree:"🎉 Free wash ready — please mention your phone number at the station.",
 
-    cwHeaderReward:'🚗 Wash 3, Get 1 Free',
-    cwSubReward:'Register your wash',
-    cwHeaderMonthly:'💳 Monthly Car Wash Membership',
-    cwSubMonthly:'Apply for membership',
-    cwNoticeReward:'<strong>How it works</strong> — Upload your payment receipt below. Staff will verify it and confirm your wash. You will receive an email with your updated progress.<span class="notice-it">Please make sure the receipt photo clearly shows the date and amount.</span>',
-    cwNoticeMonthly:'<strong>Monthly membership</strong> — Upload your payment receipt to apply. Staff will verify and activate your membership, then email you confirmation.<span class="notice-it">One wash per day. Membership is linked to one plate number only.</span>',
-    cwLocationTitle:'Participating car wash locations',
-    cwLTier:'Choose your plan',
-    cwLPlate:'Plate Number',
-    cwLPhone:'Mobile',
-    cwLEmail:'Email',
-    cwLReceipt:'Payment Receipt',
-    cwLNotes:'Notes',
-    cwBtnSubmitReward:'Submit',
-    cwBtnSubmitMonthly:'Apply',
-    cwFzLabel:'Tap to photograph or upload receipt',
-    cwFzDone:'Receipt attached ✓',
-
-    fbHeaderTitle:'Feedback & Suggestions',
-    fbHeaderSub:'Help us improve',
-    fbNotice:'Your message goes directly to our management team. We read and act on every piece of feedback.<span class="notice-it">If you would like a reply, please leave your email.</span>',
-    fbLRating:'Overall Rating',
-    fbLMsg:'Your Message',
-    fbLName:'Name',
-    fbLEmail:'Email',
-    fbBtn:'Submit Feedback',
-
-    errRequired:'Please fill in all required fields.',
-    errPhone:'Please enter a valid Australian mobile number, for example 04xx xxx xxx.',
-    errEmail:'Please enter a valid email address.',
-    errTier:'Please select a membership plan.',
-    errReceipt:'Please attach a photo of your payment receipt.',
-    errDupCoffee:'You already have a pending coffee entry for today. Please wait for staff to confirm.',
-    errDupWash:'This plate already has a pending wash for today. Please wait for staff to confirm.',
-    errMsg:'Please enter your message.',
-    errNetwork:'Connection error. Please check your network and try again.',
-    submitting:'Submitting…',
-
-    succBack:'← Back to Home',
-    coffeeBoxTitle:'Your Coffee Points',
-    washBoxTitle:'Your Wash Progress',
-    progCoffee0:'Your purchase has been submitted and is waiting for staff confirmation.',
-    progWash0:'Your wash has been submitted and is waiting for staff confirmation.',
-    progFree:'🎉 Free coffee ready — please show this screen to staff.',
-    progWashFree:'🎉 Free wash ready — please mention your plate number at the station.',
-
-    succCoffeeHeader:'Coffee Registered',
-    succCoffeeTitle:'Submitted!',
-    succCoffeeSub:'Thank you',
-    succCoffeeMsg:'Your purchase has been logged. Once staff verify it, you will receive an email with your updated points tally.',
-    succCoffeeMsgIt:'',
-
-    succWashHeader:'Wash Registered',
-    succWashTitle:'Submitted!',
-    succWashSub:'Thank you',
-    succWashMsg:'Your wash has been logged. Once staff verify your receipt, you will receive a confirmation email with your progress.',
-    succWashMsgIt:'',
-
-    succMonthlyHeader:'Membership Applied',
-    succMonthlyTitle:'Application Submitted!',
-    succMonthlyTitleSub:'Thank you',
-    succMonthlyMsg:'Your membership application is in. Staff will verify your receipt, activate your plan, and email you confirmation.',
-    succMonthlyMsgIt:'',
-
-    succFeedbackHeader:'Thank You!',
-    succFeedbackTitle:'Thank You!',
-    succFeedbackTitleSub:'Feedback sent',
-    succFeedbackMsg:'Your message has been sent to our management team. We really appreciate your feedback.',
-    succFeedbackMsgIt:''
+    succCoffeeHeader:"Coffee Registered",succCoffeeTitle:"Submitted!",succCoffeeSub:"Thank you",
+    succCoffeeMsg:"Your purchase has been logged. Once staff verify it, you will receive an email with your updated points tally.",
+    succWashHeader:"Wash Registered",succWashTitle:"Submitted!",succWashSub:"Thank you",
+    succWashMsg:"Your wash has been logged. Once staff verify your receipt, you will receive a confirmation email with your progress.",
+    succMonthlyHeader:"Membership Applied",succMonthlyTitle:"Application Submitted!",succMonthlyTitleSub:"Thank you",
+    succMonthlyMsg:"Your membership application is in. Staff will verify your receipt, activate your plan, and email you confirmation.",
+    succFeedbackHeader:"Thank You!",succFeedbackTitle:"Thank You!",succFeedbackTitleSub:"Feedback sent",
+    succFeedbackMsg:"Your message has been sent to our management team. We really appreciate your feedback and aim to respond within 2 business days if you have left your email."
   },
-
   zh:{
-    heroTitle:'会员优惠',
-    heroSub:'优惠登记、洗车会员与意见反馈',
+    heroTitle:"会员优惠",heroSub:"优惠登记、洗车会员与意见反馈",
+    lblCoffee:"☕ 咖啡优惠",lblCarwash:"🚗 洗车优惠",lblFeedback:"💬 意见与建议",
+    cCardTitle:"买五送一",cCardSub:"购买 5 杯，第 6 杯免费",
+    cCardDesc:"每次购买咖啡后在此登记，员工确认满 5 次后，即可领取免费咖啡。",
+    cCardNote:"无需纸质集点卡",cCardBtn:"立即登记 →",
+    cwCardTitle:"自动洗车优惠",cwCardSub:"洗车奖励进度可在参与地点共享",
+    cwCardDesc:"两种优惠方式：集满 3 次送 1 次，或申请包月洗车会员。",
+    cwCardNoteBox:"洗车奖励进度仅在 Thomastown、Frankston、Ballarat、Shepparton 区域的参与洗车点共享。",
+    cwBtnReward1:"洗三送一",cwBtnReward2:"登记本次洗车 →",
+    cwBtnMonthly1:"包月会员",cwBtnMonthly2:"每月 $49 起 →",
+    fCardTitle:"意见与建议",fCardSub:"直接发送给管理团队",
+    fCardDesc:"您的留言会直接发送给我们的管理团队，我们会认真阅读每一条反馈。",
+    fCardNote:"管理团队会收到",fCardBtn:"留言 →",
+    footerPrivacy:"您的个人信息仅用于奖励计划管理，不会与第三方共享。",
 
-    lblCoffee:'☕ 咖啡优惠',
-    lblCarwash:'🚗 洗车优惠',
-    lblFeedback:'💬 意见与建议',
+    cfHeaderTitle:"咖啡集点 — 买五送一",cfHeaderSub:"登记本次购买",
+    cfNotice:"<strong>活动规则</strong> — 每次购买咖啡后在此登记，员工确认后您会收到邮件显示当前集点进度。确认满 5 次后，即可领取免费咖啡。<span class=\"notice-it\">无需纸质集点卡。请每次使用同一个手机号码。</span>",
+    cfLName:"姓名",cfLPhone:"手机号码",cfLEmail:"电子邮箱",cfLLocation:"所在门店",cfLDate:"购买日期",cfLNotes:"备注",
+    cfLocPlaceholder:"请选择门店…",cfBtn:"提交",
 
-    cCardTitle:'买五送一',
-    cCardSub:'购买 5 杯，第 6 杯免费',
-    cCardDesc:'每次购买咖啡后在此登记，员工确认满 5 次后，即可领取免费咖啡。',
-    cCardNote:'无需纸质集点卡',
-    cCardBtn:'立即登记 →',
+    cwHeaderReward:"🚗 洗三送一登记",cwSubReward:"登记本次洗车",
+    cwHeaderMonthly:"💳 包月洗车会员申请",cwSubMonthly:"申请包月会员",
+    cwNoticeReward:"<strong>活动规则</strong> — 请上传付款收据，员工审核确认后，您会收到邮件显示当前洗车进度。<span class=\"notice-it\">请确保收据照片能清楚看到日期和金额。</span>",
+    cwNoticeMonthly:"<strong>包月会员</strong> — 上传付款收据后提交申请，员工审核后会激活您的会员资格，并发送邮件确认。<span class=\"notice-it\">每天可洗一次，一个月内每天都可以来。会员绑定一个车牌号，一个套餐只能给一辆车使用。</span>",
+    cwLocationTitle:"参与活动的洗车点地址",
+    cwLTier:"选择套餐",cwLPlate:"车牌号码",cwLPhone:"手机号码",cwLEmail:"电子邮箱",
+    cwLLocation:"所在门店",cwLocPlaceholder:"请选择门店…",
+    cwLDate:"洗车日期",cwLStart:"会员开始日期",
+    cwLReceipt:"付款收据",cwLNotes:"备注",
+    cwBtnSubmitReward:"提交",cwBtnSubmitMonthly:"申请",
+    cwFzLabel:"拍照或上传付款收据",cwFzDone:"收据已上传 ✓",
+    tierStdF1:"每天都可以洗车",tierStdF2:"每天限洗一次，一个月内每天都可以来",
+    tierStdF3:"仅绑定一个车牌号",tierStdF4:"标准自动洗车程序",
+    tierPrmF1:"每天都可以享用高级洗车",tierPrmF2:"每天限洗一次，一个月内每天都可以来",
+    tierPrmF3:"仅绑定一个车牌号",tierPrmF4:"高级洗车程序（单次价值 $20）",
+    tierPrmBadge:"最超值",
 
-    cwCardTitle:'自动洗车优惠',
-    cwCardSub:'洗车奖励进度可在参与地点共享',
-    cwCardDesc:'两种优惠方式：集满 3 次送 1 次，或申请包月洗车会员。',
-    cwCardNoteBox:'洗车奖励进度仅在 Thomastown、Frankston、Ballarat、Shepparton 区域的参与洗车点共享。',
-    cwBtnReward1:'洗三送一',
-    cwBtnReward2:'登记本次洗车 →',
-    cwBtnMonthly1:'包月会员',
-    cwBtnMonthly2:'每月 $49 起 →',
+    fbHeaderTitle:"意见与建议",fbHeaderSub:"帮助我们改进服务",
+    fbNotice:"您的留言会直接发送给管理团队，我们会认真阅读每一条反馈。<span class=\"notice-it\">如果您希望我们回复，请留下邮箱，我们将在 2 个工作日内回复。</span>",
+    fbLRating:"整体评分",fbLMsg:"您的留言",fbLName:"姓名",fbLEmail:"邮箱",fbBtn:"提交反馈",
 
-    fCardTitle:'意见与建议',
-    fCardSub:'直接发送给管理团队',
-    fCardDesc:'您的留言会直接发送给我们的管理团队，我们会认真阅读每一条反馈。',
-    fCardNote:'管理团队会收到',
-    fCardBtn:'留言 →',
+    errRequired:"请填写所有必填项。",
+    errPhone:"请输入有效的澳大利亚手机号码，例如 04xx xxx xxx。",
+    errEmail:"请输入有效的电子邮箱地址。",
+    errTier:"请选择您的包月套餐。",
+    errReceipt:"请上传付款收据照片。",
+    errMsg:"请填写您的留言。",
+    errNetwork:"网络错误，请检查网络后重试。",
+    submitting:"提交中…",
 
-    cfHeaderTitle:'咖啡集点 — 买五送一',
-    cfHeaderSub:'登记本次购买',
-    cfNotice:'<strong>活动规则</strong> — 每次购买咖啡后在此登记，员工确认后您会收到邮件显示当前集点进度。确认满 5 次后，即可领取免费咖啡。<span class="notice-it">无需纸质集点卡。请每次使用同一个手机号码。</span>',
-    cfLName:'姓名',
-    cfLPhone:'手机号码',
-    cfLEmail:'电子邮箱',
-    cfLNotes:'备注',
-    cfBtn:'提交',
+    succBack:"← 返回首页",
+    coffeeBoxTitle:"您的咖啡集点进度",washBoxTitle:"您的洗车进度",
+    coffeePendingTxt:"等待员工确认中 — 确认后集点将自动更新。",
+    washPendingTxt:"等待员工确认中 — 确认后进度将自动更新。",
+    progCoffee0:"您的购买记录已提交，正在等待员工确认。",
+    progWash0:"您的洗车记录已提交，正在等待员工确认。",
+    progFree:"🎉 免费咖啡已解锁！请向员工出示此页面领取。",
+    progWashFree:"🎉 免费洗车已解锁！请告知员工您的手机号码。",
 
-    cwHeaderReward:'🚗 洗三送一登记',
-    cwSubReward:'登记本次洗车',
-    cwHeaderMonthly:'💳 包月洗车会员申请',
-    cwSubMonthly:'申请包月会员',
-    cwNoticeReward:'<strong>活动规则</strong> — 请上传付款收据，员工审核确认后，您会收到邮件显示当前洗车进度。<span class="notice-it">请确保收据照片能清楚看到日期和金额。</span>',
-    cwNoticeMonthly:'<strong>包月会员</strong> — 上传付款收据后提交申请，员工审核后会激活您的会员资格，并发送邮件确认。<span class="notice-it">每车牌每日限洗一次，会员仅绑定一个车牌。</span>',
-    cwLocationTitle:'参与活动的洗车点地址',
-    cwLTier:'选择套餐',
-    cwLPlate:'车牌号码',
-    cwLPhone:'手机号码',
-    cwLEmail:'电子邮箱',
-    cwLReceipt:'付款收据',
-    cwLNotes:'备注',
-    cwBtnSubmitReward:'提交',
-    cwBtnSubmitMonthly:'申请',
-    cwFzLabel:'拍照或上传付款收据',
-    cwFzDone:'收据已上传 ✓',
-
-    fbHeaderTitle:'意见与建议',
-    fbHeaderSub:'帮助我们改进服务',
-    fbNotice:'您的留言会直接发送给管理团队，我们会认真阅读每一条反馈。<span class="notice-it">如果您希望我们回复，请留下邮箱。</span>',
-    fbLRating:'整体评分',
-    fbLMsg:'您的留言',
-    fbLName:'姓名',
-    fbLEmail:'邮箱',
-    fbBtn:'提交反馈',
-
-    errRequired:'请填写所有必填项。',
-    errPhone:'请输入有效的澳大利亚手机号码，例如 04xx xxx xxx。',
-    errEmail:'请输入有效的电子邮箱地址。',
-    errTier:'请选择您的包月套餐。',
-    errReceipt:'请上传付款收据照片。',
-    errDupCoffee:'您今天已经有一条咖啡待确认记录，请等待员工确认。',
-    errDupWash:'该车牌今天已有待确认洗车记录，请等待员工确认。',
-    errMsg:'请填写您的留言。',
-    errNetwork:'网络错误，请检查网络后重试。',
-    submitting:'提交中…',
-
-    succBack:'← 返回首页',
-    coffeeBoxTitle:'您的咖啡集点进度',
-    washBoxTitle:'您的洗车进度',
-    progCoffee0:'您的购买记录已提交，正在等待员工确认。',
-    progWash0:'您的洗车记录已提交，正在等待员工确认。',
-    progFree:'🎉 免费咖啡已解锁！请向员工出示此页面领取。',
-    progWashFree:'🎉 免费洗车已解锁！请告知员工您的车牌号码。',
-
-    succCoffeeHeader:'咖啡登记成功',
-    succCoffeeTitle:'提交成功！',
-    succCoffeeSub:'Thank you',
-    succCoffeeMsg:'您的购买记录已提交。员工确认后，您会收到包含集点进度的邮件通知。',
-    succCoffeeMsgIt:'',
-
-    succWashHeader:'洗车登记成功',
-    succWashTitle:'提交成功！',
-    succWashSub:'Thank you',
-    succWashMsg:'您的洗车记录已提交。员工审核收据后，您会收到确认邮件和洗车进度。',
-    succWashMsgIt:'',
-
-    succMonthlyHeader:'包月申请已提交',
-    succMonthlyTitle:'申请成功！',
-    succMonthlyTitleSub:'Thank you',
-    succMonthlyMsg:'您的包月会员申请已提交。员工审核后会激活会员资格，并发送邮件确认。',
-    succMonthlyMsgIt:'',
-
-    succFeedbackHeader:'感谢您的反馈',
-    succFeedbackTitle:'感谢！',
-    succFeedbackTitleSub:'Feedback sent',
-    succFeedbackMsg:'您的留言已发送给管理团队，感谢您帮助我们改进服务。',
-    succFeedbackMsgIt:''
+    succCoffeeHeader:"咖啡登记成功",succCoffeeTitle:"提交成功！",succCoffeeSub:"感谢您",
+    succCoffeeMsg:"您的购买记录已提交。员工确认后，您会收到包含集点进度的邮件通知。",
+    succWashHeader:"洗车登记成功",succWashTitle:"提交成功！",succWashSub:"感谢您",
+    succWashMsg:"您的洗车记录已提交。员工审核收据后，您会收到确认邮件和洗车进度。",
+    succMonthlyHeader:"包月申请已提交",succMonthlyTitle:"申请成功！",succMonthlyTitleSub:"感谢您",
+    succMonthlyMsg:"您的包月会员申请已提交。员工审核后会激活会员资格，并发送邮件确认。",
+    succFeedbackHeader:"感谢您的反馈",succFeedbackTitle:"感谢！",succFeedbackTitleSub:"已收到",
+    succFeedbackMsg:"您的留言已发送给管理团队，感谢您帮助我们改进服务。如您已留下邮箱，我们将在 2 个工作日内回复。"
   }
 };
 
 function t(){ return S[lang]; }
-
-function setText(id,val){
-  const el=document.getElementById(id);
-  if(el && val !== undefined) el.innerHTML = val;
-}
+function setText(id,val){ const el=document.getElementById(id); if(el&&val!==undefined) el.innerHTML=val; }
 
 function setLang(l){
-  lang = l;
-  localStorage.setItem('ap_lang',l);
-
-  document.querySelectorAll('.lang-btn').forEach(b=>{
-    b.classList.toggle('active',(l==='en' && b.textContent==='EN') || (l==='zh' && b.textContent==='中文'));
+  lang=l;
+  localStorage.setItem("ap_lang",l);
+  document.querySelectorAll(".lang-btn").forEach(b=>{
+    b.classList.toggle("active",(l==="en"&&b.textContent==="EN")||(l==="zh"&&b.textContent==="中文"));
   });
-
   applyLang();
 }
 
 function applyLang(){
   const L=t();
-
-  setText('h-title',L.heroTitle);
-  setText('h-sub',L.heroSub);
-
-  setText('lbl-coffee',L.lblCoffee);
-  setText('lbl-carwash',L.lblCarwash);
-  setText('lbl-feedback',L.lblFeedback);
-
-  setText('c-card-title',L.cCardTitle);
-  setText('c-card-sub',L.cCardSub);
-  setText('c-card-desc',L.cCardDesc);
-  setText('c-card-note',L.cCardNote);
-  setText('c-card-btn',L.cCardBtn);
-
-  setText('cw-card-title',L.cwCardTitle);
-  setText('cw-card-sub',L.cwCardSub);
-  setText('cw-card-desc',L.cwCardDesc);
-  setText('cw-card-note-box',L.cwCardNoteBox);
-  setText('cw-btn-reward-line1',L.cwBtnReward1);
-  setText('cw-btn-reward-line2',L.cwBtnReward2);
-  setText('cw-btn-monthly-line1',L.cwBtnMonthly1);
-  setText('cw-btn-monthly-line2',L.cwBtnMonthly2);
-
-  setText('f-card-title',L.fCardTitle);
-  setText('f-card-sub',L.fCardSub);
-  setText('f-card-desc',L.fCardDesc);
-  setText('f-card-note',L.fCardNote);
-  setText('f-card-btn',L.fCardBtn);
+  setText("h-title",L.heroTitle); setText("h-sub",L.heroSub);
+  setText("lbl-coffee",L.lblCoffee); setText("lbl-carwash",L.lblCarwash); setText("lbl-feedback",L.lblFeedback);
+  setText("c-card-title",L.cCardTitle); setText("c-card-sub",L.cCardSub); setText("c-card-desc",L.cCardDesc);
+  setText("c-card-note",L.cCardNote); setText("c-card-btn",L.cCardBtn);
+  setText("cw-card-title",L.cwCardTitle); setText("cw-card-sub",L.cwCardSub); setText("cw-card-desc",L.cwCardDesc);
+  setText("cw-card-note-box",L.cwCardNoteBox);
+  setText("cw-btn-reward-line1",L.cwBtnReward1); setText("cw-btn-reward-line2",L.cwBtnReward2);
+  setText("cw-btn-monthly-line1",L.cwBtnMonthly1); setText("cw-btn-monthly-line2",L.cwBtnMonthly2);
+  setText("f-card-title",L.fCardTitle); setText("f-card-sub",L.fCardSub); setText("f-card-desc",L.fCardDesc);
+  setText("f-card-note",L.fCardNote); setText("f-card-btn",L.fCardBtn);
+  setText("footer-privacy",L.footerPrivacy);
+  setText("tier-std-f1",L.tierStdF1); setText("tier-std-f2",L.tierStdF2);
+  setText("tier-std-f3",L.tierStdF3); setText("tier-std-f4",L.tierStdF4);
+  setText("tier-prm-f1",L.tierPrmF1); setText("tier-prm-f2",L.tierPrmF2);
+  setText("tier-prm-f3",L.tierPrmF3); setText("tier-prm-f4",L.tierPrmF4);
+  setText("tier-prm-badge",L.tierPrmBadge);
 }
 
 function showScreen(id){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById('screen-'+id).classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  document.getElementById("screen-"+id).classList.add("active");
+  window.scrollTo({top:0,behavior:"smooth"});
 }
-
-function goHome(){
-  showScreen('home');
-}
+function goHome(){ showScreen("home"); }
 
 function openForm(type){
   const L=t();
   currentPlan=type;
 
-  if(type==='coffee'){
-    setText('cf-header-title',L.cfHeaderTitle);
-    setText('cf-header-sub',L.cfHeaderSub);
-    setText('cf-notice',L.cfNotice);
-    setText('cf-l-name',L.cfLName+' <span class="req">*</span>');
-    setText('cf-l-phone',L.cfLPhone+' <span class="req">*</span>');
-    setText('cf-l-email',L.cfLEmail+' <span class="req">*</span>');
-    setText('cf-l-notes',L.cfLNotes);
-
-    ['c-name','c-phone','c-email','c-notes'].forEach(id=>document.getElementById(id).value='');
-    document.getElementById('c-err').classList.remove('show');
-    setBtn('c-btn',L.cfBtn,false);
-
-    showScreen('coffee');
-    return;
+  if(type==="coffee"){
+    setText("cf-header-title",L.cfHeaderTitle); setText("cf-header-sub",L.cfHeaderSub);
+    setText("cf-notice",L.cfNotice);
+    setText("cf-l-name",L.cfLName+"<span class=\"req\">*</span>");
+    setText("cf-l-phone",L.cfLPhone+"<span class=\"req\">*</span>");
+    setText("cf-l-email",L.cfLEmail+"<span class=\"req\">*</span>");
+    setText("cf-l-location",L.cfLLocation+"<span class=\"req\">*</span>");
+    setText("cf-l-date",L.cfLDate+"<span class=\"req\">*</span>");
+    setText("cf-l-notes",L.cfLNotes);
+    setText("c-loc-placeholder",L.cfLocPlaceholder);
+    ["c-name","c-phone","c-email","c-notes"].forEach(id=>document.getElementById(id).value="");
+    document.getElementById("c-location").value="";
+    document.getElementById("c-date").value=todayStr();
+    document.getElementById("c-err").classList.remove("show");
+    setBtn("c-btn",L.cfBtn,false);
+    showScreen("coffee"); return;
   }
 
-  if(type==='carwash' || type==='monthly'){
-    const isM = type==='monthly';
+  if(type==="carwash"||type==="monthly"){
+    const isM=type==="monthly";
+    setText("cw-header-title",isM?L.cwHeaderMonthly:L.cwHeaderReward);
+    setText("cw-header-sub",isM?L.cwSubMonthly:L.cwSubReward);
+    setText("cw-notice",isM?L.cwNoticeMonthly:L.cwNoticeReward);
+    setText("cw-location-title",L.cwLocationTitle);
+    setText("cw-l-tier",L.cwLTier+"<span class=\"req\">*</span>");
+    setText("cw-l-plate",L.cwLPlate+"<span class=\"req\">*</span>");
+    setText("cw-l-phone",L.cwLPhone+"<span class=\"req\">*</span>");
+    setText("cw-l-email",L.cwLEmail+"<span class=\"req\">*</span>");
+    setText("cw-l-location",L.cwLLocation+"<span class=\"req\">*</span>");
+    setText("cw-loc-placeholder",L.cwLocPlaceholder);
+    setText("cw-l-date",L.cwLDate+"<span class=\"req\">*</span>");
+    setText("cw-l-start",L.cwLStart+"<span class=\"req\">*</span>");
+    setText("cw-l-receipt",L.cwLReceipt+"<span class=\"req\">*</span>");
+    setText("cw-l-notes",L.cwLNotes);
 
-    setText('cw-header-title',isM?L.cwHeaderMonthly:L.cwHeaderReward);
-    setText('cw-header-sub',isM?L.cwSubMonthly:L.cwSubReward);
-    setText('cw-notice',isM?L.cwNoticeMonthly:L.cwNoticeReward);
-    setText('cw-location-title',L.cwLocationTitle);
+    document.getElementById("cw-tier-wrap").style.display=isM?"block":"none";
+    document.getElementById("cw-monthly-start-wrap").style.display=isM?"block":"none";
+    // hide location box for monthly (linked to plate not location)
+    document.getElementById("cw-location-box").style.display=isM?"none":"block";
 
-    setText('cw-l-tier',L.cwLTier+' <span class="req">*</span>');
-    setText('cw-l-plate',L.cwLPlate+' <span class="req">*</span>');
-    setText('cw-l-phone',L.cwLPhone+' <span class="req">*</span>');
-    setText('cw-l-email',L.cwLEmail+' <span class="req">*</span>');
-    setText('cw-l-receipt',L.cwLReceipt+' <span class="req">*</span>');
-    setText('cw-l-notes',L.cwLNotes);
+    ["cw-plate","cw-phone","cw-email","cw-notes"].forEach(id=>document.getElementById(id).value="");
+    document.getElementById("cw-location").value="";
+    document.getElementById("cw-date").value=todayStr();
+    document.getElementById("cw-start-date").value=todayStr();
+    document.getElementById("cw-tier").value="";
+    selectedTier="";
+    ["tier-std","tier-prm"].forEach(id=>document.getElementById(id).classList.remove("selected"));
 
-    document.getElementById('cw-tier-wrap').style.display = isM ? 'block' : 'none';
-
-    ['cw-plate','cw-phone','cw-email','cw-notes'].forEach(id=>document.getElementById(id).value='');
-
-    document.getElementById('cw-tier').value='';
-    selectedTier='';
-    ['tier-std','tier-prm'].forEach(id=>document.getElementById(id).classList.remove('selected'));
-
-    const fi=document.getElementById('cw-photo');
-    fi.value='';
-    fi._base64=null;
-    fi._mime=null;
-
-    document.getElementById('cw-img-preview').style.display='none';
-    document.getElementById('cw-img-size').style.display='none';
-    document.getElementById('cw-fz-name').style.display='none';
-    setText('cw-fz-label',L.cwFzLabel);
-
-    document.getElementById('cw-err').classList.remove('show');
-    setBtn('cw-btn',isM?L.cwBtnSubmitMonthly:L.cwBtnSubmitReward,false);
-    document.getElementById('cw-btn').className='btn '+(isM?'btn-blue':'btn-primary');
-
-    showScreen('carwash');
-    return;
+    const fi=document.getElementById("cw-photo");
+    fi.value=""; fi._base64=null; fi._mime=null;
+    document.getElementById("cw-img-preview").style.display="none";
+    document.getElementById("cw-img-size").style.display="none";
+    document.getElementById("cw-fz-name").style.display="none";
+    setText("cw-fz-label",L.cwFzLabel);
+    document.getElementById("cw-err").classList.remove("show");
+    setBtn("cw-btn",isM?L.cwBtnSubmitMonthly:L.cwBtnSubmitReward,false);
+    document.getElementById("cw-btn").className="btn "+(isM?"btn-blue":"btn-primary");
+    showScreen("carwash"); return;
   }
 
-  setText('fb-header-title',L.fbHeaderTitle);
-  setText('fb-header-sub',L.fbHeaderSub);
-  setText('fb-notice',L.fbNotice);
-  setText('fb-l-rating',L.fbLRating);
-  setText('fb-l-msg',L.fbLMsg+' <span class="req">*</span>');
-  setText('fb-l-name',L.fbLName);
-  setText('fb-l-email',L.fbLEmail);
-
-  ['f-msg','f-name','f-email'].forEach(id=>document.getElementById(id).value='');
-
+  setText("fb-header-title",L.fbHeaderTitle); setText("fb-header-sub",L.fbHeaderSub);
+  setText("fb-notice",L.fbNotice);
+  setText("fb-l-rating",L.fbLRating);
+  setText("fb-l-msg",L.fbLMsg+"<span class=\"req\">*</span>");
+  setText("fb-l-name",L.fbLName); setText("fb-l-email",L.fbLEmail);
+  ["f-msg","f-name","f-email"].forEach(id=>document.getElementById(id).value="");
   selectedRating=0;
-  document.querySelectorAll('.rating-btn').forEach(b=>b.classList.remove('selected'));
-  document.getElementById('f-rating').value='';
-  document.getElementById('f-err').classList.remove('show');
-  setBtn('f-btn',L.fbBtn,false);
-
-  showScreen('feedback');
+  document.querySelectorAll(".rating-btn").forEach(b=>b.classList.remove("selected"));
+  document.getElementById("f-rating").value="";
+  document.getElementById("f-err").classList.remove("show");
+  setBtn("f-btn",L.fbBtn,false);
+  showScreen("feedback");
 }
 
 function selectTier(which){
-  selectedTier = which==='standard' ? '$49 Standard' : '$69 Premium';
-  document.getElementById('cw-tier').value = selectedTier;
-  document.getElementById('tier-std').classList.toggle('selected',which==='standard');
-  document.getElementById('tier-prm').classList.toggle('selected',which==='premium');
-  document.getElementById('cw-err').classList.remove('show');
+  selectedTier=which==="standard"?"$49 Standard":"$69 Premium";
+  document.getElementById("cw-tier").value=selectedTier;
+  document.getElementById("tier-std").classList.toggle("selected",which==="standard");
+  document.getElementById("tier-prm").classList.toggle("selected",which==="premium");
+  document.getElementById("cw-err").classList.remove("show");
 }
 
 function setRating(n,btn){
   selectedRating=n;
-  document.getElementById('f-rating').value=n;
-  document.querySelectorAll('.rating-btn').forEach(b=>b.classList.remove('selected'));
-  btn.classList.add('selected');
+  document.getElementById("f-rating").value=n;
+  document.querySelectorAll(".rating-btn").forEach(b=>b.classList.remove("selected"));
+  btn.classList.add("selected");
 }
 
 function handlePhoto(prefix){
-  const input=document.getElementById(prefix+'-photo');
+  const input=document.getElementById(prefix+"-photo");
   const file=input.files[0];
   if(!file) return;
-
-  const MAX_BYTES=1*1024*1024;
-  const MAX_DIM=1200;
-
+  const MAX_BYTES=1*1024*1024, MAX_DIM=1200;
   const reader=new FileReader();
-
   reader.onload=e=>{
     const img=new Image();
-
     img.onload=()=>{
-      let w=img.width;
-      let h=img.height;
-
-      if(w>MAX_DIM || h>MAX_DIM){
-        const r=Math.min(MAX_DIM/w,MAX_DIM/h);
-        w=Math.round(w*r);
-        h=Math.round(h*r);
-      }
-
-      const canvas=document.createElement('canvas');
-      canvas.width=w;
-      canvas.height=h;
-      canvas.getContext('2d').drawImage(img,0,0,w,h);
-
-      let quality=0.82;
-      let dataUrl;
-      let base64;
-
-      do{
-        dataUrl=canvas.toDataURL('image/jpeg',quality);
-        base64=dataUrl.split(',')[1];
-        quality-=0.1;
-      }while(base64.length*0.75>MAX_BYTES && quality>0.2);
-
-      input._base64=base64;
-      input._mime='image/jpeg';
-
-      document.getElementById(prefix+'-preview-img').src=dataUrl;
-      document.getElementById(prefix+'-img-preview').style.display='block';
-      document.getElementById(prefix+'-fz-name').textContent=file.name;
-      document.getElementById(prefix+'-fz-name').style.display='block';
-      setText(prefix+'-fz-label',t().cwFzDone);
-      document.getElementById(prefix+'-img-size').textContent=Math.round(base64.length*0.75/1024)+' KB';
-      document.getElementById(prefix+'-img-size').style.display='block';
+      let w=img.width, h=img.height;
+      if(w>MAX_DIM||h>MAX_DIM){ const r=Math.min(MAX_DIM/w,MAX_DIM/h); w=Math.round(w*r); h=Math.round(h*r); }
+      const canvas=document.createElement("canvas"); canvas.width=w; canvas.height=h;
+      canvas.getContext("2d").drawImage(img,0,0,w,h);
+      let quality=0.82, dataUrl, base64;
+      do{ dataUrl=canvas.toDataURL("image/jpeg",quality); base64=dataUrl.split(",")[1]; quality-=0.1; }
+      while(base64.length*0.75>MAX_BYTES&&quality>0.2);
+      input._base64=base64; input._mime="image/jpeg";
+      document.getElementById(prefix+"-preview-img").src=dataUrl;
+      document.getElementById(prefix+"-img-preview").style.display="block";
+      document.getElementById(prefix+"-fz-name").textContent=file.name;
+      document.getElementById(prefix+"-fz-name").style.display="block";
+      setText(prefix+"-fz-label",t().cwFzDone);
+      document.getElementById(prefix+"-img-size").textContent=Math.round(base64.length*0.75/1024)+" KB";
+      document.getElementById(prefix+"-img-size").style.display="block";
     };
-
     img.src=e.target.result;
   };
-
   reader.readAsDataURL(file);
 }
 
 async function apiPost(body){
-  const r=await fetch(API_URL,{
-    method:'POST',
-    body:JSON.stringify({...body,token:API_TOKEN})
-  });
-
+  const r=await fetch(API_URL,{method:"POST",body:JSON.stringify({...body,token:API_TOKEN})});
   const text=await r.text();
-
-  try{
-    return JSON.parse(text);
-  }catch(e){
-    throw new Error('Invalid server response');
-  }
+  try{ return JSON.parse(text); }catch(e){ throw new Error("Invalid server response"); }
 }
 
 function setBtn(id,html,disabled){
-  const b=document.getElementById(id);
-  b.disabled=disabled;
-  b.innerHTML=html;
+  const b=document.getElementById(id); b.disabled=disabled; b.innerHTML=html;
 }
 
 async function submitCoffee(){
   const L=t();
+  const name=document.getElementById("c-name").value.trim();
+  const phone=document.getElementById("c-phone").value.trim().replace(/\s/g,"");
+  const email=document.getElementById("c-email").value.trim();
+  const location=document.getElementById("c-location").value;
+  const purchaseDate=document.getElementById("c-date").value||todayStr();
+  const notes=document.getElementById("c-notes").value.trim();
+  const err=document.getElementById("c-err");
 
-  const name=document.getElementById('c-name').value.trim();
-  const phone=document.getElementById('c-phone').value.trim().replace(/\s/g,'');
-  const email=document.getElementById('c-email').value.trim();
-  const notes=document.getElementById('c-notes').value.trim();
-  const err=document.getElementById('c-err');
-
-  if(!name || !phone || !email){
-    err.textContent=L.errRequired;
-    err.classList.add('show');
-    return;
+  if(!name||!phone||!email||!location||!purchaseDate){
+    err.textContent=L.errRequired; err.classList.add("show"); return;
   }
+  if(!/^04\d{8}$/.test(phone)){ err.textContent=L.errPhone; err.classList.add("show"); return; }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ err.textContent=L.errEmail; err.classList.add("show"); return; }
 
-  if(!/^04\d{8}$/.test(phone)){
-    err.textContent=L.errPhone;
-    err.classList.add('show');
-    return;
-  }
-
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-    err.textContent=L.errEmail;
-    err.classList.add('show');
-    return;
-  }
-
-  err.classList.remove('show');
-  setBtn('c-btn','<span class="spinner"></span>'+L.submitting,true);
-
+  err.classList.remove("show");
+  setBtn("c-btn","<span class=\"spinner\"></span>"+L.submitting,true);
   try{
-    const result=await apiPost({action:'submitCoffee',name,phone,email,notes});
-
-    if(result.error){
-      err.textContent=result.error==='duplicate'?L.errDupCoffee:result.error;
-      err.classList.add('show');
-      setBtn('c-btn',L.cfBtn,false);
-      return;
-    }
-
-    showSuccess('coffee',result);
-  }catch(e){
-    err.textContent=L.errNetwork;
-    err.classList.add('show');
-    setBtn('c-btn',L.cfBtn,false);
-  }
+    const result=await apiPost({action:"submitCoffee",name,phone,email,location,purchaseDate,notes});
+    if(result.error){ err.textContent=result.error; err.classList.add("show"); setBtn("c-btn",L.cfBtn,false); return; }
+    showSuccess("coffee",result);
+  }catch(e){ err.textContent=L.errNetwork; err.classList.add("show"); setBtn("c-btn",L.cfBtn,false); }
 }
 
 async function submitCarwash(){
   const L=t();
-
-  const isM=currentPlan==='monthly';
-  const plate=document.getElementById('cw-plate').value.trim().toUpperCase();
-  const phone=document.getElementById('cw-phone').value.trim().replace(/\s/g,'');
-  const email=document.getElementById('cw-email').value.trim();
-  const notes=document.getElementById('cw-notes').value.trim();
-  const tier=document.getElementById('cw-tier').value;
-  const fi=document.getElementById('cw-photo');
-  const err=document.getElementById('cw-err');
+  const isM=currentPlan==="monthly";
+  const plate=document.getElementById("cw-plate").value.trim().toUpperCase();
+  const phone=document.getElementById("cw-phone").value.trim().replace(/\s/g,"");
+  const email=document.getElementById("cw-email").value.trim();
+  const location=document.getElementById("cw-location").value;
+  const washDate=document.getElementById("cw-date").value||todayStr();
+  const startDate=document.getElementById("cw-start-date").value||todayStr();
+  const notes=document.getElementById("cw-notes").value.trim();
+  const tier=document.getElementById("cw-tier").value;
+  const fi=document.getElementById("cw-photo");
+  const err=document.getElementById("cw-err");
   const btnLabel=isM?L.cwBtnSubmitMonthly:L.cwBtnSubmitReward;
 
-  if(!plate || !phone || !email){
-    err.textContent=L.errRequired;
-    err.classList.add('show');
-    return;
-  }
+  if(!plate||!phone||!email||!location){ err.textContent=L.errRequired; err.classList.add("show"); return; }
+  if(!/^04\d{8}$/.test(phone)){ err.textContent=L.errPhone; err.classList.add("show"); return; }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ err.textContent=L.errEmail; err.classList.add("show"); return; }
+  if(isM&&!tier){ err.textContent=L.errTier; err.classList.add("show"); return; }
+  if(!fi._base64){ err.textContent=L.errReceipt; err.classList.add("show"); return; }
 
-  if(!/^04\d{8}$/.test(phone)){
-    err.textContent=L.errPhone;
-    err.classList.add('show');
-    return;
-  }
-
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-    err.textContent=L.errEmail;
-    err.classList.add('show');
-    return;
-  }
-
-  if(isM && !tier){
-    err.textContent=L.errTier;
-    err.classList.add('show');
-    return;
-  }
-
-  if(!fi._base64){
-    err.textContent=L.errReceipt;
-    err.classList.add('show');
-    return;
-  }
-
-  err.classList.remove('show');
-  setBtn('cw-btn','<span class="spinner"></span>'+L.submitting,true);
-
+  err.classList.remove("show");
+  setBtn("cw-btn","<span class=\"spinner\"></span>"+L.submitting,true);
   try{
     const result=await apiPost({
-      action:'submitCarwash',
-      plan:currentPlan,
-      plate,
-      phone,
-      email,
-      notes,
-      monthlyTier:tier,
-      photoBase64:fi._base64,
-      photoMime:fi._mime
+      action:"submitCarwash",plan:currentPlan,plate,phone,email,location,
+      notes,monthlyTier:tier,washDate,startDate,
+      photoBase64:fi._base64,photoMime:fi._mime
     });
-
-    if(result.error==='duplicate'){
-      err.textContent=L.errDupWash;
-      err.classList.add('show');
-      setBtn('cw-btn',btnLabel,false);
-      return;
-    }
-
-    if(result.error){
-      err.textContent=result.error;
-      err.classList.add('show');
-      setBtn('cw-btn',btnLabel,false);
-      return;
-    }
-
+    if(result.error==="duplicate"){ err.textContent=t().errRequired; err.classList.add("show"); setBtn("cw-btn",btnLabel,false); return; }
+    if(result.error){ err.textContent=result.error; err.classList.add("show"); setBtn("cw-btn",btnLabel,false); return; }
     showSuccess(currentPlan,result);
-  }catch(e){
-    err.textContent=L.errNetwork;
-    err.classList.add('show');
-    setBtn('cw-btn',btnLabel,false);
-  }
+  }catch(e){ err.textContent=L.errNetwork; err.classList.add("show"); setBtn("cw-btn",btnLabel,false); }
 }
 
 async function submitFeedback(){
   const L=t();
-
-  const msg=document.getElementById('f-msg').value.trim();
-  const name=document.getElementById('f-name').value.trim();
-  const email=document.getElementById('f-email').value.trim();
-  const err=document.getElementById('f-err');
-
-  if(!msg){
-    err.textContent=L.errMsg;
-    err.classList.add('show');
-    return;
-  }
-
-  err.classList.remove('show');
-  setBtn('f-btn','<span class="spinner"></span>'+L.submitting,true);
-
+  const msg=document.getElementById("f-msg").value.trim();
+  const name=document.getElementById("f-name").value.trim();
+  const email=document.getElementById("f-email").value.trim();
+  const err=document.getElementById("f-err");
+  if(!msg){ err.textContent=L.errMsg; err.classList.add("show"); return; }
+  err.classList.remove("show");
+  setBtn("f-btn","<span class=\"spinner\"></span>"+L.submitting,true);
   try{
-    const result=await apiPost({
-      action:'submitFeedback',
-      name,
-      email,
-      rating:selectedRating,
-      message:msg
-    });
-
-    if(result.error){
-      err.textContent=result.error;
-      err.classList.add('show');
-      setBtn('f-btn',L.fbBtn,false);
-      return;
-    }
-
-    showSuccess('feedback',result);
-  }catch(e){
-    err.textContent=L.errNetwork;
-    err.classList.add('show');
-    setBtn('f-btn',L.fbBtn,false);
-  }
+    const result=await apiPost({action:"submitFeedback",name,email,rating:selectedRating,message:msg});
+    if(result.error){ err.textContent=result.error; err.classList.add("show"); setBtn("f-btn",L.fbBtn,false); return; }
+    showSuccess("feedback",result);
+  }catch(e){ err.textContent=L.errNetwork; err.classList.add("show"); setBtn("f-btn",L.fbBtn,false); }
 }
 
 function showSuccess(type,result){
   const L=t();
-
   const configs={
-    coffee:{
-      header:L.succCoffeeHeader,
-      title:L.succCoffeeTitle,
-      sub:L.succCoffeeSub,
-      glyph:'☕',
-      msg:L.succCoffeeMsg,
-      msgIt:L.succCoffeeMsgIt
-    },
-    carwash:{
-      header:L.succWashHeader,
-      title:L.succWashTitle,
-      sub:L.succWashSub,
-      glyph:'🚗',
-      msg:L.succWashMsg,
-      msgIt:L.succWashMsgIt
-    },
-    monthly:{
-      header:L.succMonthlyHeader,
-      title:L.succMonthlyTitle,
-      sub:L.succMonthlyTitleSub,
-      glyph:'💳',
-      msg:L.succMonthlyMsg,
-      msgIt:L.succMonthlyMsgIt
-    },
-    feedback:{
-      header:L.succFeedbackHeader,
-      title:L.succFeedbackTitle,
-      sub:L.succFeedbackTitleSub,
-      glyph:'💬',
-      msg:L.succFeedbackMsg,
-      msgIt:L.succFeedbackMsgIt
-    }
+    coffee:{header:L.succCoffeeHeader,title:L.succCoffeeTitle,sub:L.succCoffeeSub,glyph:"☕",msg:L.succCoffeeMsg},
+    carwash:{header:L.succWashHeader,title:L.succWashTitle,sub:L.succWashSub,glyph:"🚗",msg:L.succWashMsg},
+    monthly:{header:L.succMonthlyHeader,title:L.succMonthlyTitle,sub:L.succMonthlyTitleSub,glyph:"💳",msg:L.succMonthlyMsg},
+    feedback:{header:L.succFeedbackHeader,title:L.succFeedbackTitle,sub:L.succFeedbackTitleSub,glyph:"💬",msg:L.succFeedbackMsg}
   };
+  const c=configs[type]||configs.feedback;
+  setText("succ-header",c.header); setText("succ-glyph",c.glyph);
+  setText("succ-title",c.title); setText("succ-title-sub",c.sub); setText("succ-msg",c.msg);
+  setText("succ-back-btn",L.succBack);
 
-  const c=configs[type] || configs.feedback;
+  const cpb=document.getElementById("succ-coffee-box");
+  const wpb=document.getElementById("succ-wash-box");
+  cpb.style.display="none"; wpb.style.display="none";
 
-  setText('succ-header',c.header);
-  setText('succ-glyph',c.glyph);
-  setText('succ-title',c.title);
-  setText('succ-title-sub',c.sub);
-  setText('succ-msg',c.msg + (c.msgIt ? '<span class="notice-it">'+c.msgIt+'</span>' : ''));
-  setText('succ-back-btn',L.succBack);
-
-  const cpb=document.getElementById('succ-coffee-box');
-  const wpb=document.getElementById('succ-wash-box');
-
-  cpb.style.display='none';
-  wpb.style.display='none';
-
-  if(type==='coffee' && result.confirmedPurchases!==undefined){
-    cpb.style.display='block';
-    setText('succ-coffee-box-title',L.coffeeBoxTitle);
-
-    const rewardReady = !!result.rewardReady;
-    const mod = rewardReady ? 5 : Number(result.progressMod || 0);
-
-    let track='';
-
+  if(type==="coffee"){
+    cpb.style.display="block";
+    setText("succ-coffee-box-title",L.coffeeBoxTitle);
+    setText("succ-coffee-pending-txt",L.coffeePendingTxt);
+    const rewardReady=!!result.rewardReady;
+    const mod=rewardReady?5:Number(result.progressMod||0);
+    let track="";
     for(let i=0;i<5;i++){
-      track+=`<div class="prog-dot${i<mod?' lit-green':''}">${i<mod?'✓':(i+1)}</div>`;
-      if(i<4) track+='<span class="prog-arrow">›</span>';
+      track+=`<div class="prog-dot${i<mod?" lit-green":""}">${i<mod?"✓":i+1}</div>`;
+      if(i<4) track+="<span class=\"prog-arrow\">›</span>";
     }
-
-    track+='<span class="prog-arrow">›</span><div class="prog-free prog-free-green">FREE</div>';
-
-    setText('succ-coffee-track',track);
-
-    if(rewardReady){
-      setText('succ-coffee-lbl',L.progFree);
-    }else if(mod===0){
-      setText('succ-coffee-lbl',L.progCoffee0);
-    }else{
-      setText('succ-coffee-lbl',
-        mod+'/5 '+(lang==='zh'?'次已确认，还需 '+(5-mod)+' 次':'confirmed · '+(5-mod)+' more for your free coffee')
-      );
-    }
+    track+="<span class=\"prog-arrow\">›</span><div class=\"prog-free prog-free-green\">FREE</div>";
+    setText("succ-coffee-track",track);
+    if(rewardReady) setText("succ-coffee-lbl",L.progFree);
+    else if(mod===0) setText("succ-coffee-lbl",L.progCoffee0);
+    else setText("succ-coffee-lbl",mod+"/5 "+(lang==="zh"?"次已确认，还需 "+(5-mod)+" 次":"confirmed · "+(5-mod)+" more for your free coffee"));
+    // hide pending notice if rewardReady
+    document.getElementById("succ-coffee-pending").style.display=rewardReady?"none":"flex";
   }
 
-  if(type==='carwash' && result.confirmedWashes!==undefined){
-    wpb.style.display='block';
-    setText('succ-wash-box-title',L.washBoxTitle);
-
-    const rewardReady = !!result.rewardReady;
-    const mod = rewardReady ? 3 : Number(result.progressMod || 0);
-
-    let track='';
-
+  if(type==="carwash"){
+    wpb.style.display="block";
+    setText("succ-wash-box-title",L.washBoxTitle);
+    setText("succ-wash-pending-txt",L.washPendingTxt);
+    const rewardReady=!!result.rewardReady;
+    const mod=rewardReady?3:Number(result.progressMod||0);
+    let track="";
     for(let i=0;i<3;i++){
-      track+=`<div class="prog-dot${i<mod?' lit-red':''}">${i<mod?'✓':(i+1)}</div>`;
-      if(i<2) track+='<span class="prog-arrow">›</span>';
+      track+=`<div class="prog-dot${i<mod?" lit-red":""}">${i<mod?"✓":i+1}</div>`;
+      if(i<2) track+="<span class=\"prog-arrow\">›</span>";
     }
-
-    track+='<span class="prog-arrow">›</span><div class="prog-free prog-free-red">FREE</div>';
-
-    setText('succ-wash-track',track);
-
-    if(rewardReady){
-      setText('succ-wash-lbl',L.progWashFree);
-    }else if(mod===0){
-      setText('succ-wash-lbl',L.progWash0);
-    }else{
-      setText('succ-wash-lbl',
-        mod+'/3 '+(lang==='zh'?'次已确认，还需 '+(3-mod)+' 次':'confirmed · '+(3-mod)+' more for your free wash')
-      );
-    }
+    track+="<span class=\"prog-arrow\">›</span><div class=\"prog-free prog-free-red\">FREE</div>";
+    setText("succ-wash-track",track);
+    if(rewardReady) setText("succ-wash-lbl",L.progWashFree);
+    else if(mod===0) setText("succ-wash-lbl",L.progWash0);
+    else setText("succ-wash-lbl",mod+"/3 "+(lang==="zh"?"次已确认，还需 "+(3-mod)+" 次":"confirmed · "+(3-mod)+" more for your free wash"));
+    document.getElementById("succ-wash-pending").style.display=rewardReady?"none":"flex";
   }
 
-  showScreen('success');
+  showScreen("success");
 }
 
-document.querySelectorAll('.lang-btn').forEach(b=>{
-  b.classList.toggle('active',(lang==='en' && b.textContent==='EN') || (lang==='zh' && b.textContent==='中文'));
+document.querySelectorAll(".lang-btn").forEach(b=>{
+  b.classList.toggle("active",(lang==="en"&&b.textContent==="EN")||(lang==="zh"&&b.textContent==="中文"));
 });
-
 applyLang();
 </script>
-
 </body>
 </html>
