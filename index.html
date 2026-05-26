@@ -275,6 +275,7 @@ textarea{min-height:82px;resize:vertical;line-height:1.6}
 
     <div id="c-err" class="err"></div>
     <button class="btn btn-green" id="c-btn" onclick="submitCoffee()">Submit</button>
+    <button class="btn btn-ghost" style="margin-top:10px" onclick="goHome()" id="c-back-btn">← Back to Home</button>
   </div>
 </div>
 
@@ -385,6 +386,7 @@ textarea{min-height:82px;resize:vertical;line-height:1.6}
 
     <div id="cw-err" class="err"></div>
     <button class="btn btn-primary" id="cw-btn" onclick="submitCarwash()">Submit</button>
+    <button class="btn btn-ghost" style="margin-top:10px" onclick="goHome()" id="cw-back-btn">← Back to Home</button>
   </div>
 </div>
 
@@ -438,6 +440,7 @@ textarea{min-height:82px;resize:vertical;line-height:1.6}
     </div>
     <div id="f-err" class="err"></div>
     <button class="btn btn-blue" id="f-btn" onclick="submitFeedback()">Submit Feedback</button>
+    <button class="btn btn-ghost" style="margin-top:10px" onclick="goHome()" id="f-back-btn">← Back to Home</button>
   </div>
 </div>
 
@@ -555,6 +558,7 @@ const S = {
     submitting:"Submitting…",
 
     succBack:"← Back to Home",
+    backHome:"← Back to Home",
     coffeeBoxTitle:"Your Coffee Points",washBoxTitle:"Your Wash Progress",
     coffeePendingTxt:"Awaiting staff confirmation — points will be added once verified.",
     washPendingTxt:"Awaiting staff confirmation — progress will update once verified.",
@@ -625,6 +629,7 @@ const S = {
     submitting:"提交中…",
 
     succBack:"← 返回首页",
+    backHome:"← 返回首页",
     coffeeBoxTitle:"您的咖啡集点进度",washBoxTitle:"您的洗车进度",
     coffeePendingTxt:"等待员工确认中 — 确认后集点将自动更新。",
     washPendingTxt:"等待员工确认中 — 确认后进度将自动更新。",
@@ -703,6 +708,7 @@ function openForm(type){
     setDateMaxToday();
     document.getElementById("c-err").classList.remove("show");
     setBtn("c-btn",L.cfBtn,false);
+    setText("c-back-btn",L.backHome);
     showScreen("coffee"); return;
   }
 
@@ -746,6 +752,7 @@ function openForm(type){
     document.getElementById("cw-err").classList.remove("show");
     setBtn("cw-btn",isM?L.cwBtnSubmitMonthly:L.cwBtnSubmitReward,false);
     document.getElementById("cw-btn").className="btn "+(isM?"btn-blue":"btn-primary");
+    setText("cw-back-btn",L.backHome);
     showScreen("carwash"); return;
   }
 
@@ -763,6 +770,7 @@ function openForm(type){
   document.getElementById("f-rating").value="";
   document.getElementById("f-err").classList.remove("show");
   setBtn("f-btn",L.fbBtn,false);
+  setText("f-back-btn",L.backHome);
   showScreen("feedback");
 }
 
