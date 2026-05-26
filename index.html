@@ -257,9 +257,9 @@ textarea{min-height:82px;resize:vertical;line-height:1.6}
         <option value="" id="c-loc-placeholder">Select your station…</option>
         <option value="Frankston">Frankston</option>
         <option value="Thomastown">Thomastown</option>
-        <option value="Ballarat">Ballarat (Soldiers Hill)</option>
-        <option value="Shepparton">Shepparton (Kialla)</option>
-        <option value="Bendigo">Bendigo (Golden Square)</option>
+        <option value="Ballarat">Ballarat</option>
+        <option value="Shepparton">Shepparton</option>
+        <option value="Bendigo">Bendigo</option>
         <option value="Clayton South">Clayton South</option>
         <option value="Flemington">Flemington</option>
       </select>
@@ -351,8 +351,8 @@ textarea{min-height:82px;resize:vertical;line-height:1.6}
         <option value="" id="cw-loc-placeholder">Select your station…</option>
         <option value="Frankston">Frankston</option>
         <option value="Thomastown">Thomastown</option>
-        <option value="Ballarat">Ballarat (Soldiers Hill)</option>
-        <option value="Shepparton">Shepparton (Kialla)</option>
+        <option value="Ballarat">Ballarat</option>
+        <option value="Shepparton">Shepparton</option>
       </select>
     </div>
 
@@ -399,6 +399,20 @@ textarea{min-height:82px;resize:vertical;line-height:1.6}
   </div>
   <div class="form-body">
     <div class="notice" id="fb-notice"></div>
+    <div class="fg">
+      <label class="flabel" id="fb-l-location">Station <span class="req">*</span></label>
+      <select id="f-location">
+        <option value="" id="f-loc-placeholder">Select your station…</option>
+        <option value="Frankston">Frankston</option>
+        <option value="Thomastown">Thomastown</option>
+        <option value="Ballarat">Ballarat</option>
+        <option value="Shepparton">Shepparton</option>
+        <option value="Bendigo">Bendigo</option>
+        <option value="Clayton South">Clayton South</option>
+        <option value="Flemington">Flemington</option>
+      </select>
+    </div>
+
     <div class="fg">
       <label class="flabel" id="fb-l-rating">Overall Rating</label>
       <div class="rating-row">
@@ -527,6 +541,7 @@ const S = {
     tierPrmBadge:"Best Value",
 
     fbHeaderTitle:"Feedback & Suggestions",fbHeaderSub:"Help us improve",
+    fbLLocation:"Station",fbLocPlaceholder:"Select your station…",
     fbNotice:"Your message goes directly to our management team. We read and act on every piece of feedback.<span class=\"notice-it\">If you would like a reply, please leave your email. We aim to respond within 2 business days.</span>",
     fbLRating:"Overall Rating",fbLMsg:"Your Message",fbLName:"Name",fbLEmail:"Email",fbBtn:"Submit Feedback",
 
@@ -596,6 +611,7 @@ const S = {
     tierPrmBadge:"最超值",
 
     fbHeaderTitle:"意见与建议",fbHeaderSub:"帮助我们改进服务",
+    fbLLocation:"所在门店",fbLocPlaceholder:"请选择门店…",
     fbNotice:"您的留言会直接发送给管理团队，我们会认真阅读每一条反馈。<span class=\"notice-it\">如果您希望我们回复，请留下邮箱，我们将在 2 个工作日内回复。</span>",
     fbLRating:"整体评分",fbLMsg:"您的留言",fbLName:"姓名",fbLEmail:"邮箱",fbBtn:"提交反馈",
 
@@ -710,8 +726,7 @@ function openForm(type){
     document.getElementById("cw-tier-wrap").style.display=isM?"block":"none";
     document.getElementById("cw-monthly-start-wrap").style.display=isM?"block":"none";
     document.getElementById("cw-date-wrap").style.display=isM?"none":"block";
-    // hide location box for monthly (linked to plate not location)
-    document.getElementById("cw-location-box").style.display=isM?"none":"block";
+    document.getElementById("cw-location-box").style.display="block";
 
     ["cw-plate","cw-phone","cw-email","cw-notes"].forEach(id=>document.getElementById(id).value="");
     document.getElementById("cw-location").value="";
@@ -736,6 +751,9 @@ function openForm(type){
 
   setText("fb-header-title",L.fbHeaderTitle); setText("fb-header-sub",L.fbHeaderSub);
   setText("fb-notice",L.fbNotice);
+  setText("fb-l-location",L.fbLLocation+"<span class=\"req\">*</span>");
+  setText("f-loc-placeholder",L.fbLocPlaceholder);
+  document.getElementById("f-location").value="";
   setText("fb-l-rating",L.fbLRating);
   setText("fb-l-msg",L.fbLMsg+"<span class=\"req\">*</span>");
   setText("fb-l-name",L.fbLName); setText("fb-l-email",L.fbLEmail);
@@ -868,12 +886,14 @@ async function submitFeedback(){
   const msg=document.getElementById("f-msg").value.trim();
   const name=document.getElementById("f-name").value.trim();
   const email=document.getElementById("f-email").value.trim();
+  const flocation=document.getElementById("f-location").value;
   const err=document.getElementById("f-err");
   if(!msg){ err.textContent=L.errMsg; err.classList.add("show"); return; }
+  if(!flocation){ err.textContent=L.errRequired; err.classList.add("show"); return; }
   err.classList.remove("show");
   setBtn("f-btn","<span class=\"spinner\"></span>"+L.submitting,true);
   try{
-    const result=await apiPost({action:"submitFeedback",name,email,rating:selectedRating,message:msg});
+    const result=await apiPost({action:"submitFeedback",name,email,rating:selectedRating,message:msg,location:flocation});
     if(result.error){ err.textContent=result.error; err.classList.add("show"); setBtn("f-btn",L.fbBtn,false); return; }
     showSuccess("feedback",result);
   }catch(e){ err.textContent=L.errNetwork; err.classList.add("show"); setBtn("f-btn",L.fbBtn,false); }
