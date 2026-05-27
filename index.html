@@ -220,10 +220,60 @@ textarea{min-height:82px;resize:vertical;line-height:1.6}
       </div>
     </div>
 
+    <div class="section-label" id="lbl-lookup">🔍 MY PROGRESS</div>
+    <div class="offer-card">
+      <div class="offer-stripe" style="background:linear-gradient(90deg,var(--liberty-blue),var(--bp-green))"></div>
+      <div class="offer-body">
+        <span class="offer-icon">🔍</span>
+        <div class="offer-title" id="lk-card-title">Check My Rewards Progress</div>
+        <div class="offer-title-sub" id="lk-card-sub">Coffee, car wash &amp; membership</div>
+        <div class="offer-tagline" id="lk-card-desc">Enter your mobile number to see your coffee points, wash progress, monthly membership status and submission history.</div>
+      </div>
+      <div class="offer-footer">
+        <span class="offer-note" id="lk-card-note">No login needed</span>
+        <button class="offer-cta" style="background:var(--liberty-blue);color:#fff" onclick="openForm('lookup')" id="lk-card-btn">Check now →</button>
+      </div>
+    </div>
+
     <div class="page-footer">
       Aries Petroleum · ariespetroleum.com.au
       <div class="privacy-line" id="footer-privacy">Your personal information is collected solely for reward program administration and is not shared with third parties.</div>
     </div>
+  </div>
+</div>
+
+<!-- ══════════════════ CHECK PROGRESS ══════════════════ -->
+<div class="screen" id="screen-lookup">
+  <div class="form-header">
+    <button class="form-back" onclick="goHome()">←</button>
+    <div>
+      <div class="form-header-title">🔍 <span id="lk-header-title">Check My Progress</span></div>
+      <div class="form-header-sub" id="lk-header-sub">Coffee, wash &amp; membership status</div>
+    </div>
+  </div>
+  <div class="form-body">
+    <div class="notice" id="lk-notice"></div>
+
+    <!-- lookup by phone -->
+    <div class="fg" id="lk-phone-wrap">
+      <label class="flabel" id="lk-l-phone">Mobile Number <span class="req">*</span></label>
+      <input type="tel" id="lk-phone" placeholder="04xx xxx xxx" inputmode="tel" autocomplete="tel" maxlength="13"
+        onkeydown="if(event.key==='Enter')runLookup()">
+    </div>
+    <!-- lookup by plate (optional, for monthly) -->
+    <div class="fg" id="lk-plate-wrap">
+      <label class="flabel" id="lk-l-plate">Plate Number <span style="font-size:10px;color:var(--muted);font-weight:400">(optional — for monthly membership)</span></label>
+      <input type="text" id="lk-plate" class="plate-input" placeholder="e.g. ABC 123"
+        oninput="this.value=this.value.toUpperCase()"
+        onkeydown="if(event.key==='Enter')runLookup()">
+    </div>
+
+    <div id="lk-err" class="err"></div>
+    <button class="btn btn-blue" id="lk-btn" onclick="runLookup()">Check Progress</button>
+    <button class="btn btn-ghost" style="margin-top:10px" onclick="goHome()" id="lk-back-btn">← Back to Home</button>
+
+    <!-- results area -->
+    <div id="lk-results" style="margin-top:22px"></div>
   </div>
 </div>
 
@@ -245,7 +295,7 @@ textarea{min-height:82px;resize:vertical;line-height:1.6}
     </div>
     <div class="fg">
       <label class="flabel" id="cf-l-phone">Mobile <span class="req">*</span></label>
-      <input type="tel" id="c-phone" placeholder="04xx xxx xxx" inputmode="tel" autocomplete="tel">
+      <input type="tel" id="c-phone" placeholder="04xx xxx xxx" inputmode="tel" autocomplete="tel" maxlength="13">
     </div>
     <div class="fg">
       <label class="flabel" id="cf-l-email">Email <span class="req">*</span></label>
@@ -339,7 +389,7 @@ textarea{min-height:82px;resize:vertical;line-height:1.6}
     </div>
     <div class="fg">
       <label class="flabel" id="cw-l-phone">Mobile <span class="req">*</span></label>
-      <input type="tel" id="cw-phone" placeholder="04xx xxx xxx" inputmode="tel" autocomplete="tel">
+      <input type="tel" id="cw-phone" placeholder="04xx xxx xxx" inputmode="tel" autocomplete="tel" maxlength="13">
     </div>
     <div class="fg">
       <label class="flabel" id="cw-l-email">Email <span class="req">*</span></label>
@@ -549,7 +599,7 @@ const S = {
     fbLRating:"Overall Rating",fbLMsg:"Your Message",fbLName:"Name",fbLEmail:"Email",fbBtn:"Submit Feedback",
 
     errRequired:"Please fill in all required fields.",
-    errPhone:"Please enter a valid Australian mobile number, for example 04xx xxx xxx.",
+    errPhone:"Please enter a valid 10-digit Australian mobile number starting with 04, for example 0412 345 678.",
     errEmail:"Please enter a valid email address.",
     errTier:"Please select a membership plan.",
     errReceipt:"Please attach a photo of your payment receipt.",
@@ -574,7 +624,25 @@ const S = {
     succMonthlyHeader:"Membership Applied",succMonthlyTitle:"Application Submitted!",succMonthlyTitleSub:"Thank you",
     succMonthlyMsg:"Your membership application is in. Staff will verify your receipt, activate your plan, and email you confirmation.",
     succFeedbackHeader:"Thank You!",succFeedbackTitle:"Thank You!",succFeedbackTitleSub:"Feedback sent",
-    succFeedbackMsg:"Your message has been sent to our management team. We really appreciate your feedback and aim to respond within 2 business days if you have left your email."
+    succFeedbackMsg:"Your message has been sent to our management team. We really appreciate your feedback and aim to respond within 2 business days if you have left your email.",
+
+    lblLookup:"🔍 MY PROGRESS",
+    lkCardTitle:"Check My Rewards Progress",lkCardSub:"Coffee, car wash & membership",
+    lkCardDesc:"Enter your mobile number to see your coffee points, wash progress, monthly membership status and submission history.",
+    lkCardNote:"No login needed",lkCardBtn:"Check now →",
+    lkHeaderTitle:"Check My Progress",lkHeaderSub:"Coffee, wash & membership status",
+    lkNotice:"Enter your mobile number to look up your rewards progress. Add your plate number too if you have a monthly membership.",
+    lkLPhone:"Mobile Number",lkLPlate:"Plate Number",lkBtn:"Check Progress",
+    lkLoading:"Looking up your progress…",
+    lkNotFound:"No record found for this mobile number.",
+    lkErrPhone:"Please enter a valid 10-digit Australian mobile number starting with 04.",
+    lkSectionCoffee:"☕ Coffee Points",lkSectionWash:"🚗 Wash 3-Get-1 Progress",
+    lkSectionMonthly:"💳 Monthly Membership",lkSectionHistory:"📋 Submission History",
+    lkNoHistory:"No submissions yet.",
+    lkStatusPending:"⏳ Pending",lkStatusConfirmed:"✅ Confirmed",lkStatusRejected:"✗ Rejected",
+    lkMonthlyActive:"✅ Active",lkMonthlyExpired:"⚠ Expired",lkMonthlyExpiry:"Expiry",
+    lkMonthlyTier:"Plan",lkMonthlyPlate:"Plate",lkMonthlyWashes:"Total washes this membership",
+    lkNoMembership:"No monthly membership found for this plate."
   },
   zh:{
     heroTitle:"会员优惠",heroSub:"优惠登记、洗车会员与意见反馈",
@@ -620,7 +688,7 @@ const S = {
     fbLRating:"整体评分",fbLMsg:"您的留言",fbLName:"姓名",fbLEmail:"邮箱",fbBtn:"提交反馈",
 
     errRequired:"请填写所有必填项。",
-    errPhone:"请输入有效的澳大利亚手机号码，例如 04xx xxx xxx。",
+    errPhone:"请输入有效的澳大利亚手机号码（10位数字，04 开头），例如 0412 345 678。",
     errEmail:"请输入有效的电子邮箱地址。",
     errTier:"请选择您的包月套餐。",
     errReceipt:"请上传付款收据照片。",
@@ -645,7 +713,25 @@ const S = {
     succMonthlyHeader:"包月申请已提交",succMonthlyTitle:"申请成功！",succMonthlyTitleSub:"感谢您",
     succMonthlyMsg:"您的包月会员申请已提交。员工审核后会激活会员资格，并发送邮件确认。",
     succFeedbackHeader:"感谢您的反馈",succFeedbackTitle:"感谢！",succFeedbackTitleSub:"已收到",
-    succFeedbackMsg:"您的留言已发送给管理团队，感谢您帮助我们改进服务。如您已留下邮箱，我们将在 2 个工作日内回复。"
+    succFeedbackMsg:"您的留言已发送给管理团队，感谢您帮助我们改进服务。如您已留下邮箱，我们将在 2 个工作日内回复。",
+
+    lblLookup:"🔍 我的进度",
+    lkCardTitle:"查询我的奖励进度",lkCardSub:"咖啡集点、洗车进度、包月会员",
+    lkCardDesc:"输入手机号即可查看您的咖啡集点进度、洗车进度、包月会员状态和历史提交记录。",
+    lkCardNote:"无需登录",lkCardBtn:"立即查询 →",
+    lkHeaderTitle:"查询我的进度",lkHeaderSub:"咖啡、洗车与包月会员状态",
+    lkNotice:"输入您的手机号即可查询奖励进度。如果您有包月会员，可同时输入车牌号查询会员状态。",
+    lkLPhone:"手机号码",lkLPlate:"车牌号码",lkBtn:"查询进度",
+    lkLoading:"正在查询您的进度…",
+    lkNotFound:"未找到该手机号的记录。",
+    lkErrPhone:"请输入有效的澳大利亚手机号码（10位，04 开头）。",
+    lkSectionCoffee:"☕ 咖啡集点",lkSectionWash:"🚗 洗三送一进度",
+    lkSectionMonthly:"💳 包月会员",lkSectionHistory:"📋 历史提交记录",
+    lkNoHistory:"暂无提交记录。",
+    lkStatusPending:"⏳ 待确认",lkStatusConfirmed:"✅ 已确认",lkStatusRejected:"✗ 已拒绝",
+    lkMonthlyActive:"✅ 有效",lkMonthlyExpired:"⚠ 已到期",lkMonthlyExpiry:"到期日期",
+    lkMonthlyTier:"套餐",lkMonthlyPlate:"车牌",lkMonthlyWashes:"本期已洗次数",
+    lkNoMembership:"未找到该车牌的包月会员记录。"
   }
 };
 
@@ -674,6 +760,10 @@ function applyLang(){
   setText("f-card-title",L.fCardTitle); setText("f-card-sub",L.fCardSub); setText("f-card-desc",L.fCardDesc);
   setText("f-card-note",L.fCardNote); setText("f-card-btn",L.fCardBtn);
   setText("footer-privacy",L.footerPrivacy);
+  setText("lbl-lookup",L.lblLookup);
+  setText("lk-card-title",L.lkCardTitle); setText("lk-card-sub",L.lkCardSub);
+  setText("lk-card-desc",L.lkCardDesc); setText("lk-card-note",L.lkCardNote);
+  setText("lk-card-btn",L.lkCardBtn);
   setText("tier-std-f1",L.tierStdF1); setText("tier-std-f2",L.tierStdF2);
   setText("tier-std-f3",L.tierStdF3); setText("tier-std-f4",L.tierStdF4);
   setText("tier-prm-f1",L.tierPrmF1); setText("tier-prm-f2",L.tierPrmF2);
@@ -756,7 +846,20 @@ function openForm(type){
     showScreen("carwash"); return;
   }
 
-  setText("fb-header-title",L.fbHeaderTitle); setText("fb-header-sub",L.fbHeaderSub);
+  if(type==="lookup"){
+    const L=t();
+    setText("lk-header-title",L.lkHeaderTitle); setText("lk-header-sub",L.lkHeaderSub);
+    setText("lk-notice",L.lkNotice);
+    setText("lk-l-phone",L.lkLPhone); setText("lk-l-plate",L.lkLPlate);
+    setText("lk-btn",L.lkBtn); setText("lk-back-btn",L.backHome);
+    document.getElementById("lk-phone").value="";
+    document.getElementById("lk-plate").value="";
+    document.getElementById("lk-err").classList.remove("show");
+    document.getElementById("lk-results").innerHTML="";
+    showScreen("lookup"); return;
+  }
+
+
   setText("fb-notice",L.fbNotice);
   setText("fb-l-location",L.fbLLocation+"<span class=\"req\">*</span>");
   setText("f-loc-placeholder",L.fbLocPlaceholder);
@@ -819,6 +922,12 @@ function handlePhoto(prefix){
   reader.readAsDataURL(file);
 }
 
+function normalizePhone(raw){
+  const s=String(raw||"").replace(/\s/g,"").trim();
+  if(!s) return "";
+  if(/^4\d{8}$/.test(s)) return "0"+s;
+  return s;
+}
 async function apiPost(body){
   const r=await fetch(API_URL,{method:"POST",body:JSON.stringify({...body,token:API_TOKEN})});
   const text=await r.text();
@@ -832,7 +941,7 @@ function setBtn(id,html,disabled){
 async function submitCoffee(){
   const L=t();
   const name=document.getElementById("c-name").value.trim();
-  const phone=document.getElementById("c-phone").value.trim().replace(/\s/g,"");
+  const phone=normalizePhone(document.getElementById("c-phone").value);
   const email=document.getElementById("c-email").value.trim();
   const location=document.getElementById("c-location").value;
   const purchaseDate=document.getElementById("c-date").value||todayStr();
@@ -858,7 +967,7 @@ async function submitCarwash(){
   const L=t();
   const isM=currentPlan==="monthly";
   const plate=document.getElementById("cw-plate").value.trim().toUpperCase();
-  const phone=document.getElementById("cw-phone").value.trim().replace(/\s/g,"");
+  const phone=normalizePhone(document.getElementById("cw-phone").value);
   const email=document.getElementById("cw-email").value.trim();
   const location=document.getElementById("cw-location").value;
   const washDate=isM?(document.getElementById("cw-start-date").value||todayStr()):(document.getElementById("cw-date").value||todayStr());
@@ -907,7 +1016,145 @@ async function submitFeedback(){
   }catch(e){ err.textContent=L.errNetwork; err.classList.add("show"); setBtn("f-btn",L.fbBtn,false); }
 }
 
-function showSuccess(type,result){
+async function runLookup(){
+  const L=t();
+  const phone=normalizePhone(document.getElementById("lk-phone").value);
+  const plate=document.getElementById("lk-plate").value.trim().toUpperCase();
+  const err=document.getElementById("lk-err");
+  const results=document.getElementById("lk-results");
+  if(!phone){ err.textContent=L.lkErrPhone; err.classList.add("show"); return; }
+  if(!/^04\d{8}$/.test(phone)){ err.textContent=L.lkErrPhone; err.classList.add("show"); return; }
+  err.classList.remove("show");
+  results.innerHTML=`<div style="text-align:center;padding:24px;color:var(--muted);font-size:13px"><span class="spinner spinner-dark"></span> ${L.lkLoading}</div>`;
+  document.getElementById("lk-btn").disabled=true;
+  try{
+    const data=await (await fetch(`${API_URL}?action=getCustomerProgress&phone=${encodeURIComponent(phone)}&plate=${encodeURIComponent(plate)}&token=${API_TOKEN}`)).json();
+    renderLookupResults(data, phone, plate);
+  }catch(e){
+    results.innerHTML=`<div class="err show">${L.errNetwork}</div>`;
+  }finally{
+    document.getElementById("lk-btn").disabled=false;
+  }
+}
+
+function renderLookupResults(data, phone, plate){
+  const L=t();
+  let html="";
+
+  // ── Coffee ──
+  if(data.coffee && data.coffee.found){
+    const c=data.coffee;
+    const conf=c.confirmedPurchases||0;
+    const mod=conf%5;
+    const freePending=c.freePending||0;
+    let track="";
+    for(let i=0;i<5;i++){
+      track+=`<div class="prog-dot${i<mod?" lit-green":""}">${i<mod?"✓":i+1}</div>`;
+      if(i<4) track+="<span class=\"prog-arrow\">›</span>";
+    }
+    track+=`<span class="prog-arrow">›</span><div class="prog-free prog-free-green">FREE</div>`;
+    const lbl=freePending>0
+      ? L.progFree
+      : mod===0 ? L.progCoffee0
+      : `${mod}/5 ${lang==="zh"?"次已确认，还需 "+(5-mod)+" 次":"confirmed · "+(5-mod)+" more for your free coffee"}`;
+    html+=`
+    <div class="prog-box">
+      <div class="prog-box-title">${L.lkSectionCoffee}</div>
+      <div class="prog-track">${track}</div>
+      <div class="prog-lbl" style="margin-top:8px">${lbl}</div>
+      ${freePending>0?`<div style="background:var(--green-light);border:1.5px solid #BBF7D0;border-radius:9px;padding:10px 12px;font-size:13px;font-weight:700;color:var(--bp-green-dark);margin-top:10px;text-align:center">${L.progFree}</div>`:""}
+    </div>`;
+  }
+
+  // ── Wash 3-get-1 ──
+  if(data.wash && data.wash.found){
+    const w=data.wash;
+    const conf=w.confirmedWashes||0;
+    const mod=conf%3;
+    const freePending=w.freePending||0;
+    let track="";
+    for(let i=0;i<3;i++){
+      track+=`<div class="prog-dot${i<mod?" lit-red":""}">${i<mod?"✓":i+1}</div>`;
+      if(i<2) track+="<span class=\"prog-arrow\">›</span>";
+    }
+    track+=`<span class="prog-arrow">›</span><div class="prog-free prog-free-red">FREE</div>`;
+    const lbl=freePending>0
+      ? L.progWashFree
+      : mod===0 ? L.progWash0
+      : `${mod}/3 ${lang==="zh"?"次已确认，还需 "+(3-mod)+" 次":"confirmed · "+(3-mod)+" more for your free wash"}`;
+    html+=`
+    <div class="prog-box">
+      <div class="prog-box-title">${L.lkSectionWash}</div>
+      <div class="prog-track">${track}</div>
+      <div class="prog-lbl" style="margin-top:8px">${lbl}</div>
+      ${freePending>0?`<div style="background:var(--danger-light);border:1.5px solid #FDA4AF;border-radius:9px;padding:10px 12px;font-size:13px;font-weight:700;color:var(--sinopec-red);margin-top:10px;text-align:center">${L.progWashFree}</div>`:""}
+    </div>`;
+  }
+
+  // ── Monthly ──
+  if(plate){
+    if(data.monthly && data.monthly.found){
+      const m=data.monthly;
+      const today=new Date().toISOString().slice(0,10);
+      const expired=m.expiryDate && m.expiryDate < today;
+      html+=`
+      <div class="prog-box">
+        <div class="prog-box-title">${L.lkSectionMonthly}</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+          <span style="font-size:15px;font-weight:800;color:${expired?"var(--sinopec-red)":"var(--bp-green-dark)"}">${expired?L.lkMonthlyExpired:L.lkMonthlyActive}</span>
+        </div>
+        <div style="font-size:13px;color:var(--label);line-height:2">
+          <div><span style="color:var(--muted);font-family:var(--mono);font-size:11px">${L.lkMonthlyPlate}</span><br><strong>${m.plate||plate}</strong></div>
+          <div><span style="color:var(--muted);font-family:var(--mono);font-size:11px">${L.lkMonthlyTier}</span><br><strong>${m.monthlyTier||"Monthly"}</strong></div>
+          <div><span style="color:var(--muted);font-family:var(--mono);font-size:11px">${L.lkMonthlyExpiry}</span><br><strong style="color:${expired?"var(--sinopec-red)":"var(--text)"}">${m.expiryDate||"—"}</strong></div>
+          <div><span style="color:var(--muted);font-family:var(--mono);font-size:11px">${L.lkMonthlyWashes}</span><br><strong>${m.confirmedWashes||0}</strong></div>
+        </div>
+      </div>`;
+    } else {
+      html+=`
+      <div class="prog-box">
+        <div class="prog-box-title">${L.lkSectionMonthly}</div>
+        <div style="font-size:13px;color:var(--muted)">${L.lkNoMembership}</div>
+      </div>`;
+    }
+  }
+
+  // ── History ──
+  const history=data.history||[];
+  if(history.length){
+    const statusColor={pending:"#92400E",confirmed:"var(--bp-green-dark)",rejected:"var(--sinopec-red)"};
+    const statusBg={pending:"#FFFBEB",confirmed:"var(--green-light)",rejected:"var(--danger-light)"};
+    const statusLabel={
+      pending:L.lkStatusPending, confirmed:L.lkStatusConfirmed, rejected:L.lkStatusRejected
+    };
+    const rows=history.slice(0,20).map(item=>{
+      const st=(item.status||"pending").toLowerCase();
+      const stLabel=statusLabel[st]||item.status;
+      const stColor=statusColor[st]||"var(--muted)";
+      const stBg=statusBg[st]||"#F8FAFC";
+      const typeIcon=item.type==="coffee"?"☕":item.type==="monthly"?"💳":"🚗";
+      return `<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)">
+        <div style="font-size:20px;flex-shrink:0">${typeIcon}</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:13px;font-weight:700;color:var(--text)">${item.date||"—"}</div>
+          <div style="font-size:11px;color:var(--muted);font-family:var(--mono)">${item.location||""}</div>
+        </div>
+        <div style="font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;background:${stBg};color:${stColor};white-space:nowrap">${stLabel}</div>
+      </div>`;
+    }).join("");
+    html+=`
+    <div class="prog-box">
+      <div class="prog-box-title">${L.lkSectionHistory}</div>
+      ${rows}
+    </div>`;
+  } else if(!data.coffee?.found && !data.wash?.found){
+    html=`<div style="text-align:center;padding:28px 16px;color:var(--muted);font-size:14px;font-weight:600">${L.lkNotFound}</div>`;
+  }
+
+  document.getElementById("lk-results").innerHTML=html;
+}
+
+
   const L=t();
   const configs={
     coffee:{header:L.succCoffeeHeader,title:L.succCoffeeTitle,sub:L.succCoffeeSub,glyph:"☕",msg:L.succCoffeeMsg},
