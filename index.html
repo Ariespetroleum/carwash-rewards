@@ -205,21 +205,6 @@ textarea{min-height:82px;resize:vertical;line-height:1.6}
       </div>
     </div>
 
-    <div class="section-label" id="lbl-feedback">💬 FEEDBACK</div>
-    <div class="offer-card">
-      <div class="offer-stripe" style="background:linear-gradient(90deg,var(--liberty-blue),var(--bp-green))"></div>
-      <div class="offer-body">
-        <span class="offer-icon">💬</span>
-        <div class="offer-title" id="f-card-title">Share Your Feedback</div>
-        <div class="offer-title-sub" id="f-card-sub">Feedback & suggestions</div>
-        <div class="offer-tagline" id="f-card-desc">Your message goes directly to our management team. We read and act on every message.</div>
-      </div>
-      <div class="offer-footer">
-        <span class="offer-note" id="f-card-note">Management team receives this</span>
-        <button class="offer-cta" style="background:var(--liberty-blue);color:#fff" onclick="openForm('feedback')" id="f-card-btn">Leave a message →</button>
-      </div>
-    </div>
-
     <div class="section-label" id="lbl-lookup">🔍 MY PROGRESS</div>
     <div class="offer-card">
       <div class="offer-stripe" style="background:linear-gradient(90deg,var(--liberty-blue),var(--bp-green))"></div>
@@ -232,6 +217,21 @@ textarea{min-height:82px;resize:vertical;line-height:1.6}
       <div class="offer-footer">
         <span class="offer-note" id="lk-card-note">No login needed</span>
         <button class="offer-cta" style="background:var(--liberty-blue);color:#fff" onclick="openForm('lookup')" id="lk-card-btn">Check now →</button>
+      </div>
+    </div>
+
+    <div class="section-label" id="lbl-feedback">💬 FEEDBACK</div>
+    <div class="offer-card">
+      <div class="offer-stripe" style="background:linear-gradient(90deg,var(--liberty-blue),var(--bp-green))"></div>
+      <div class="offer-body">
+        <span class="offer-icon">💬</span>
+        <div class="offer-title" id="f-card-title">Share Your Feedback</div>
+        <div class="offer-title-sub" id="f-card-sub">Feedback & suggestions</div>
+        <div class="offer-tagline" id="f-card-desc">Your message goes directly to our management team. We read and act on every message.</div>
+      </div>
+      <div class="offer-footer">
+        <span class="offer-note" id="f-card-note">Management team receives this</span>
+        <button class="offer-cta" style="background:var(--liberty-blue);color:#fff" onclick="openForm('feedback')" id="f-card-btn">Leave a message →</button>
       </div>
     </div>
 
@@ -1154,7 +1154,7 @@ function renderLookupResults(data, phone, plate){
   document.getElementById("lk-results").innerHTML=html;
 }
 
-
+function showSuccess(type, result){
   const L=t();
   const configs={
     coffee:{header:L.succCoffeeHeader,title:L.succCoffeeTitle,sub:L.succCoffeeSub,glyph:"☕",msg:L.succCoffeeMsg},
